@@ -46,6 +46,7 @@ class QuestionResponse(BaseModel):
     image_url: Optional[str] = None
     quality_score: Optional[float] = None
     validated: bool = False
+    observation: Optional[str] = None
     alternatives: List[AlternativeResponse] = []
     
     class Config:
@@ -147,6 +148,7 @@ def list_questions(
                 "image_url": q.image_url,
                 "quality_score": q.quality_score,
                 "validated": getattr(q, 'validated', False),
+                "observation": getattr(q, 'observation', None),
                 "alternatives": [
                     {
                         "id": alt.id,
@@ -194,6 +196,37 @@ def toggle_question_validation(
         "message": "Validação atualizada com sucesso",
         "id": question_id,
         "validated": question.validated
+    }
+
+
+class ObservationUpdate(BaseModel):
+    """Schema para atualização de observação."""
+    observation: Optional[str] = None
+
+
+@question_router.patch("/{question_id}/observation")
+def update_question_observation(
+    question_id: int,
+    data: ObservationUpdate,
+    session: Session = Depends(get_session)
+):
+    """
+    Atualiza a observação de uma questão.
+    """
+    repo = QuestionRepository(session)
+    question = session.get(Question, question_id)
+    
+    if not question:
+        raise HTTPException(status_code=404, detail="Questão não encontrada")
+    
+    question.observation = data.observation
+    session.commit()
+    session.refresh(question)
+    
+    return {
+        "message": "Observação atualizada com sucesso",
+        "id": question_id,
+        "observation": question.observation
     }
 
 

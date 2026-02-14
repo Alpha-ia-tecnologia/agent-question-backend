@@ -103,6 +103,9 @@ class Question:
     # Status de validação (revisão manual)
     validated: Mapped[bool] = mapped_column(Boolean, default=False)
     
+    # Observação do revisor
+    observation: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    
     # Relacionamentos
     user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id"), nullable=True)
     
