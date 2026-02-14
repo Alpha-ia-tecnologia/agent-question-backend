@@ -1,7 +1,6 @@
 from pwdlib import PasswordHash
 from jwt import encode, decode
-from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
+from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
 import os
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -26,7 +25,7 @@ def verify_password(plain_password: str, hashed_password: str):
 
 def create_acess_token(data: dict):
     to_encode = data.copy()
-    expire = datetime.now(tz=ZoneInfo("UTC"))+ timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRES_MINUTES")))
+    expire = datetime.now(tz=timezone.utc) + timedelta(minutes=int(os.getenv("ACCESS_TOKEN_EXPIRES_MINUTES")))
     to_encode.update({"exp": expire})
 
     generate_jwt = encode(to_encode, os.getenv("SECRET_KEY"), os.getenv("ALGORITHM"))
