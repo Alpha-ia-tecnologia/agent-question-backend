@@ -1,0 +1,203 @@
+═══════════════════════════════════════════════════════════════════════════════
+    REFERÊNCIA COMPLETA — CIÊNCIAS DA NATUREZA (BNCC/SAEB/SEAMA)
+═══════════════════════════════════════════════════════════════════════════════
+
+► EIXO 1: UNIDADES TEMÁTICAS E HABILIDADES BNCC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+As habilidades de Ciências da Natureza são organizadas em 3 unidades temáticas:
+
+┌──────────────────────────┬────────────────────────────────────────────┐
+│ Unidade Temática         │ Conteúdos Principais                      │
+├──────────────────────────┼────────────────────────────────────────────┤
+│ Matéria e Energia        │ Propriedades dos materiais, misturas,     │
+│                          │ transformações químicas, energia           │
+├──────────────────────────┼────────────────────────────────────────────┤
+│ Vida e Evolução          │ Corpo humano, saúde, hereditariedade,     │
+│                          │ seleção natural, biodiversidade            │
+├──────────────────────────┼────────────────────────────────────────────┤
+│ Terra e Universo         │ Sistema Solar, rotação/translação,        │
+│                          │ fases da Lua, estrelas, cosmologia         │
+└──────────────────────────┴────────────────────────────────────────────┘
+
+► EIXO 2: HABILIDADES POR ANO ESCOLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 5º ANO EF — MATÉRIA E ENERGIA                                         │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF05CI01 - Explorar fenômenos que evidenciem propriedades físicas      │
+│            dos materiais (dissolução, condução de calor/eletricidade)  │
+│                                                                       │
+│ EF05CI02 - Aplicar conhecimentos sobre misturas para propor           │
+│            soluções de separação de componentes                       │
+│                                                                       │
+│ EF05CI03 - Selecionar argumentos sobre mudanças de estado físico      │
+│            da água após aquecimento e resfriamento                    │
+│                                                                       │
+│ EF05CI04 - Identificar componentes de misturas e associar a métodos   │
+│            de separação (filtração, evaporação, decantação)            │
+│                                                                       │
+│ EF05CI05 - Construir proposta de reciclagem e reutilização de         │
+│            materiais consumidos no cotidiano                           │
+│                                                                       │
+│ EF05CI06 - Selecionar argumentos sobre consumo consciente e           │
+│            sustentável de energia elétrica                             │
+│                                                                       │
+│ EF05CI07 - Propor mudanças no modo de vida para uso consciente        │
+│            de energia e água                                           │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 5º ANO EF — VIDA E EVOLUÇÃO                                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF05CI08 - Organizar cardápio com base no funcionamento do sistema    │
+│            digestório e necessidades nutricionais                      │
+│                                                                       │
+│ EF05CI09 - Discutir doenças comuns na comunidade e formas de          │
+│            prevenção (saneamento, higiene, vacinação)                  │
+│                                                                       │
+│ EF05CI10 - Identificar misturas na vida diária e métodos de           │
+│            separação aplicáveis                                        │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 5º ANO EF — TERRA E UNIVERSO                                         │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF05CI11 - Associar o movimento diário do Sol à rotação da Terra      │
+│            e à formação de sombras                                     │
+│                                                                       │
+│ EF05CI12 - Concluir sobre a periodicidade das fases da Lua e          │
+│            condições para eclipses solares e lunares                   │
+│                                                                       │
+│ EF05CI13 - Projetar e construir dispositivos para observação à        │
+│            distância (periscópio, luneta)                               │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 9º ANO EF — MATÉRIA E ENERGIA                                         │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF09CI01 - Investigar aspectos quantitativos das transformações       │
+│            químicas (leis ponderais: Lavoisier, Proust)                │
+│                                                                       │
+│ EF09CI02 - Comparar quantidades de reagentes e produtos em            │
+│            transformações químicas (conservação de massa)              │
+│                                                                       │
+│ EF09CI03 - Identificar modelos atômicos e sua evolução histórica      │
+│            (Dalton → Thomson → Rutherford → Bohr)                     │
+│                                                                       │
+│ EF09CI04 - Planejar e executar experimentos sobre interações          │
+│            elétricas e magnéticas                                      │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 9º ANO EF — VIDA E EVOLUÇÃO                                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF09CI05 - Investigar mecanismos de transmissão da vida e             │
+│            hereditariedade (genes, cromossomos)                        │
+│                                                                       │
+│ EF09CI06 - Reconhecer ideias evolucionistas de Darwin e Lamarck       │
+│                                                                       │
+│ EF09CI07 - Discutir seleção natural e evolução das espécies           │
+│                                                                       │
+│ EF09CI08 - Associar genótipos e fenótipos a adaptações dos            │
+│            organismos ao ambiente                                      │
+│                                                                       │
+│ EF09CI09 - Discutir questões éticas sobre manipulação genética,       │
+│            clonagem e transgênicos                                     │
+│                                                                       │
+│ EF09CI10 - Comparar a estrutura do DNA e do RNA e suas funções        │
+│                                                                       │
+│ EF09CI11 - Discutir a evolução e diversidade das espécies com         │
+│            base em evidências fósseis e moleculares                    │
+│                                                                       │
+│ EF09CI12 - Justificar a importância das unidades de conservação       │
+│            para a biodiversidade                                       │
+│                                                                       │
+│ EF09CI13 - Propor iniciativas de intervenção ambiental na escola      │
+│            ou comunidade                                               │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 9º ANO EF — TERRA E UNIVERSO                                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF09CI14 - Descrever composição e estrutura do Sistema Solar          │
+│                                                                       │
+│ EF09CI15 - Relacionar características físicas dos planetas            │
+│            (distância do Sol, massa, diâmetro, composição)             │
+│                                                                       │
+│ EF09CI16 - Selecionar argumentos sobre viabilidade de                 │
+│            sobrevivência humana fora da Terra                          │
+│                                                                       │
+│ EF09CI17 - Analisar ciclo evolutivo do Sol e comparação com           │
+│            outras estrelas                                             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+► EIXO 3: REGRAS DE CONSTRUÇÃO POR HABILIDADE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+▸ MATÉRIA E ENERGIA (EF05CI01–07, EF09CI01–04):
+  ✅ Contextualizar com situações do cotidiano (cozinhar, limpar, filtrar)
+  ✅ Para 5º ano: usar linguagem concreta + exemplos visuais
+  ✅ Para 9º ano: incluir terminologia científica (reagente, produto, mol)
+  ❌ NÃO fazer questões puramente memorísticas de fórmulas
+  ❌ NÃO pedir cálculos estequiométricos complexos (fora do nível EF)
+
+  Distratores típicos:
+  - Confundir mistura homogênea com heterogênea
+  - Trocar estado físico (sólido↔líquido↔gasoso)
+  - Confundir métodos de separação (filtração↔destilação)
+  - Inverter reagente e produto em uma reação
+
+▸ VIDA E EVOLUÇÃO (EF05CI08–10, EF09CI05–13):
+  ✅ Para 5º ano: corpo humano, alimentação, higiene, doenças
+  ✅ Para 9º ano: genética, evolução, biodiversidade, ética
+  ✅ Usar situações-problema reais (surtos de doenças, preservação)
+  ❌ NÃO pedir nomes científicos de espécies sem contexto
+  ❌ NÃO abordar conteúdos de ensino médio (genética molecular avançada)
+
+  Distratores típicos:
+  - Confundir herança genética com adaptação ambiental
+  - Trocar Darwin (seleção natural) com Lamarck (uso e desuso)
+  - Confundir DNA com RNA
+  - Misturar conceitos de genótipo e fenótipo
+
+▸ TERRA E UNIVERSO (EF05CI11–13, EF09CI14–17):
+  ✅ Para 5º ano: observações do céu, sombras, fases da Lua
+  ✅ Para 9º ano: Sistema Solar, composição estelar, cosmologia básica
+  ✅ Usar imagens e diagramas quando possível
+  ❌ NÃO pedir cálculos astronômicos avançados
+  ❌ NÃO incluir dados que mudem com novas descobertas
+
+  Distratores típicos:
+  - Confundir rotação (dia/noite) com translação (estações)
+  - Trocar planetas rochosos com gasosos
+  - Confundir eclipse solar com lunar
+  - Errar a sequência de fases da Lua
+
+
+► EIXO 4: CONTEXTUALIZAÇÃO SEAMA (Maranhão)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quando o modelo for SEAMA, contextualizar com:
+  • Biomas: Amazônia, Cerrado e zona costeira maranhense
+  • Fauna local: guarás, macacos-prego, tartarugas marinhas
+  • Flora: babaçu, buriti, manguezais
+  • Recursos hídricos: rios Itapecuru, Mearim, Pindaré
+  • Questões ambientais: desmatamento no Cerrado, poluição de rios
+  • Saúde pública: doenças endêmicas (dengue, malária, leishmaniose)
+  • Economia: agricultura familiar, quebradeiras de coco babaçu
+  • Regionalismos: festas populares (Bumba-meu-boi), artesanato
+
+Exemplo de contextualização SEAMA:
+  "Dona Maria, quebradeira de coco babaçu em Barra do Corda,
+   observou que ao aquecer o óleo de babaçu, ele muda de estado.
+   Esse fenômeno é chamado de..."
+
+
+► EIXO 5: CHECKLIST DE QUALIDADE — CIÊNCIAS DA NATUREZA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ 1. A questão avalia UMA habilidade BNCC específica?
+□ 2. O enunciado apresenta situação-problema contextualizada?
+□ 3. A terminologia é adequada ao ano escolar?
+□ 4. Os distratores representam erros conceituais plausíveis?
+□ 5. A resposta correta é cientificamente precisa e atualizada?
+□ 6. A questão NÃO promove pseudociência ou senso comum incorreto?
+□ 7. Se SEAMA: há contextualização regional maranhense?
+□ 8. As alternativas são homogêneas em tamanho e estrutura?
+□ 9. O gabarito NÃO é a alternativa mais longa?
+□ 10. A questão estimula raciocínio (não apenas memorização)?

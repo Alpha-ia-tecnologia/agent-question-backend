@@ -1,0 +1,228 @@
+═══════════════════════════════════════════════════════════════════════════════
+    REFERÊNCIA COMPLETA — CIÊNCIAS HUMANAS (BNCC/SAEB/SEAMA)
+    Abrange: História e Geografia
+═══════════════════════════════════════════════════════════════════════════════
+
+► EIXO 1: UNIDADES TEMÁTICAS E HABILIDADES BNCC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+As habilidades de Ciências Humanas integram dois componentes:
+
+┌────────────────────┬─────────────────────────────────────────────────────┐
+│ Componente         │ Unidades Temáticas Principais                      │
+├────────────────────┼─────────────────────────────────────────────────────┤
+│ HISTÓRIA           │ • Povos e culturas (formação e diversidade)         │
+│                    │ • Registros da história (fontes e tempo histórico)  │
+│                    │ • O lugar em que vivo (comunidade e identidade)     │
+│                    │ • Cidadania e política (direitos e deveres)         │
+│                    │ • Brasil republicano (processos político-sociais)   │
+├────────────────────┼─────────────────────────────────────────────────────┤
+│ GEOGRAFIA          │ • O sujeito e seu lugar (identidade territorial)    │
+│                    │ • Conexões e escalas (local/global)                 │
+│                    │ • Mundo do trabalho (produção e economia)           │
+│                    │ • Formas de representação (mapas e gráficos)        │
+│                    │ • Natureza, ambiente e sustentabilidade             │
+└────────────────────┴─────────────────────────────────────────────────────┘
+
+► EIXO 2: HABILIDADES POR ANO ESCOLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 5º ANO EF — HISTÓRIA                                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF05HI01 - Identificar processos de formação das culturas e dos       │
+│            povos (migrações, nomadismo, sedentarismo)                  │
+│                                                                       │
+│ EF05HI02 - Identificar mecanismos de organização do poder político    │
+│            no Brasil colonial (capitanias, governo-geral)             │
+│                                                                       │
+│ EF05HI03 - Analisar o papel das culturas e religiões na composição    │
+│            da identidade brasileira (indígena, africana, europeia)     │
+│                                                                       │
+│ EF05HI04 - Associar cidadania e democracia na constituição da         │
+│            sociedade brasileira                                        │
+│                                                                       │
+│ EF05HI05 - Associar conceitos históricos de liberdade, justiça,       │
+│            solidariedade e igualdade                                    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 5º ANO EF — GEOGRAFIA                                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF05GE01 - Descrever e analisar dinâmicas populacionais no Brasil     │
+│            (migração, distribuição, urbanização)                       │
+│                                                                       │
+│ EF05GE02 - Identificar diferenças étnico-raciais e culturais e        │
+│            desigualdades sociais entre grupos                          │
+│                                                                       │
+│ EF05GE03 - Identificar as formas e funções dos territórios            │
+│            brasileiros (rural, urbano, indígena, quilombola)           │
+│                                                                       │
+│ EF05GE04 - Reconhecer características da cidade e do campo em         │
+│            diferentes regiões do Brasil                                │
+│                                                                       │
+│ EF05GE05 - Identificar e comparar transformações nos meios de         │
+│            transporte e comunicação ao longo do tempo                  │
+│                                                                       │
+│ EF05GE06 - Identificar redes de transporte e comunicação na           │
+│            integração nacional                                         │
+│                                                                       │
+│ EF05GE07 - Identificar diferentes tipos de energia e avaliar          │
+│            impactos ambientais de cada fonte                           │
+│                                                                       │
+│ EF05GE08 - Analisar transformações no espaço urbano e rural a         │
+│            partir da industrialização                                  │
+│                                                                       │
+│ EF05GE09 - Estabelecer conexões entre o local e o global              │
+│            (matérias-primas, produção, consumo)                        │
+│                                                                       │
+│ EF05GE10 - Reconhecer aspectos da poluição atmosférica, hídrica       │
+│            e do solo no entorno                                        │
+│                                                                       │
+│ EF05GE11 - Identificar e descrever problemas ambientais observados    │
+│            no entorno da escola e da comunidade                        │
+│                                                                       │
+│ EF05GE12 - Reconhecer questões ambientais e propor soluções           │
+│            sustentáveis para problemas identificados                   │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ 9º ANO EF — HISTÓRIA                                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF09HI01 - Descrever e contextualizar os processos da Primeira        │
+│            República no Brasil (oligarquias, coronelismo)              │
+│                                                                       │
+│ EF09HI02 - Caracterizar os ciclos da história republicana brasileira  │
+│            (Era Vargas, governos militares, redemocratização)          │
+│                                                                       │
+│ EF09HI03 - Identificar mecanismos de inserção do Brasil na            │
+│            economia mundial (café, industrialização, agronegócio)      │
+│                                                                       │
+│ EF09HI04 - Discutir a importância da participação da população        │
+│            na construção da democracia (movimentos sociais, voto)      │
+│                                                                       │
+│ EF09HI05 - Identificar processos de transformação nas estruturas      │
+│            políticas, econômicas e religiosas na história mundial      │
+│                                                                       │
+│ EF09HI06 - Identificar e discutir o papel do trabalhismo como         │
+│            força política no Brasil (CLT, sindicatos)                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 9º ANO EF — GEOGRAFIA                                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│ EF09GE01 - Analisar a hegemonia europeia e o imperialismo em          │
+│            África e Ásia e suas consequências atuais                   │
+│                                                                       │
+│ EF09GE02 - Analisar a atuação de organizações mundiais                │
+│            (ONU, FMI, OMC, Banco Mundial) e seus impactos              │
+│                                                                       │
+│ EF09GE03 - Identificar diferentes manifestações culturais de          │
+│            minorias étnicas e sua valorização                           │
+│                                                                       │
+│ EF09GE04 - Relacionar diferenças de paisagens aos modos de viver      │
+│            de diferentes povos                                         │
+│                                                                       │
+│ EF09GE05 - Analisar fatos e conflitos mundiais relativos à            │
+│            globalização e suas implicações geográficas                  │
+│                                                                       │
+│ EF09GE06 - Associar o crescimento das cidades à transformação         │
+│            de espaços naturais e impactos socioambientais              │
+│                                                                       │
+│ EF09GE07 - Analisar componentes físico-naturais (clima, relevo,       │
+│            hidrografia) e suas interações                              │
+│                                                                       │
+│ EF09GE08 - Analisar transformações territoriais e seus impactos       │
+│            socioambientais                                             │
+│                                                                       │
+│ EF09GE09 - Analisar características e dinâmicas das camadas           │
+│            internas da Terra (placas tectônicas, vulcanismo)           │
+│                                                                       │
+│ EF09GE10 - Analisar os impactos do processo de industrialização       │
+│            na produção e circulação de bens e serviços                 │
+│                                                                       │
+│ EF09GE11 - Relacionar mudanças técnicas e científicas ao              │
+│            desenvolvimento tecnológico e suas implicações sociais      │
+│                                                                       │
+│ EF09GE12 - Identificar problemas ambientais globais (mudanças         │
+│            climáticas, desmatamento, poluição de oceanos)              │
+│                                                                       │
+│ EF09GE13 - Analisar a importância da produção agropecuária para       │
+│            o Brasil e o mundo (segurança alimentar, exportação)        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+
+► EIXO 3: REGRAS DE CONSTRUÇÃO POR ÁREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+▸ HISTÓRIA (EF05HI01–05, EF09HI01–06):
+  ✅ Usar fontes históricas simplificadas (textos, imagens de época)
+  ✅ Para 5º ano: narrativas acessíveis sobre formação do Brasil
+  ✅ Para 9º ano: análise crítica de processos políticos e sociais
+  ✅ Incluir múltiplas perspectivas (indígena, africana, europeia)
+  ❌ NÃO pedir decoreba de datas isoladas
+  ❌ NÃO fazer afirmações anacrônicas
+  ❌ NÃO apresentar visão eurocêntrica como única verdade
+
+  Distratores típicos:
+  - Confundir momento histórico (Colônia × Império × República)
+  - Trocar personagens históricos de períodos diferentes
+  - Atribuir causas modernas a eventos antigos (anacronismo)
+  - Misturar conceitos de monarquia e república
+
+▸ GEOGRAFIA (EF05GE01–12, EF09GE01–13):
+  ✅ Usar mapas, gráficos, tabelas e imagens de satélite
+  ✅ Para 5º ano: paisagens locais, comparação cidade/campo
+  ✅ Para 9º ano: escalas globais, geopolítica, meio ambiente
+  ✅ Conectar fenômenos físicos com impactos sociais
+  ❌ NÃO pedir apenas localização geográfica (decoreba de capitais)
+  ❌ NÃO usar dados estatísticos desatualizados
+  ❌ NÃO ignorar desigualdades regionais
+
+  Distratores típicos:
+  - Confundir causas naturais com causas antrópicas
+  - Trocar biomas (Amazônia × Cerrado × Caatinga × Mata Atlântica)
+  - Confundir escalas local/regional/global
+  - Errar relações de causa-efeito em fenômenos climáticos
+  - Atribuir impacto ambiental à fonte errada
+
+
+► EIXO 4: CONTEXTUALIZAÇÃO SEAMA (Maranhão)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quando o modelo for SEAMA, contextualizar com:
+
+HISTÓRIA:
+  • Pré-colonial: povos Timbira, Guajajara, Ka'apor
+  • Colonial: fundação de São Luís (franceses → portugueses)
+  • Escravidão e quilombos: Quilombo do Frechal, Alcântara
+  • Balaiada (1838-1841): revolta social no Maranhão
+  • Produção algodoeira e declínio econômico
+  • Patrimônio: Centro Histórico de São Luís (UNESCO)
+
+GEOGRAFIA:
+  • Biomas: Amazônia, Cerrado, zona costeira
+  • Lençóis Maranhenses: parque nacional com dunas e lagoas
+  • Rios: Itapecuru, Mearim, Pindaré, Tocantins
+  • Economia: agricultura familiar, babaçu, pesca artesanal
+  • Urbanização: São Luís, Imperatriz, crescimento desordenado
+  • Problemas ambientais: desmatamento, queimadas, poluição hídrica
+  • Cultura: Bumba-meu-boi, Tambor de Crioula, Reggae
+  • Culinária: arroz de cuxá, baião-de-dois, juçara
+
+Exemplo de contextualização SEAMA:
+  "A Balaiada (1838-1841) foi um movimento de revolta que ocorreu
+   no Maranhão. Seus participantes — vaqueiros, escravizados e
+   indigentes — lutaram contra..."
+
+
+► EIXO 5: CHECKLIST DE QUALIDADE — CIÊNCIAS HUMANAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ 1. A questão avalia UMA habilidade BNCC específica?
+□ 2. O enunciado apresenta fonte ou contexto histórico/geográfico?
+□ 3. A terminologia é adequada ao ano escolar?
+□ 4. Os distratores representam erros conceituais plausíveis?
+□ 5. A resposta correta é historiograficamente/geograficamente precisa?
+□ 6. A questão NÃO reproduz estereótipos ou preconceitos?
+□ 7. Há pluralidade de perspectivas quando o tema exigir?
+□ 8. Se SEAMA: há contextualização regional maranhense?
+□ 9. As alternativas são homogêneas em tamanho e estrutura?
+□ 10. O gabarito NÃO é a alternativa mais longa?
+□ 11. A questão estimula análise crítica (não apenas memorização)?

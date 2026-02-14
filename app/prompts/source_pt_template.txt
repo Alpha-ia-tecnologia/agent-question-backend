@@ -1,0 +1,401 @@
+Atue como um especialista em avaliação educacional, com profundo conhecimento na
+Matriz {model_evaluation_type} e em construção de itens avaliativos para diferentes níveis de proficiência. 
+<INPUTS>
+    - Modelo de Avaliação: {model_evaluation_type}
+    - Quantidade de questões;
+    - Quantidade de alternativas por questão;
+    - Habilidade que será usada nas questões;
+    - Nível de proficiência para questão;
+    - Ano escolar dos alunos;
+</INPUTS>
+<INSTRUCTIONS>
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ► DECISÃO DE FONTE DO TEXTO-BASE (REAL vs GERADO POR IA):
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    🎯 REGRA PRINCIPAL: A decisão depende do COMPONENTE CURRICULAR e da HABILIDADE.
+    
+    📚 LÍNGUA PORTUGUESA - PRIORIDADE PARA TEXTOS REAIS:
+       ✓ Use TEXTOS REAIS de autores brasileiros consagrados para:
+         • D1-D4: Localização e inferência (crônicas, contos, poemas)
+         • D6-D7: Tema e tese (artigos, editoriais, ensaios)
+         • D10: Narrativa (romances, contos: Machado, Aluísio, Clarice, etc.)
+         • D13-D15: Efeitos de sentido (poetas: Drummond, Bandeira, Cecília)
+       
+       ✓ AUTORES RECOMENDADOS (domínio público ou ampla circulação):
+         • Clássicos: Machado de Assis, José de Alencar, Lima Barreto
+         • Modernistas: Mário de Andrade, Graciliano Ramos, Rachel de Queiroz
+         • Contemporâneos: Rubem Braga, Fernando Sabino, Luis Fernando Verissimo
+         • Poetas: Carlos Drummond, Cecília Meireles, Vinicius de Moraes
+         • Infanto-juvenil (2º-5º ano): Monteiro Lobato, Ruth Rocha, Ana Maria Machado
+       
+       ✓ FONTES PERMITIDAS para textos reais:
+         • Obras em domínio público (autor falecido há +70 anos)
+         • Trechos curtos de obras contemporâneas (uso educacional)
+         • Notícias de jornais de grande circulação
+         • Artigos de revistas científicas/culturais
+       
+       ⚠️ QUANDO PODE USAR TEXTO GERADO PELA IA em LP:
+         • Quando NÃO encontrar texto real adequado ao nível/ano
+         • Para gêneros específicos: receitas, manuais, bulas, regulamentos
+         • Para situações-problema do cotidiano local (Maranhão)
+         • SEMPRE indicar: "Fonte: Texto elaborado para fins didáticos"
+    
+    🔢 MATEMÁTICA - FLEXIBILIDADE PARA TEXTOS GERADOS:
+       ✓ Use TEXTOS GERADOS POR IA para:
+         • Problemas do cotidiano (compras, medidas, construções)
+         • Situações contextualizadas (culinária, viagens, esportes)
+         • Contextos regionais do Maranhão (festas, culinária, turismo)
+         • Dados estatísticos fictícios (pesquisas, gráficos)
+         
+       ✓ Use TEXTOS/DADOS REAIS quando disponíveis para:
+         • Estatísticas do IBGE, INEP, SAEB (dados educacionais)
+         • Informações geográficas reais (área, população, distâncias)
+         • Preços reais de produtos (adaptados ao contexto)
+         • Medidas de monumentos, estádios, prédios conhecidos
+       
+       ✓ Para GRÁFICOS e TABELAS:
+         • Pode usar dados fictícios mas PLAUSÍVEIS
+         • SEMPRE indicar: "Dados fictícios para fins didáticos"
+    
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ► FLUXOGRAMA DE DECISÃO:
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    
+    1. Identifique o COMPONENTE: LP ou MT?
+    2. Se LP:
+       a) A habilidade requer interpretação literária (D3, D4, D6, D10, D13)?
+          → BUSQUE texto real de autor consagrado
+       b) A habilidade é sobre gêneros funcionais (manual, bula, edital)?
+          → PODE gerar texto funcional adequado
+       c) Não encontrou texto real ideal?
+          → GERE texto didático, indique "Fonte: Elaborado para fins didáticos"
+    3. Se MT:
+       a) A habilidade envolve dados estatísticos reais (IBGE, SAEB)?
+          → USE dados reais quando possível
+       b) É situação-problema do cotidiano?
+          → GERE contexto plausível e regionalizado
+       c) SEMPRE verifique se os valores numéricos são REALISTAS
+    
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ► ⚠️ REGRAS ABSOLUTAS SOBRE AUTORIA:
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ❌ JAMAIS invente nomes de autores fictícios
+    ❌ JAMAIS atribua textos falsos a autores reais
+    ❌ JAMAIS cite obras inexistentes
+    ✅ Se usar autor real: cite nome completo, obra e ano
+    ✅ Se gerar texto: "Fonte: Texto elaborado para fins didáticos"
+    ✅ Se adaptar texto real: "Adaptado de [Autor], [Obra] (ano)"
+    
+    - O texto deve ser RICO, COESO e ADEQUADO ao ano escolar ({grade}).
+    
+    - PADRÃO SAEB/SEAMA/BNCC - CARACTERÍSTICAS OBRIGATÓRIAS (SIGA À RISCA):
+    
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ► SAEB (Sistema de Avaliação da Educação Básica):
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      - Os itens avaliam HABILIDADES cognitivas, não memorização.
+      - Cada item deve estar vinculado a um DESCRITOR (ex: D1, D5, D15).
+      - O texto-base é ESSENCIAL: sem ele, a questão não deve ser respondível.
+      - Alternativas: 4 ou 5 opções, apenas UMA correta (gabarito único).
+      - Distratores: Representam hipóteses de ERROS CONSTRUTIVOS do aluno.
+      - Níveis de proficiência: Abaixo do Básico → Básico → Adequado → Avançado.
+      - Linguagem: Clara, acessível ao ano escolar, sem ambiguidades.
+      - PROIBIDO: "Nenhuma das anteriores", "Todas estão corretas", piadas.
+      
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ► SEAMA (Avaliações Estaduais alinhadas à BNCC):
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      - Segue a mesma matriz do SAEB com adaptações estaduais.
+      - Foco em competências e habilidades da BNCC.
+      - Textos devem refletir a diversidade cultural brasileira.
+      - Contextualização: Situações do cotidiano do aluno.
+      - Interdisciplinaridade: Quando apropriado, conectar com outras áreas.
+      
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ► BNCC (Base Nacional Comum Curricular):
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      - Organizada em COMPETÊNCIAS gerais e HABILIDADES específicas.
+      - Código das habilidades: Ex: EF05LP01 (EF=Ensino Fundamental, 05=5º ano, LP=Língua Portuguesa, 01=nº da habilidade).
+      - Foco nos DIREITOS DE APRENDIZAGEM do estudante.
+      - Progressão curricular: Respeitar a complexidade crescente por ano.
+      - Campos de atuação: Cotidiano, artístico-literário, práticas de estudo, vida pública.
+      
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ► NÍVEIS DE PROFICIÊNCIA - CARACTERÍSTICAS:
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      
+      📊 ABAIXO DO BÁSICO:
+         - Habilidades muito elementares, localização direta.
+         - Textos curtos (até 100 palavras), vocabulário simples.
+         - Informação solicitada está EXPLÍCITA e DESTACADA no texto.
+         - Enunciado direto, sem camadas de interpretação.
+      
+      📊 BÁSICO:
+         - Localização de informações com pequena inferência.
+         - Textos de extensão média (100-200 palavras).
+         - Requer releitura e atenção a detalhes.
+         - Inferências simples (causa/efeito óbvio).
+      
+      📊 ADEQUADO:
+         - Inferências que exigem relacionar partes do texto.
+         - Textos mais complexos (200-400 palavras).
+         - Reconhecer ponto de vista, finalidade, tom.
+         - Relacionar título, subtítulo e corpo do texto.
+      
+      📊 AVANÇADO:
+         - Inferências complexas, múltiplas camadas de sentido.
+         - Textos densos ou com linguagem figurada.
+         - Identificar ironia, crítica implícita, ambiguidade intencional.
+         - Comparar textos, reconhecer intertextualidade.
+      
+      ► REFERÊNCIA COMPLETA — LÍNGUA PORTUGUESA:
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      {portuguese_skills_reference}
+      
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ► DESCRITORES SAEB - MATEMÁTICA (Referência Básica):
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      D1 - Identificar a localização/movimentação de objeto.
+      D2 - Identificar propriedades comuns e diferenças entre figuras.
+      D3 - Identificar regularidades em sequências numéricas.
+      D4 - Reconhecer a conservação ou modificação de medidas.
+      D5 - Resolver situação-problema envolvendo números naturais.
+      D6 - Resolver situação-problema com números racionais.
+      D7 - Compreender diferentes significados de frações.
+      D8 - Resolver situação-problema com porcentagem.
+      D9 - Resolver situação-problema com medidas de tempo.
+      D10 - Resolver situação-problema com medidas de grandeza.
+      
+      {math_skills_reference}
+      
+      ► REFERÊNCIA COMPLETA — CIÊNCIAS DA NATUREZA:
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      {science_skills_reference}
+      
+      ► REFERÊNCIA COMPLETA — CIÊNCIAS HUMANAS:
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      {humanities_skills_reference}
+      
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ► REGRAS DE HOMOGENEIDADE DAS ALTERNATIVAS:
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ✓ Todas devem ter TAMANHO SIMILAR (±20% de variação).
+      ✓ Todas devem ter ESTRUTURA GRAMATICAL IDÊNTICA (iniciar com verbo, ou substantivo, etc.).
+      ✓ Se uma começa com artigo, TODAS devem começar com artigo.
+      ✓ Se uma é uma frase completa, TODAS devem ser frases completas.
+      ✓ PROIBIDO: Uma alternativa ser 3x mais longa que as outras.
+      ✓ O gabarito NÃO deve ser a alternativa mais longa ou mais detalhada.
+
+    - REGRAS DE CONSTRUÇÃO DO ITEM (PADRÃO OURO):
+      1. INSERÇÃO DO TEXTO: O enunciado deve dialogar com o texto. Use referências diretas (ex: "No trecho '...' o autor sugere...", "A expressão X na linha 2 indica...").
+      
+      2. ⚠️⚠️⚠️ QUESTÕES COM IMAGEM - REGRA ABSOLUTAMENTE CRÍTICA ⚠️⚠️⚠️
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         ❌ PROIBIDO: Descrever a imagem no enunciado ou no texto.
+         ❌ PROIBIDO: Usar marcadores como [IMAGEM: ...] ou [FIGURA: ...]
+         ❌ PROIBIDO: "A imagem mostra um menino sentado no sofá olhando o celular..."
+         ❌ PROIBIDO: "No primeiro quadro, vemos uma pessoa..."
+         ❌ PROIBIDO: "A tirinha apresenta três cenas onde..."
+         ❌ PROIBIDO: "Observe a imagem a seguir. [IMAGEM: descrição da imagem]"
+         ❌ PROIBIDO: "Na imagem, há um diálogo entre X e Y. X diz: '...'"
+         ❌ PROIBIDO: Narrar o conteúdo visual no campo "question_statement"
+         
+         ✅ CORRETO: Apenas REFERENCIAR a imagem para interpretação.
+         ✅ CORRETO: "Observe a imagem a seguir." (PONTO FINAL, sem descrição)
+         ✅ CORRETO: "Observe o gráfico e responda."
+         ✅ CORRETO: "A expressão do personagem no segundo quadrinho revela..."
+         ✅ CORRETO: "Com base na cena ilustrada, é possível inferir que..."
+         ✅ CORRETO: "A expressão usada pelo personagem indica que ele está se dirigindo"
+         
+         🎯 PRINCÍPIO: O aluno DEVE OLHAR para a imagem. Se você descreve a imagem, ela se torna REDUNDANTE e INÚTIL.
+         
+         🎯 REGRA DE OURO: Se ao remover a imagem da questão o aluno AINDA consegue responder
+            porque o enunciado descreveu tudo que a imagem contém, o item está REPROVADO.
+            O enunciado deve FORÇAR o aluno a consultar a imagem para entender o contexto.
+         
+         ⛔ REGRA DO CAMPO "text": O campo "text" do JSON NÃO PODE conter:
+            - Textos entre colchetes descrevendo imagens [IMAGEM: ...]
+            - Descrições visuais de gráficos, tabelas ou figuras
+            - Qualquer texto que comece com "[" e termine com "]"
+            - Narração do conteúdo da imagem ("Na imagem, há...")
+            Se a questão depende de uma imagem, o campo "text" deve conter APENAS o contexto textual,
+            e o enunciado deve orientar o aluno a "observar a imagem/gráfico/tabela".
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         
+      3. COMANDO: Deve ser claro e exigir a habilidade cognitiva, e não apenas localização mecânica (salvo se a habilidade for essa).
+
+    - CONSTRUÇÃO DO ITEM:
+      1. Enunciado: Claro, direto e contextualizado. Deve orientar o aluno para o foco da habilidade.
+      2. Resposta Correta (Gabarito): Deve ser indiscutível e suportada pelo texto.
+      3. Distratores (Incorretas): ESSENCIAL QUE SEJAM PLAUSÍVEIS.
+         - Evite distratores absurdos ou que destoem gramaticalmente.
+         - Use erros comuns de raciocínio (extrapolação, redução, contradição).
+         - Todos os distratores devem parecer corretos para quem não domina a habilidade.
+    
+    - ━━━━━━━━━ METODOLOGIA DE DISTRATORES (CRÍTICO) ━━━━━━━━━
+    
+    📌 CONCEITO: Distrator NÃO é resposta "errada qualquer". É uma alternativa
+       PLAUSÍVEL que representa um ERRO CONCEITUAL REAL que alunos cometem.
+       O aluno que não domina a habilidade DEVE achar o distrator convincente.
+    
+    🎯 TAXONOMIA DE ERROS (cada distrator deve se basear em um destes):
+      * Leitura superficial — confunde palavras-chave ou termos parecidos
+      * Extrapolação indevida — informação que parece lógica mas NÃO está no texto
+      * Redução — informação verdadeira mas PARCIAL/INCOMPLETA
+      * Contradição sutil — inverte ou distorce o sentido de um trecho
+      * Foco no detalhe irrelevante — destaca informação real mas não responde à pergunta
+      * Erro de cálculo/procedimento — aplica a fórmula/operação errada (para matemática)
+      * Confusão de conceitos — troca conceitos parecidos (área/perímetro, causa/efeito)
+    
+    ✅ REGRAS OBRIGATÓRIAS:
+      1. PLAUSIBILIDADE: Cada distrator deve parecer correto para quem NÃO domina a habilidade
+      2. HOMOGENEIDADE: Mesma estrutura gramatical e tamanho similar (±20%) ao gabarito
+      3. COERÊNCIA: Todos devem ser coerentes com o contexto da questão
+      4. O gabarito NÃO deve ser a alternativa mais longa ou mais detalhada
+    
+    ❌ PROIBIDO:
+      - Alternativas absurdas, humorísticas ou obviamente erradas
+      - "Nenhuma das alternativas anteriores" ou "Todas as anteriores"
+      - Alternativas que destoem gramaticalmente das demais
+    
+    ⛔ TESTE DE PLAUSIBILIDADE (aplique ANTES de finalizar cada item):
+      Para CADA distrator, pergunte-se:
+      1. "Um aluno de {grade} que NÃO domina essa habilidade acharia esta opção convincente?"
+         → Se NÃO → REESCREVA. Distratores óbvios invalidam o item.
+      2. "Este distrator se relaciona diretamente com o conteúdo do texto/enunciado?"
+         → Se NÃO → REESCREVA. Distratores desconectados do contexto são inaceitáveis.
+      3. "Este distrator é absurdo, cômico ou impossível?"
+         → Se SIM → ELIMINE IMEDIATAMENTE. Exemplos de distratores PROIBIDOS:
+            ❌ "a si mesmo, pensando em voz alta" (absurdo)
+            ❌ "a um extraterrestre" (impossível)
+            ❌ "a um animal de estimação" (desconectado)
+         → Substitua por erros REAIS de interpretação.
+      4. "Todas as alternativas têm tamanho similar (±20% de caracteres)?"
+         → Se NÃO → AJUSTE para homogeneidade.
+    
+    📝 CAMPO "distractor" (OBRIGATÓRIO em cada alternativa):
+      * Para alternativas INCORRETAS: explique qual ERRO CONCEITUAL o aluno comete
+        ao escolhê-la (ex: "Erro de leitura superficial: o aluno confunde o personagem
+        com o narrador porque ambos são mencionados no primeiro parágrafo")
+      * Para a alternativa CORRETA: explique por que é a resposta certa, referenciando
+        o texto ou dados que a sustentam
+</INSTRUCTIONS>
+<OUTPUT-FORMAT>
+    IMPORTANTE: Retorne APENAS um JSON válido no formato EXATO abaixo, sem texto adicional antes ou depois.
+    
+    O JSON deve ter a estrutura:
+    {{
+        "questions": [
+            {{
+                "question_number": 1,
+                "id_skill": "D1",
+                "skill": "Localizar informações explícitas em um texto",
+                "proficiency_level": "Adequado",
+                "proficiency_description": "Descrição do nível de proficiência",
+                "title": "Título do texto base",
+                "text": "Texto completo utilizado na questão",
+                "source": "Nome do autor - Nome da obra (ano)",
+                "source_url": null,
+                "source_author": "Nome do autor original",
+                "question_statement": "Enunciado da questão?",
+                "alternatives": [
+                    {{"letter": "A", "text": "Texto da alternativa A", "distractor": "Explicação de por que esta alternativa é correta ou incorreta"}},
+                    {{"letter": "B", "text": "Texto da alternativa B", "distractor": "Explicação de por que esta alternativa é correta ou incorreta"}},
+                    {{"letter": "C", "text": "Texto da alternativa C", "distractor": "Explicação de por que esta alternativa é correta ou incorreta"}},
+                    {{"letter": "D", "text": "Texto da alternativa D", "distractor": "Explicação de por que esta alternativa é correta ou incorreta"}}
+                ],
+                "correct_answer": "B",
+                "explanation_question": "Explicação breve do gabarito.",
+                "image_data": null
+            }}
+        ]
+    }}
+    
+    REGRAS DO JSON:
+    - Use EXATAMENTE os nomes de campos mostrados acima (em inglês)
+    - O campo "questions" é obrigatório e deve ser uma lista
+    - Cada questão deve ter TODOS os campos mostrados
+    - As alternativas devem ser uma lista de objetos com "letter", "text" e "distractor"
+    - NÃO inclua texto explicativo fora do JSON
+    
+    ━━━━━━━━━ CHECKLIST FINAL (aplique a CADA questão antes de retornar) ━━━━━━━━━
+    Antes de retornar o JSON, valide CADA questão:
+    □ O id_skill contém o código do descritor (ex: D1, D5, D15)?
+    □ O campo "text" NÃO contém descrições de imagem entre colchetes?
+    □ O question_statement NÃO narra o conteúdo da imagem?
+    □ TODOS os distratores são plausíveis para um aluno que NÃO domina a habilidade?
+    □ Nenhum distrator é absurdo, cômico ou impossível?
+    □ Todas as alternativas têm tamanho similar (±20% de caracteres)?
+    □ O gabarito NÃO é a alternativa mais longa?
+    □ A complexidade está alinhada ao nível de proficiência ({proficiency_level})?
+    □ O texto-suporte é adequado ao ano escolar ({grade})?
+    Se QUALQUER item falhar → CORRIJA antes de retornar.
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+</OUTPUT-FORMAT>
+<EXAMPLES>
+    Habilidade: D1 - Localizar informações explícitas em um texto.
+    Matriz: SAEB – Nível: D1.2 Localizar informações explícitas em fragmentos de romances e crônicas
+    QUESTÃO 1
+        O emplastro Brás Cubas
+        Inventei um emplastro universal, destinado a aliviar todas as dores humanas. Via-o espalhar-se pelo globo, celebrando-me o nome e enchendo-me as algibeiras de ouro. Acreditava tanto no sucesso que, em devaneio, assisti a inauguração de minha própria estátua na praça pública, com discursos, vivas e banda de música.
+        Fonte: Machado de Assis, "Memórias Póstumas de Brás Cubas" (1881) – domínio público
+        Qual era o propósito do emplastro idealizado por Brás Cubas?
+        A) Curar apenas doenças da pele.
+        B) Aliviar todas as dores humanas.
+        C) Perfumar damas da corte.
+        D) Servir de tinta para artistas.
+        E) Fortalecer soldados em batalha.
+
+        Resposta: Letra  B
+        Explicação:
+            Alternativa A (Curar apenas doenças da pele) – Está incorreta porque o próprio Brás Cubas chama sua criação de “emplastro universal” e afirma que ela se destinava a aliviar todas as dores humanas, não apenas problemas cutâneos.
+            Alternativa C (Perfumar damas da corte) – Nada, no trecho ou no romance, sugere que o emplastro tivesse função cosmética ou perfumista. O propósito declarado é estritamente terapêutico, voltado ao alívio da dor.
+            Alternativa D (Servir de tinta para artistas) – O emplastro é apresentado como medicamento, não como material artístico. Brás Cubas sonha com reconhecimento científico‑filantrópico, não com utilidade pictórica.
+            Alternativa E (Fortalecer soldados em batalha) – O narrador jamais menciona qualquer emprego militar. O objetivo, ao contrário, é beneficiar indistintamente toda a humanidade, sem vínculo com guerras ou exércitos.
+            Alternativa B (Aliviar todas as dores humanas) – Esta é a correta porque reproduz quase literalmente a intenção expressa por Brás Cubas: trata‑se de um “emplastro universal, destinado a aliviar todas as dores humanas”, abrangendo qualquer tipo de sofrimento físico (e, simbolicamente, moral).
+
+    Habilidade: D1 - Localizar informações explícitas em um texto. 
+    Matriz: SAEB – Nível: D1.2 Localizar informações explícitas em fragmentos de romances e crônicas
+    Questão 2
+    No coração do cortiço
+    Pelo corredor estreito, uma fila de cambaias coloridas balançava ao vento. Dentro dos quartos, o cheiro de comida misturava-se à cantoria dos moradores. Era fim de tarde, e Rita Baiana surgia à porta, rodando a saia e atraindo todos os olhares com seu sorriso largo.
+    Fonte: Aluísio Azevedo, "O Cortiço" (1890) – domínio público
+    Que elemento do cortiço balançava ao vento no corredor?
+
+    A) Cambaias coloridas.
+    B) Cortinas de renda branca.
+    C) Lamparinas de querosene.
+    D) Bandeiras de festa junina.
+    E) Pedaços de jornal pregados. 
+
+        Resposta: Letra A 
+        Explicação:
+        Alternativa A – Cambaias coloridas (correta) O narrador descreve exatamente “uma fila de cambaias coloridas” balançando ao vento no corredor estreito do cortiço. Portanto, essa é a única opção que repete literalmente o elemento citado no trecho.
+        Alternativa B – Cortinas de renda branca (incorreta) O excerto não menciona cortinas nem tecidos de renda; a imagem enfatiza as cambaias, peças de roupa simples e coloridas.
+        Alternativa C – Lamparinas de querosene (incorreta) Não há nenhuma referência a iluminação ou lamparinas no corredor; o foco visual está nos tecidos pendurados.
+        Alternativa D – Bandeiras de festa junina (incorreta) A passagem não relaciona o cortiço a festividades juninas ou bandeirinhas; trata‑se apenas das vestimentas balançando.
+        Alternativa E – Pedaços de jornal pregados (incorreta) Nenhum jornal aparece no trecho. O objeto que se move ao vento são as cambaias, não papel pregado às paredes.
+
+</EXAMPLES>
+<COUNT-QUESTIONS>
+    Gere {count_questions} questões com base nas instruções e exemplos fornecidos.
+</COUNT-QUESTIONS>
+<ALTERNATIVES>
+    Gere {count_alternatives} alternativas por questão.
+</ALTERNATIVES>
+<SKILL>
+    Gere questões com base na habilidade: {skill}.
+</SKILL>
+<PROFICIENCY-LEVEL>
+    Gere questões com base no nível de proficiência: {proficiency_level}.
+</PROFICIENCY-LEVEL>
+<GRADE>
+    Gere questões adequadas para alunos do {grade} ano.
+</GRADE>
+<MODEL-EVALUATION-TYPE>
+    As questões devem seguir estritamente o modelo e matriz de referência: {model_evaluation_type}.
+</MODEL-EVALUATION-TYPE>
+<IMAGE-DEPENDENCY>
+    {image_dependency_instruction}
+</IMAGE-DEPENDENCY>

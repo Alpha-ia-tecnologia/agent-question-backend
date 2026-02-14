@@ -1,0 +1,1508 @@
+{
+    "metadata": {
+        "source": "COMPARATIVO MATRIZES SAEB E SEAMA",
+        "author": "Helinalda Alves de Sousa",
+        "description": "Habilidades mapeadas das matrizes SAEB 2018/2022, SEAMA 2024 e Escalas de Proficiência SAEB/SEAMA",
+        "grades_covered": [
+            "2_ano",
+            "5_ano",
+            "9_ano"
+        ],
+        "subject": "MATEMÁTICA"
+    },
+    "grades": {
+        "2_ano": {
+            "subject": "MATEMÁTICA",
+            "matrix_versions": {
+                "saeb": "2022",
+                "seama": "2024"
+            },
+            "skills": {
+                "NUMEROS": [
+                    {
+                        "id": "2N1.1",
+                        "description": "Reconhecer o que os números naturais indicam em diferentes situações: quantidade, ordem, medida ou código de identificação",
+                        "saeb": "D1",
+                        "seama": "D1",
+                        "proficiency_levels": [
+                            "N4",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2N1.2",
+                        "description": "Identificar a posição ordinal de um objeto ou termo em uma sequência (1º, 2º etc.)",
+                        "saeb": "D2",
+                        "seama": "D2",
+                        "proficiency_levels": [
+                            "N3",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "2N1.3",
+                        "description": "Escrever números naturais de até 3 ordens em sua representação por algarismos ou em língua materna OU associar o registro numérico ao registro em língua materna",
+                        "saeb": "D3",
+                        "seama": "D3",
+                        "proficiency_levels": [
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "2N1.4",
+                        "description": "Comparar OU ordenar quantidades de objetos (até 2 ordens)",
+                        "saeb": "D4",
+                        "seama": "D4",
+                        "proficiency_levels": [
+                            "N3"
+                        ]
+                    },
+                    {
+                        "id": "2N1.5",
+                        "description": "Comparar OU ordenar números naturais de até 3 ordens com ou sem suporte da reta numérica",
+                        "saeb": "D5",
+                        "seama": "D5",
+                        "proficiency_levels": [
+                            "N2",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2N1.6",
+                        "description": "Identificar a ordem ocupada por um algarismo OU seu valor posicional em um número natural de até 3 ordens",
+                        "saeb": "D6",
+                        "seama": "D6",
+                        "proficiency_levels": [
+                            "N6",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "2N1.7",
+                        "description": "Calcular o resultado de adições ou subtrações, envolvendo números naturais de até 3 ordens",
+                        "saeb": "D7",
+                        "seama": "D7",
+                        "proficiency_levels": [
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "2N1.8",
+                        "description": "Compor OU decompor números naturais de até 3 ordens por meio de diferentes adições",
+                        "saeb": "D8",
+                        "seama": "D8",
+                        "proficiency_levels": [
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "2N2.1",
+                        "description": "Resolver problemas de adição ou de subtração, envolvendo números naturais de até 3 ordens, com os significados de juntar, acrescentar, separar ou retirar",
+                        "saeb": "D9",
+                        "seama": "D9",
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "2N2.2",
+                        "description": "Resolver problemas de multiplicação ou de divisão (por 2, 3, 4 ou 5), envolvendo números naturais, com os significados de formação de grupos iguais ou proporcionalidade",
+                        "saeb": "D10",
+                        "seama": "D10",
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "2N2.3",
+                        "description": "Analisar argumentações sobre a resolução de problemas de adição, subtração, multiplicação ou divisão envolvendo números naturais",
+                        "saeb": "D11",
+                        "seama": "D11",
+                        "proficiency_levels": []
+                    }
+                ],
+                "ALGEBRA": [
+                    {
+                        "id": "2A1.1",
+                        "description": "Identificar a classificação OU classificar objetos ou representações por figuras, por meio de atributos, tais como cor, forma e medida",
+                        "saeb": "D12",
+                        "seama": "D12",
+                        "proficiency_levels": [
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2A1.2",
+                        "description": "Inferir OU descrever atributos ou propriedades comuns que os elementos que constituem uma sequência de números naturais apresentam",
+                        "saeb": "D13",
+                        "seama": "D13",
+                        "proficiency_levels": [
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2A1.3",
+                        "description": "Inferir o padrão ou a regularidade de uma sequência de números naturais ordenados, de objetos ou de figuras",
+                        "saeb": "D14",
+                        "seama": "D14",
+                        "proficiency_levels": [
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "2A1.4",
+                        "description": "Inferir os elementos ausentes em uma sequência de números naturais ordenados, de objetos ou de figuras",
+                        "saeb": "D15",
+                        "seama": "D15",
+                        "proficiency_levels": [
+                            "N6",
+                            "N7"
+                        ]
+                    }
+                ],
+                "GEOMETRIA": [
+                    {
+                        "id": "2G1.1",
+                        "description": "Identificar a localização OU a descrição/esboço do deslocamento de pessoas e/ou de objetos em representações bidimensionais (mapas, croquis etc.)",
+                        "saeb": "D16",
+                        "seama": "D16",
+                        "proficiency_levels": [
+                            "N2",
+                            "N4",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "2G1.2",
+                        "description": "Reconhecer/nomear figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera), relacionando-as com objetos do mundo físico",
+                        "saeb": "D17",
+                        "seama": "D17",
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N5",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2G1.3",
+                        "description": "Reconhecer/nomear figuras geométricas planas (círculo, quadrado, retângulo e triângulo)",
+                        "saeb": "D18",
+                        "seama": "D18",
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "2G2.1",
+                        "description": "Descrever OU esboçar o deslocamento de pessoas e/ou objetos em representações bidimensionais (mapas, croquis etc.) ou plantas de ambientes, de acordo com condições dadas",
+                        "saeb": "D19",
+                        "seama": "D19",
+                        "proficiency_levels": [
+                            "N3",
+                            "N7",
+                            "N8"
+                        ]
+                    }
+                ],
+                "GRANDEZAS_MEDIDAS": [
+                    {
+                        "id": "2M1.1",
+                        "description": "Comparar comprimentos, capacidades ou massas OU ordenar imagens de objetos com base na comparação visual de seus comprimentos, capacidades ou massas",
+                        "saeb": "D20",
+                        "seama": "D20",
+                        "proficiency_levels": [
+                            "N1",
+                            "N2"
+                        ]
+                    },
+                    {
+                        "id": "2M1.2",
+                        "description": "Estimar/inferir medida de comprimento, capacidade ou massa de objetos, utilizando unidades de medida convencionais ou não OU medir comprimento, capacidade ou massa de objetos",
+                        "saeb": "D21",
+                        "seama": "D21",
+                        "proficiency_levels": [
+                            "N8",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "2M1.3",
+                        "description": "Identificar a medida do comprimento, da capacidade ou da massa de objetos, dada a imagem de um instrumento de medida",
+                        "saeb": "D22",
+                        "seama": "D22",
+                        "proficiency_levels": [
+                            "N1",
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "2M1.4",
+                        "description": "Reconhecer unidades de medida e/ou instrumentos utilizados para medir comprimento, tempo, massa ou capacidade",
+                        "saeb": "D23",
+                        "seama": "D23",
+                        "proficiency_levels": [
+                            "N2",
+                            "N3",
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "2M1.5",
+                        "description": "Identificar sequência de acontecimentos relativos a um dia",
+                        "saeb": "D24",
+                        "seama": "D24",
+                        "proficiency_levels": [
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "2M1.6",
+                        "description": "Identificar datas, dias da semana ou meses do ano em calendário OU escrever uma data, apresentando o dia, o mês e o ano",
+                        "saeb": "D25",
+                        "seama": "D25",
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "2M1.7",
+                        "description": "Relacionar valores de moedas e/ou cédulas do sistema monetário brasileiro, com base nas imagens desses objetos",
+                        "saeb": "D26",
+                        "seama": "D26",
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2M2.1",
+                        "description": "Determinar a data de início, a data de término ou a duração de um acontecimento entre duas datas",
+                        "saeb": "D27",
+                        "seama": "D27",
+                        "proficiency_levels": [
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "2M2.2",
+                        "description": "Determinar o horário de início, o horário de término ou a duração de um acontecimento",
+                        "saeb": "D28",
+                        "seama": "D28",
+                        "proficiency_levels": [
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "2M2.3",
+                        "description": "Resolver problemas que envolvam moedas e/ou cédulas do sistema monetário brasileiro",
+                        "saeb": "D29",
+                        "seama": "D29",
+                        "proficiency_levels": [
+                            "N6"
+                        ]
+                    }
+                ],
+                "PROBABILIDADE_ESTATISTICA": [
+                    {
+                        "id": "2E1.1",
+                        "description": "Classificar resultados de eventos cotidianos aleatórios como 'pouco prováveis', 'muito prováveis', 'certos' ou 'impossíveis'",
+                        "saeb": "D30",
+                        "seama": "D30",
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N8",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "2E1.2",
+                        "description": "Ler/identificar OU comparar dados estatísticos ou informações expressos em tabelas (simples ou de dupla entrada)",
+                        "saeb": "D31",
+                        "seama": "D31",
+                        "proficiency_levels": [
+                            "N1",
+                            "N2"
+                        ]
+                    },
+                    {
+                        "id": "2E1.3",
+                        "description": "Ler/identificar OU comparar dados estatísticos expressos em gráficos (barras simples, colunas simples ou pictóricos)",
+                        "saeb": "D32",
+                        "seama": "D32",
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "2E2.1",
+                        "description": "Representar os dados de uma pesquisa estatística ou de um levantamento em listas, tabelas (simples ou de dupla entrada) ou gráficos (barras simples, colunas simples ou pictóricos)",
+                        "saeb": "D33",
+                        "seama": "D33",
+                        "proficiency_levels": [
+                            "N1",
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6"
+                        ]
+                    }
+                ]
+            }
+        },
+        "5_ano": {
+            "subject": "MATEMÁTICA",
+            "matrix_versions": {
+                "saeb": "2018",
+                "seama": "2020"
+            },
+            "skills": {
+                "NUMEROS": [
+                    {
+                        "id": "5N1.1",
+                        "description": "Escrever números racionais (naturais de até 6 ordens, representação fracionária ou decimal finita até a ordem dos milésimos) em sua representação por algarismos ou em língua materna",
+                        "saeb_2001": [
+                            "D21"
+                        ],
+                        "proficiency_levels": [
+                            "N8",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N1.2",
+                        "description": "Identificar a ordem ocupada por um algarismo OU seu valor posicional em um número natural de até 6 ordens",
+                        "saeb_2001": [
+                            "D13"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "5N1.3",
+                        "description": "Comparar OU ordenar números racionais (naturais de até 6 ordens, representação fracionária ou decimal finita até a ordem dos milésimos), com ou sem suporte da reta numérica",
+                        "saeb_2001": [
+                            "D14",
+                            "D22"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N1.4",
+                        "description": "Compor OU decompor números naturais de até 6 ordens na forma aditiva, ou em suas ordens, ou em adições e multiplicações",
+                        "saeb_2001": [
+                            "D15",
+                            "D16"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "5N1.5",
+                        "description": "Calcular o resultado de adições ou subtrações envolvendo números naturais de até 6 ordens",
+                        "saeb_2001": [
+                            "D17"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N4",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N1.6",
+                        "description": "Calcular o resultado de multiplicações ou divisões envolvendo números naturais de até 6 ordens",
+                        "saeb_2001": [
+                            "D18"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N6",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N1.7",
+                        "description": "Associar o quociente de uma divisão com resto zero de um número natural de até 6 ordens por 2, 3, 4, 5 e 10 às ideias de metade, terça, quarta, quinta e décima partes",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5N1.8",
+                        "description": "Representar frações menores ou maiores que a unidade (por meio de representações pictóricas) OU associar frações a representações pictóricas",
+                        "saeb_2001": [
+                            "D24"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "5N1.9",
+                        "description": "Identificar frações equivalentes",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N2.1",
+                        "description": "Resolver problemas de adição ou de subtração, envolvendo números naturais de até 6 ordens, com os significados de juntar, acrescentar, separar, retirar, comparar ou completar",
+                        "saeb_2001": [
+                            "D19"
+                        ],
+                        "proficiency_levels": [
+                            "N2",
+                            "N4",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "5N2.2",
+                        "description": "Resolver problemas de multiplicação ou de divisão, envolvendo números naturais de até 6 ordens, com os significados de formação de grupos iguais, proporcionalidade ou disposição retangular",
+                        "saeb_2001": [
+                            "D20"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "5N2.3",
+                        "description": "Resolver problemas de adição ou de subtração, envolvendo números racionais apenas na sua representação decimal finita até a ordem dos milésimos, com os significados de juntar, acrescentar, separar, retirar, comparar ou completar",
+                        "saeb_2001": [
+                            "D23",
+                            "D25"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N2.4",
+                        "description": "Resolver problemas de multiplicação ou de divisão, envolvendo números racionais apenas na sua representação decimal finita até a ordem dos milésimos, com os significados de formação de grupos iguais, proporcionalidade ou disposição retangular",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "5N2.5",
+                        "description": "Resolver problemas que envolvam fração como resultado de uma divisão (quociente)",
+                        "saeb_2001": [
+                            "D24"
+                        ],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5N2.6",
+                        "description": "Resolver problemas simples de contagem (combinatória)",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "5N2.7",
+                        "description": "Resolver problemas que envolvam 10%, 25%, 50%, 75% e 100%, associando essas representações à décima parte, quarta parte, metade, três quartos e um inteiro",
+                        "saeb_2001": [
+                            "D26"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N6",
+                            "N7",
+                            "N8",
+                            "N9"
+                        ]
+                    }
+                ],
+                "ALGEBRA": [
+                    {
+                        "id": "5A1.1",
+                        "description": "Inferir OU descrever atributos ou propriedades comuns que os elementos que constituem uma sequência recursiva de naturais apresentam",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5A1.2",
+                        "description": "Inferir o padrão ou a regularidade de uma sequência de números naturais ordenados, objetos ou figuras",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5A1.3",
+                        "description": "Inferir os elementos ausentes em uma sequência de números naturais ordenados, objetos ou figuras",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "5A1.4",
+                        "description": "Comparar diferentes sentenças de adições ou de subtrações de dois números naturais",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5A1.5",
+                        "description": "Determinar o número desconhecido que torna verdadeira uma igualdade que envolve as operações fundamentais com números naturais de até 6 ordens",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5A1.6",
+                        "description": "Identificar/inferir a equação que modela um problema envolvendo adição, subtração, multiplicação ou divisão",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "5A2.1",
+                        "description": "Resolver problemas que envolvam variação de proporcionalidade direta entre duas grandezas",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "5A2.2",
+                        "description": "Resolver problemas que envolvam a ideia de equivalência entre expressões numéricas",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    }
+                ],
+                "GEOMETRIA": [
+                    {
+                        "id": "5G1.1",
+                        "description": "Reconhecer/nomear figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro, esfera e prismas) OU relacionar objetos do mundo físico a essas figuras",
+                        "saeb_2001": [
+                            "D1"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "5G1.2",
+                        "description": "Relacionar objetos tridimensionais às suas planificações",
+                        "saeb_2001": [
+                            "D2"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "5G1.3",
+                        "description": "Reconhecer/nomear figuras geométricas planas (triângulo, quadrado, retângulo, trapézio, paralelogramo e losango) OU identificar características dessas figuras",
+                        "saeb_2001": [
+                            "D3"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N4",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "5G1.4",
+                        "description": "Reconhecer que figuras geométricas planas são simétricas OU identificar eixos de simetria de figuras geométricas planas",
+                        "saeb_2001": [
+                            "D4"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "5G1.5",
+                        "description": "Reconhecer a conservação ou modificação de medidas dos lados, do perímetro, da área em ampliação e/ou redução de figuras poligonais usando malhas quadriculadas",
+                        "saeb_2001": [
+                            "D5"
+                        ],
+                        "proficiency_levels": [
+                            "N5",
+                            "N6",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "5G2.1",
+                        "description": "Identificar a localização de pessoas/objetos em croquis, mapas e plantas OU descrever/esboçar o deslocamento de pessoas/objetos em croquis, mapas e plantas",
+                        "saeb_2001": [
+                            "D6"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5"
+                        ]
+                    }
+                ],
+                "GRANDEZAS_MEDIDAS": [
+                    {
+                        "id": "5M1.1",
+                        "description": "Comparar ou ordenar comprimentos OU estimar medida de comprimentos usando unidades de medida convencionais ou não OU medir comprimentos usando unidades de medida padronizadas",
+                        "saeb_2001": [
+                            "D7"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "5M1.2",
+                        "description": "Resolver problemas que envolvam a conversão entre unidades de medida de comprimento mais usuais",
+                        "saeb_2001": [
+                            "D8"
+                        ],
+                        "proficiency_levels": [
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "5M1.3",
+                        "description": "Resolver problemas que envolvam a conversão entre unidades de medida de massa",
+                        "saeb_2001": [
+                            "D8"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "5M1.4",
+                        "description": "Resolver problemas que envolvam a conversão entre unidades de medida de capacidade ou volume",
+                        "saeb_2001": [
+                            "D8"
+                        ],
+                        "proficiency_levels": [
+                            "N2",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "5M1.5",
+                        "description": "Resolver problemas que envolvam a conversão entre unidades de medida de tempo (horas, minutos, segundos, meses, anos)",
+                        "saeb_2001": [
+                            "D8"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "5M2.1",
+                        "description": "Resolver problemas que envolvam o cálculo de perímetro de figuras planas",
+                        "saeb_2001": [
+                            "D9"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "5M2.2",
+                        "description": "Resolver problemas que envolvam o cálculo ou estimativa de áreas de figuras planas, por meio de contagem de quadrículas ou uso de fórmulas",
+                        "saeb_2001": [
+                            "D10"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    }
+                ],
+                "PROBABILIDADE_ESTATISTICA": [
+                    {
+                        "id": "5E1.1",
+                        "description": "Reconhecer, em experimentos, que há eventos igualmente prováveis, mais ou menos prováveis, certos ou impossíveis",
+                        "saeb_2001": [
+                            "D11"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "5E1.2",
+                        "description": "Interpretar ou comparar dados estatísticos ou informações expressos em tabelas simples ou de dupla entrada",
+                        "saeb_2001": [
+                            "D27"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "5E1.3",
+                        "description": "Interpretar ou comparar dados estatísticos expressos em gráficos de colunas, barras, setores, pontos ou linhas",
+                        "saeb_2001": [
+                            "D28"
+                        ],
+                        "proficiency_levels": [
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "5E2.1",
+                        "description": "Resolver problemas que envolvam a coleta, classificação, representação e interpretação de dados em tabelas e gráficos",
+                        "saeb_2001": [
+                            "D27",
+                            "D28"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    }
+                ]
+            }
+        },
+        "9_ano": {
+            "subject": "MATEMÁTICA",
+            "matrix_versions": {
+                "saeb": "2018",
+                "seama": "2020"
+            },
+            "skills": {
+                "NUMEROS": [
+                    {
+                        "id": "9N1.1",
+                        "description": "Escrever números racionais em sua representação por algarismos ou em língua materna",
+                        "saeb_2001": [
+                            "D24",
+                            "D21"
+                        ],
+                        "proficiency_levels": [
+                            "N2",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9N1.2",
+                        "description": "Compor OU decompor números racionais positivos na forma aditiva ou em adições e multiplicações",
+                        "saeb_2001": [
+                            "D24"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "9N1.3",
+                        "description": "Identificar números racionais ou irracionais",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9N1.4",
+                        "description": "Comparar OU ordenar números reais, com ou sem suporte da reta numérica",
+                        "saeb_2001": [
+                            "D16",
+                            "D17"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N3",
+                            "N4",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9N1.5",
+                        "description": "Calcular o resultado de operações básicas envolvendo números reais",
+                        "saeb_2001": [
+                            "D18",
+                            "D25"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N3",
+                            "N4",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9N1.6",
+                        "description": "Calcular o resultado de potenciação ou radiciação envolvendo números reais",
+                        "saeb_2001": [
+                            "D18",
+                            "D25",
+                            "D27"
+                        ],
+                        "proficiency_levels": [
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9N1.7",
+                        "description": "Representar frações por meio de representações pictóricas",
+                        "saeb_2001": [
+                            "D21",
+                            "D22"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "9N1.8",
+                        "description": "Identificar frações equivalentes",
+                        "saeb_2001": [
+                            "D23"
+                        ],
+                        "proficiency_levels": [
+                            "N2",
+                            "N3",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9N1.9",
+                        "description": "Converter uma representação de um número racional positivo para outra",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N3"
+                        ]
+                    },
+                    {
+                        "id": "9N1.10",
+                        "description": "Determinar uma fração geratriz para uma dízima periódica",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9N1.11",
+                        "description": "Identificar um número natural como primo, composto, múltiplo ou divisor",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9N2.1",
+                        "description": "Resolver problemas de operações com números reais, inclusive notação científica",
+                        "saeb_2001": [
+                            "D19",
+                            "D20",
+                            "D26"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9N2.2",
+                        "description": "Resolver problemas de contagem usando princípio multiplicativo",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9N2.3",
+                        "description": "Resolver problemas que envolvam porcentagens",
+                        "saeb_2001": [
+                            "D28"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N4",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9N2.4",
+                        "description": "Resolver problemas que envolvam múltiplo, divisor, MDC ou MMC",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    }
+                ],
+                "ALGEBRA": [
+                    {
+                        "id": "9A1.1",
+                        "description": "Resolver uma equação polinomial de 1º grau",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "9A1.2",
+                        "description": "Inferir uma equação, inequação ou sistema de 1º grau que modela um problema",
+                        "saeb_2001": [
+                            "D33",
+                            "D34"
+                        ],
+                        "proficiency_levels": [
+                            "N5",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9A1.3",
+                        "description": "Identificar uma representação algébrica para padrão ou regularidade de uma sequência",
+                        "saeb_2001": [
+                            "D32"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "9A1.4",
+                        "description": "Identificar representações algébricas equivalentes",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9A1.5",
+                        "description": "Associar uma equação de 1º grau com duas variáveis a uma reta no plano cartesiano",
+                        "saeb_2001": [
+                            "D35"
+                        ],
+                        "proficiency_levels": [
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9A1.6",
+                        "description": "Inferir uma equação de 2º grau que modela um problema",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9A1.7",
+                        "description": "Resolver uma equação polinomial de 2º grau",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9A1.8",
+                        "description": "Associar representações de funções afins ou quadráticas",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9A2.1",
+                        "description": "Resolver problemas de proporcionalidade direta ou inversa",
+                        "saeb_2001": [
+                            "D29"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N5",
+                            "N6",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9A2.2",
+                        "description": "Resolver problemas envolvendo cálculo do valor numérico de expressões algébricas",
+                        "saeb_2001": [
+                            "D30"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9A2.3",
+                        "description": "Resolver problemas com sistema de equações de 1º grau com duas incógnitas",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9A2.4",
+                        "description": "Resolver problemas com equações de 2º grau",
+                        "saeb_2001": [
+                            "D31"
+                        ],
+                        "proficiency_levels": [
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9A2.5",
+                        "description": "Resolver problemas que envolvam função afim",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    }
+                ],
+                "GEOMETRIA": [
+                    {
+                        "id": "9G1.1",
+                        "description": "Identificar figuras obtidas por transformações geométricas (reflexão, translação, rotação)",
+                        "saeb_2001": [
+                            "D6"
+                        ],
+                        "proficiency_levels": [
+                            "N3",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9G1.2",
+                        "description": "Relacionar vértices, faces ou arestas de prismas ou pirâmides",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9G1.3",
+                        "description": "Relacionar objetos tridimensionais às suas planificações ou vistas",
+                        "saeb_2001": [
+                            "D2"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9G1.4",
+                        "description": "Classificar polígonos em regulares e não regulares",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9G1.5",
+                        "description": "Identificar propriedades e relações em triângulos",
+                        "saeb_2001": [
+                            "D8"
+                        ],
+                        "proficiency_levels": [
+                            "N7",
+                            "N9"
+                        ]
+                    },
+                    {
+                        "id": "9G1.6",
+                        "description": "Classificar triângulos ou quadriláteros",
+                        "saeb_2001": [
+                            "D3",
+                            "D4"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9G1.7",
+                        "description": "Reconhecer polígonos semelhantes",
+                        "saeb_2001": [
+                            "D5",
+                            "D7"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N5",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9G1.8",
+                        "description": "Reconhecer circunferência/círculo e seus elementos",
+                        "saeb_2001": [
+                            "D11"
+                        ],
+                        "proficiency_levels": [
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9G1.9",
+                        "description": "Identificar retas concorrentes, paralelas ou perpendiculares",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N5"
+                        ]
+                    },
+                    {
+                        "id": "9G1.10",
+                        "description": "Identificar relações entre ângulos formados por retas paralelas cortadas por transversal",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9G2.1",
+                        "description": "Descrever ou esboçar deslocamentos em representações bidimensionais",
+                        "saeb_2001": [
+                            "D1"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N3",
+                            "N4"
+                        ]
+                    },
+                    {
+                        "id": "9G2.2",
+                        "description": "Construir/desenhar figuras geométricas",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9G2.3",
+                        "description": "Resolver problemas envolvendo ângulos e cevianas de polígonos",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9G2.4",
+                        "description": "Resolver problemas envolvendo teorema de Pitágoras",
+                        "saeb_2001": [
+                            "D10"
+                        ],
+                        "proficiency_levels": [
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9G2.5",
+                        "description": "Resolver problemas envolvendo polígonos semelhantes",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9G2.6",
+                        "description": "Resolver problemas de proporcionalidade com retas paralelas",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9G2.7",
+                        "description": "Resolver problemas envolvendo elementos de circunferência/círculo",
+                        "saeb_2001": [
+                            "D11"
+                        ],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9G2.8",
+                        "description": "Determinar ponto médio ou distância entre pontos no plano cartesiano",
+                        "saeb_2001": [
+                            "D9"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    }
+                ],
+                "GRANDEZAS_MEDIDAS": [
+                    {
+                        "id": "9M2.1",
+                        "description": "Resolver problemas envolvendo conversão de unidades de medida",
+                        "saeb_2001": [
+                            "D15"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9M2.2",
+                        "description": "Resolver problemas envolvendo perímetro de figuras planas",
+                        "saeb_2001": [
+                            "D12"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9M2.3",
+                        "description": "Resolver problemas envolvendo área de figuras planas",
+                        "saeb_2001": [
+                            "D13"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N5",
+                            "N7",
+                            "N8"
+                        ]
+                    },
+                    {
+                        "id": "9M2.4",
+                        "description": "Resolver problemas envolvendo volume de prismas retos ou cilindros",
+                        "saeb_2001": [
+                            "D14"
+                        ],
+                        "proficiency_levels": [
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    }
+                ],
+                "PROBABILIDADE_ESTATISTICA": [
+                    {
+                        "id": "9E1.1",
+                        "description": "Identificar indivíduos, variáveis e tipos de variáveis em um conjunto de dados",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9E1.2",
+                        "description": "Representar ou associar dados de pesquisa em tabelas ou gráficos",
+                        "saeb_2001": [
+                            "D37"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N6"
+                        ]
+                    },
+                    {
+                        "id": "9E1.3",
+                        "description": "Inferir a finalidade de uma pesquisa estatística",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9E1.4",
+                        "description": "Interpretar medidas de tendência central ou amplitude",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9E1.5",
+                        "description": "Calcular medidas de tendência central (média, moda, mediana)",
+                        "saeb_2001": [],
+                        "proficiency_levels": [
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9E2.1",
+                        "description": "Resolver problemas envolvendo dados em tabelas ou gráficos",
+                        "saeb_2001": [
+                            "D36"
+                        ],
+                        "proficiency_levels": [
+                            "N1",
+                            "N2",
+                            "N3",
+                            "N4",
+                            "N5",
+                            "N6",
+                            "N7"
+                        ]
+                    },
+                    {
+                        "id": "9E2.2",
+                        "description": "Analisar dados para argumentações/conclusões",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9E2.3",
+                        "description": "Explicar/descrever passos de uma pesquisa estatística",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    },
+                    {
+                        "id": "9E2.4",
+                        "description": "Resolver problemas de probabilidade",
+                        "saeb_2001": [],
+                        "proficiency_levels": []
+                    }
+                ]
+            }
+        }
+    },
+    "proficiency_levels": {
+        "N1": {
+            "name": "Nível 1",
+            "description": "Habilidades elementares, localização direta"
+        },
+        "N2": {
+            "name": "Nível 2",
+            "description": "Habilidades básicas com pequena inferência"
+        },
+        "N3": {
+            "name": "Nível 3",
+            "description": "Habilidades intermediárias, relações simples"
+        },
+        "N4": {
+            "name": "Nível 4",
+            "description": "Habilidades de aplicação em contextos"
+        },
+        "N5": {
+            "name": "Nível 5",
+            "description": "Habilidades de análise e síntese"
+        },
+        "N6": {
+            "name": "Nível 6",
+            "description": "Habilidades avançadas de resolução"
+        },
+        "N7": {
+            "name": "Nível 7",
+            "description": "Habilidades complexas e integradoras"
+        },
+        "N8": {
+            "name": "Nível 8",
+            "description": "Habilidades de alto desempenho"
+        },
+        "N9": {
+            "name": "Nível 9",
+            "description": "Excelência e domínio completo"
+        }
+    }
+}

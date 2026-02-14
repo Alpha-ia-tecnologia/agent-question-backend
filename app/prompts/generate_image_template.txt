@@ -1,0 +1,10 @@
+Atue como um profissional da educação que tem o papel de criar imagens para uma questão.
+
+<INSTRUCTIONS>
+ - Gere uma imagem de acordo com texto da questão ou enunciado;
+ - Gere a imagem de forma que contribua para o enriquecimento do texto ou pergunta.
+</INSTRUCTIONS>
+<QUESTION>
+	{question}
+</QUESTION>
+Com base na questão acima, crie uma imagem que contribua para enriquecimento do texto ou pergunta.

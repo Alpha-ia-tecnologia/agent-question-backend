@@ -1,0 +1,548 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► REFERÊNCIA COMPLETA DE HABILIDADES — LÍNGUA PORTUGUESA (SAEB/SEAMA/BNCC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use esta referência para construir itens de Língua Portuguesa com rigor
+pedagógico, alinhamento à matriz SAEB/SEAMA e qualidade técnica absoluta.
+
+════════════════════════════════════════
+EIXO 1: PROCEDIMENTOS DE LEITURA
+════════════════════════════════════════
+
+📚 D1 — LOCALIZAR INFORMAÇÕES EXPLÍCITAS EM UM TEXTO
+
+   DEFINIÇÃO: O aluno deve encontrar uma informação que está claramente
+   escrita no texto, sem necessidade de interpretação ou inferência.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Textos curtos (até 80 palavras), informação em destaque
+     Gêneros: listas, bilhetes, convites, rótulos, cartazes
+   • 5º ano EF: Textos de extensão média (100-200 palavras)
+     Gêneros: contos, fábulas, notícias, receitas, instruções
+   • 9º ano EF: Textos complexos (200-400 palavras), informação em meio
+     a detalhes concorrentes
+     Gêneros: crônicas, artigos, editoriais, reportagens
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ A informação solicitada DEVE estar literalmente no texto
+   ✅ O enunciado deve usar sinônimos ou paráfrases para evitar cópia direta
+   ✅ A alternativa correta reformula a informação sem alterar o sentido
+   ❌ NÃO peça informação que exija inferência (isso é D4)
+   ❌ NÃO use as mesmas palavras do texto no enunciado E na resposta
+
+   DISTRATORES TÍPICOS:
+   • Informação que está no texto mas NÃO responde à pergunta (detalhe irrelevante)
+   • Informação de outro parágrafo que confunde quem lê apressadamente
+   • Paráfrase que distorce sutilmente o sentido original
+   • Extrapolação plausível mas não presente no texto
+
+───────────────────────────────────────
+
+📚 D2 — ESTABELECER RELAÇÕES ENTRE PARTES DE UM TEXTO
+
+   DEFINIÇÃO: O aluno identifica como diferentes partes do texto se
+   conectam: referências pronominais, substituições lexicais, articulação
+   entre parágrafos, progressão temática.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Relações simples entre duas frases consecutivas
+   • 5º ano EF: Referências pronominais (ele, ela, este, aquele),
+     substituições lexicais (o menino → a criança → o garoto)
+   • 9º ano EF: Coesão referencial complexa, elipses, catáforas,
+     conectivos inter-parágrafos
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto DEVE conter pelo menos um elemento coesivo claro
+   ✅ O enunciado deve apontar para o elemento específico
+     Ex: "No trecho '...ele saiu correndo...', a palavra 'ele' refere-se a:"
+   ✅ As alternativas devem ser todos substantivos/nomes presentes no texto
+   ❌ NÃO teste elementos coesivos ambíguos (referência deve ter resposta única)
+
+   DISTRATORES TÍPICOS:
+   • Outro personagem mencionado no mesmo parágrafo
+   • Nome citado perto do pronome mas que não é o referente
+   • Sujeito de oração anterior que não se aplica ao contexto
+
+───────────────────────────────────────
+
+📚 D3 — INFERIR O SENTIDO DE UMA PALAVRA OU EXPRESSÃO
+
+   DEFINIÇÃO: O aluno deduz o significado de uma palavra ou expressão
+   a partir do contexto em que aparece, sem recorrer ao dicionário.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Palavras simples com pistas contextuais óbvias
+   • 5º ano EF: Expressões idiomáticas simples, palavras polissêmicas
+     Ex: "banco" (assento vs instituição financeira)
+   • 9º ano EF: Linguagem figurada, metáforas, metonímias, conotação/denotação
+     Ex: "O político lavou as mãos" (sentido figurado)
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto DEVE fornecer pistas contextuais suficientes para a inferência
+   ✅ Destaque a palavra/expressão entre aspas no enunciado
+     Ex: "No trecho '...o sol castigava os retirantes...', a palavra 'castigava' sugere:"
+   ✅ As alternativas devem ser sinônimos plausíveis — alguns adequados ao contexto, outros não
+   ❌ NÃO teste palavras cujo significado contextual é óbvio demais
+   ❌ NÃO teste vocabulário técnico sem pistas no texto
+
+   DISTRATORES TÍPICOS:
+   • Significado literal/denotativo quando o texto usa sentido figurado
+   • Sinônimo que funciona em OUTRO contexto mas não neste
+   • Significado parcialmente correto mas que não cabe no trecho específico
+   • Antônimo disfarçado de sinônimo
+
+───────────────────────────────────────
+
+📚 D4 — INFERIR UMA INFORMAÇÃO IMPLÍCITA EM UM TEXTO
+
+   DEFINIÇÃO: O aluno identifica uma informação que não está escrita
+   explicitamente, mas pode ser deduzida a partir de pistas textuais.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Inferências simples e diretas (ex: "João pegou o guarda-chuva" → está chovendo)
+   • 5º ano EF: Inferências que combinam duas ou mais pistas do texto
+     Sentimentos, intenções, motivações dos personagens
+   • 9º ano EF: Inferências complexas envolvendo ironia, pressupostos,
+     subentendidos, crítica social implícita
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ A inferência DEVE ser sustentada por evidências textuais (não por opinião)
+   ✅ O enunciado deve usar verbos como "é possível concluir", "pode-se inferir",
+     "o texto permite deduzir"
+   ✅ A resposta correta deve ser a ÚNICA inferência logicamente sustentável
+   ❌ NÃO confunda com D1 (informação explícita)
+   ❌ NÃO aceite inferências que exijam conhecimento externo ao texto
+
+   DISTRATORES TÍPICOS:
+   • Informação explícita do texto (confunde D4 com D1)
+   • Extrapolação que vai além do que o texto permite
+   • Inferência baseada em senso comum mas não no texto
+   • Contradição sutil com o que o texto sugere
+
+───────────────────────────────────────
+
+📚 D5 — INTERPRETAR TEXTO COM AUXÍLIO DE MATERIAL GRÁFICO DIVERSO
+
+   DEFINIÇÃO: O aluno relaciona o texto verbal com elementos não verbais:
+   gráficos, tabelas, mapas, ilustrações, charges, tirinhas, infográficos.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Imagens simples, rótulos com figuras
+   • 5º ano EF: Gráficos de barras simples, tabelas, tirinhas com 3-4 quadros
+   • 9º ano EF: Charges, infográficos, gráficos complexos, mapas temáticos
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ A questão DEVE exigir leitura conjunta do texto + imagem
+   ✅ Nem o texto sozinho nem a imagem sozinha bastam para responder
+   ✅ Use: "De acordo com o gráfico e o texto...", "A tirinha expressa..."
+   ❌ NÃO descreva a imagem no texto (a imagem será gerada separadamente)
+   ❌ NÃO faça questões que se resolvam ignorando a imagem
+
+   DISTRATORES TÍPICOS:
+   • Leitura que considera só o texto (ignora o gráfico)
+   • Leitura que considera só a imagem (ignora o texto)
+   • Interpretação superficial da imagem (ex: ler só o título do gráfico)
+   • Confusão entre dados de eixos diferentes
+
+════════════════════════════════════════
+EIXO 2: IMPLICAÇÕES DO SUPORTE, GÊNERO E ENUNCIADOR
+════════════════════════════════════════
+
+📚 D6 — IDENTIFICAR O TEMA DE UM TEXTO
+
+   DEFINIÇÃO: O aluno identifica o assunto central, a ideia principal que
+   percorre todo o texto, distinguindo-o de detalhes ou temas secundários.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Textos com tema único e evidente
+   • 5º ano EF: Textos com tema central + subtemas
+   • 9º ano EF: Textos argumentativos/dissertativos com tema implícito
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O enunciado deve perguntar "O texto trata principalmente de..."
+     ou "O assunto central do texto é..."
+   ✅ A resposta correta deve abranger o texto INTEIRO, não um trecho
+   ✅ Teste usando a regra: "Se eu deletar este tema, o texto perde sentido?"
+   ❌ NÃO aceite como tema algo que aparece em apenas um parágrafo
+   ❌ NÃO confunda tema com título (o título pode ser metafórico)
+
+   DISTRATORES TÍPICOS:
+   • Tema de um parágrafo específico (parcial, não central)
+   • Assunto do parágrafo introdutório (leitura superficial)
+   • Tema relacionado mas não presente no texto (extrapolação)
+   • Detalhe transformado em generalização
+
+───────────────────────────────────────
+
+📚 D7 — IDENTIFICAR A TESE DE UM TEXTO
+
+   DEFINIÇÃO: O aluno identifica o ponto de vista, a posição ou o
+   argumento principal defendido pelo autor em textos argumentativos.
+
+   POR ANO ESCOLAR:
+   • 5º ano EF: Opinião explícita em textos curtos (cartas de leitor, resenhas)
+   • 9º ano EF: Tese em textos dissertativo-argumentativos, editoriais, artigos de opinião
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ Use textos que assumam uma posição clara sobre um tema
+   ✅ O enunciado deve perguntar "O autor defende que...", "A tese do texto é..."
+   ✅ A tese deve ser sustentada por argumentos no texto
+   ❌ NÃO confunda tese com tema (tema = assunto, tese = posicionamento)
+   ❌ NÃO use textos puramente narrativos (que não têm tese)
+
+   DISTRATORES TÍPICOS:
+   • Tema do texto confundido com tese
+   • Argumento de apoio confundido com a tese principal
+   • Posição oposta à do autor (inversão)
+   • Opinião parcial que não representa a posição completa do autor
+
+───────────────────────────────────────
+
+📚 D8 — ESTABELECER RELAÇÃO ENTRE A TESE E OS ARGUMENTOS
+
+   DEFINIÇÃO: O aluno identifica quais argumentos sustentam a tese e
+   como eles se organizam para defender o ponto de vista do autor.
+
+   POR ANO ESCOLAR:
+   • 5º ano EF: Relação simples tese-argumento (1 argumento claro)
+   • 9º ano EF: Múltiplos argumentos, contra-argumentos, exemplos como suporte
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto DEVE ter tese clara + pelo menos 2 argumentos distintos
+   ✅ Pergunte: "Qual argumento o autor usa para defender que..."
+     ou "O trecho X reforça a ideia de que..."
+   ✅ As alternativas devem conter trechos reais do texto
+   ❌ NÃO use textos com argumentação fraca ou confusa
+   ❌ NÃO confunda com D7 (D7=identificar tese, D8=relacionar tese+argumento)
+
+   DISTRATORES TÍPICOS:
+   • Trecho do texto que é descrição, não argumento
+   • Argumento real mas que defende OUTRA tese, não a principal
+   • Informação do texto que contextualiza mas não argumenta
+   • Contra-argumento interpretado como argumento a favor
+
+───────────────────────────────────────
+
+📚 D9 — DIFERENCIAR AS PARTES PRINCIPAIS DAS SECUNDÁRIAS
+
+   DEFINIÇÃO: O aluno distingue informações essenciais de detalhes,
+   exemplos ou descrições acessórias no texto.
+
+   POR ANO ESCOLAR:
+   • 5º ano EF: Identificar a frase principal de um parágrafo
+   • 9º ano EF: Distinguir argumento central de exemplos e digressões
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto deve conter informações principais + detalhes/exemplos
+   ✅ Pergunte: "A informação essencial do texto é..."
+     ou "Qual das informações abaixo é um detalhe secundário?"
+   ✅ A resposta deve resistir ao teste: "sem esta informação, o texto muda de sentido?"
+   ❌ NÃO use textos onde tudo tem o mesmo peso informativo
+
+   DISTRATORES TÍPICOS:
+   • Exemplo apresentado como ideia principal
+   • Informação secundária com linguagem chamativa (parece importante)
+   • Paráfrase do detalhe usando vocabulário mais formal
+
+════════════════════════════════════════
+EIXO 3: RELAÇÃO ENTRE TEXTOS
+════════════════════════════════════════
+
+📚 D10 — IDENTIFICAR O CONFLITO GERADOR DO ENREDO
+
+   DEFINIÇÃO: O aluno identifica o problema central que desencadeia
+   a ação narrativa — o conflito que move a história.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Conflitos simples e evidentes (personagem quer algo e há obstáculo)
+   • 5º ano EF: Conflitos internos (dilemas) e externos (antagonista, natureza)
+   • 9º ano EF: Conflitos psicológicos, sociais, existenciais; múltiplos conflitos
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ Use textos NARRATIVOS (contos, crônicas, trechos de romance)
+   ✅ O texto deve ter: personagem + desejo/objetivo + obstáculo
+   ✅ Pergunte: "O problema central do texto é...", "O conflito da narrativa é..."
+   ❌ NÃO use textos sem tensão narrativa clara
+   ❌ NÃO confunda conflito com tema (tema = assunto; conflito = problema da trama)
+
+   DISTRATORES TÍPICOS:
+   • Evento que acontece na história mas não é o conflito motor
+   • Consequência do conflito confundida com o conflito em si
+   • Conflito secundário apresentado como principal
+   • Descrição do cenário ou caracterização confundida com conflito
+
+───────────────────────────────────────
+
+📚 D11 — ESTABELECER RELAÇÃO CAUSA/CONSEQUÊNCIA ENTRE PARTES DO TEXTO
+
+   DEFINIÇÃO: O aluno identifica relações de causa e efeito explícitas
+   ou implícitas entre eventos, ações ou fenômenos no texto.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Causa-efeito direta, explícita, em uma frase
+   • 5º ano EF: Relações com conectivos (porque, portanto, assim, logo)
+   • 9º ano EF: Relações causais implícitas, cadeias de causa-efeito
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto DEVE conter pelo menos uma relação causal clara
+   ✅ Pergunte: "O fato X ocorreu porque...", "A consequência de Y foi..."
+   ✅ Use textos narrativos ou expositivos com sequência lógica
+   ❌ NÃO crie perguntas onde a relação causal seja ambígua
+   ❌ NÃO inverta causa e consequência na resposta correta
+
+   DISTRATORES TÍPICOS:
+   • Consequência apresentada como causa (inversão)
+   • Evento simultâneo confundido com causa (correlação ≠ causalidade)
+   • Causa verdadeira mas de OUTRO evento do texto
+   • Causa plausível baseada em senso comum mas não no texto
+
+───────────────────────────────────────
+
+📚 D12 — IDENTIFICAR A FINALIDADE DE TEXTOS DE DIFERENTES GÊNEROS
+
+   DEFINIÇÃO: O aluno reconhece o propósito comunicativo do texto:
+   informar, persuadir, instruir, entreter, denunciar, etc.
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Gêneros com finalidade óbvia (receita=instruir, piada=divertir)
+   • 5º ano EF: Distinção entre informar e opinar, instruir e persuadir
+   • 9º ano EF: Textos com finalidades múltiplas ou finalidade implícita
+     (editorial que informa enquanto opina, publicidade que entretém para vender)
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ Forneça o texto com elementos que revelem seu gênero e função
+   ✅ Pergunte: "O texto tem como principal finalidade..."
+   ✅ Use gêneros reais: notícia, receita, editorial, anúncio, bula, manual
+   ❌ NÃO use fragmentos tão curtos que o gênero fique irreconhecível
+   ❌ NÃO confunda com D6 (tema ≠ finalidade)
+
+   DISTRATORES TÍPICOS:
+   • Finalidade secundária apresentada como principal
+   • Gênero confundido com finalidade (ex: "é um poema" ≠ "tem finalidade poética")
+   • Finalidade de gênero semelhante (reportagem vs editorial)
+   • Finalidade que se aplicaria a outro gênero, não ao apresentado
+
+════════════════════════════════════════
+EIXO 4: COERÊNCIA E COESÃO NO PROCESSAMENTO DO TEXTO
+════════════════════════════════════════
+
+📚 D13 — IDENTIFICAR MARCAS LINGUÍSTICAS DE LOCUTOR E INTERLOCUTOR
+
+   DEFINIÇÃO: O aluno identifica quem fala, para quem fala e as marcas
+   linguísticas que revelam essas relações: variação linguística, registro
+   formal/informal, marcas de oralidade, nível de linguagem.
+
+   POR ANO ESCOLAR:
+   • 5º ano EF: Distinguir narrador de personagem, fala direta vs indireta
+   • 9º ano EF: Variação regional, socioletal, registro, adequação ao contexto,
+     marcas de ironia do locutor
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto deve conter marcas linguísticas identificáveis
+     (gírias, regionalismos, formalidade, pronome de tratamento)
+   ✅ Pergunte: "A expressão X revela que o locutor...",
+     "O uso de linguagem informal indica que..."
+   ✅ Use diálogos, cartas, entrevistas, textos com variação de registro
+   ❌ NÃO use estereótipos ou preconceito linguístico
+   ❌ NÃO apresente variação como "erro" — é variação legítima
+
+   DISTRATORES TÍPICOS:
+   • Confusão entre locutor e interlocutor
+   • Marca atribuída ao personagem errado
+   • Interpretação de registro formal como "arrogância" (julgamento, não análise)
+   • Variação linguística identificada como erro gramatical
+
+───────────────────────────────────────
+
+📚 D14 — DISTINGUIR UM FATO DA OPINIÃO RELATIVA A ESSE FATO
+
+   DEFINIÇÃO: O aluno diferencia informações objetivas (fatos verificáveis)
+   de julgamentos, avaliações ou posicionamentos pessoais (opiniões).
+
+   POR ANO ESCOLAR:
+   • 2º ano EF: Frases simples: "O céu é azul" (fato) vs "O céu é bonito" (opinião)
+   • 5º ano EF: Em textos jornalísticos, distinguir dados de comentários
+   • 9º ano EF: Opiniões disfarçadas de fatos, uso de modalizadores,
+     adjetivos avaliativos, advérbios de intensidade como marcas de opinião
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto DEVE conter tanto fatos quanto opiniões, intercalados
+   ✅ Pergunte: "Qual das alternativas apresenta um FATO?"
+     ou "Qual trecho expressa OPINIÃO do autor?"
+   ✅ Use marcadores: fato → dados, números, datas, acontecimentos;
+     opinião → "acredito", "infelizmente", adjetivos avaliativos
+   ❌ NÃO use trechos ambíguos onde fato e opinião se confundam
+   ❌ NÃO teste distinção em textos puramente opinativos
+
+   DISTRATORES TÍPICOS:
+   • Opinião com dados numéricos (parece fato: "60% é muito")
+   • Fato com linguagem emotiva (parece opinião: "a seca devastou")
+   • Citação de autoridade confundida com fato ("segundo o professor...")
+   • Estatística usada para sustentar opinião
+
+───────────────────────────────────────
+
+📚 D15 — ESTABELECER RELAÇÕES LÓGICO-DISCURSIVAS
+
+   DEFINIÇÃO: O aluno reconhece os conectivos e operadores argumentativos
+   e compreende as relações que estabelecem: adição, oposição, concessão,
+   conclusão, temporalidade, condição, finalidade, explicação.
+
+   POR ANO ESCOLAR:
+   • 5º ano EF: Conectivos simples (mas, porque, então, depois, quando)
+   • 9º ano EF: Operadores argumentativos complexos (entretanto, todavia,
+     contudo, embora, conquanto, porquanto, a fim de que)
+
+   REGRAS DE CONSTRUÇÃO:
+   ✅ O texto DEVE conter conectivos que estruturam a argumentação
+   ✅ Pergunte: "No trecho '...entretanto, os dados mostram...', a palavra
+     'entretanto' introduz uma ideia de:"
+   ✅ As alternativas devem ser relações lógicas: oposição, causa, conclusão, etc.
+   ❌ NÃO teste conectivos fora de contexto (o contexto é essencial)
+   ❌ NÃO use conectivos polissêmicos sem contexto suficiente para desambiguar
+
+   DISTRATORES TÍPICOS:
+   • Relação de oposição confundida com adição
+   • Relação de causa confundida com consequência
+   • Concessão confundida com oposição (embora ≠ mas)
+   • Finalidade confundida com consequência (para que ≠ de modo que)
+
+   TABELA DE REFERÊNCIA — CONECTIVOS:
+   | Relação       | Conectivos                                          |
+   |---------------|-----------------------------------------------------|
+   | Adição        | e, além disso, também, bem como, não só...mas também |
+   | Oposição      | mas, porém, todavia, contudo, entretanto, no entanto |
+   | Concessão     | embora, conquanto, apesar de, ainda que, mesmo que   |
+   | Causa         | porque, pois, visto que, uma vez que, porquanto       |
+   | Consequência  | logo, portanto, por isso, de modo que, assim          |
+   | Condição      | se, caso, desde que, contanto que, a menos que        |
+   | Finalidade    | para que, a fim de que, com o propósito de            |
+   | Tempo         | quando, enquanto, assim que, antes que, depois que    |
+   | Comparação    | como, assim como, tal qual, tanto quanto              |
+   | Explicação    | isto é, ou seja, quer dizer, em outras palavras      |
+
+════════════════════════════════════════
+EIXO 5: GÊNEROS TEXTUAIS POR NÍVEL DE PROFICIÊNCIA
+════════════════════════════════════════
+
+📊 ABAIXO DO BÁSICO (Nível 1-2):
+   Gêneros: bilhetes, listas, rótulos, convites, cartazes, placas
+   Extensão: até 80 palavras
+   Vocabulário: cotidiano, concreto, alta frequência
+   Estrutura: frases curtas, ordem direta (SVO)
+   Autores: textos funcionais, sem autoria literária
+
+📊 BÁSICO (Nível 3-4):
+   Gêneros: contos curtos, fábulas, poemas simples, notícias, receitas
+   Extensão: 80-200 palavras
+   Vocabulário: concreto + abstrato simples
+   Estrutura: parágrafos curtos, conectivos simples
+   Autores: Monteiro Lobato, Ruth Rocha, Ana Maria Machado, Ziraldo
+
+📊 ADEQUADO (Nível 5-6):
+   Gêneros: crônicas, artigos, editoriais, reportagens, contos
+   Extensão: 200-400 palavras
+   Vocabulário: abstrato, polissêmico, figurado
+   Estrutura: argumentação, narração complexa, múltiplos parágrafos
+   Autores: Rubem Braga, Fernando Sabino, Clarice Lispector (contos curtos)
+
+📊 AVANÇADO (Nível 7-9):
+   Gêneros: artigos acadêmicos, ensaios, textos literários densos
+   Extensão: 300-500 palavras
+   Vocabulário: erudito, técnico, irônico, ambíguo intencionalmente
+   Estrutura: argumentação com contra-argumentos, narração não linear
+   Autores: Machado de Assis, Guimarães Rosa, Lima Barreto, Drummond
+
+════════════════════════════════════════
+EIXO 6: REGRAS GERAIS DE CONSTRUÇÃO DE ITENS — LP
+════════════════════════════════════════
+
+🔴 6.1 TEXTO-BASE (OBRIGATÓRIO)
+   • Toda questão de LP DEVE ter um texto-base (não se avalia LP sem texto)
+   • O texto deve ser SUFICIENTE para responder à questão
+   • Extensão proporcional ao ano escolar e nível de proficiência
+   • Fonte: textos reais sempre que possível (domínio público, uso educacional)
+   • Se texto gerado por IA: indicar "Texto elaborado para fins didáticos"
+
+🔴 6.2 ENUNCIADO
+   • Deve ser claro, direto e unívoco
+   • Deve explicitar a habilidade cognitiva exigida:
+     - Localizar → "Segundo o texto..."
+     - Inferir → "É possível concluir que..."
+     - Identificar tema → "O texto trata principalmente de..."
+     - Identificar finalidade → "O texto tem como objetivo..."
+   • NÃO use "Marque a alternativa correta" sem contexto
+   • NÃO use dupla negação ("não é incorreto afirmar")
+
+🔴 6.3 ALTERNATIVAS
+   • Homogêneas em tamanho (±20% de variação)
+   • Homogêneas em estrutura gramatical
+   • Todas plausíveis para quem NÃO domina a habilidade
+   • O gabarito NÃO deve ser a alternativa mais longa
+   • Ordem lógica: cronológica, alfabética ou do menor para o maior
+
+🔴 6.4 DISTRATORES — METODOLOGIA POR HABILIDADE
+   Cada distrator deve representar um ERRO CONCEITUAL específico:
+
+   | Descritor | Erro Típico 1                | Erro Típico 2               | Erro Típico 3              |
+   |-----------|------------------------------|-----------------------------|-----------------------------|
+   | D1        | Informação de outro trecho   | Detalhe irrelevante         | Paráfrase distorcida        |
+   | D3        | Significado literal           | Sinônimo de outro contexto  | Antônimo disfarçado         |
+   | D4        | Informação explícita (≠D4)   | Extrapolação indevida       | Inferência de senso comum   |
+   | D6        | Tema parcial (1 parágrafo)   | Detalhe como tema           | Tema de texto parecido      |
+   | D7        | Tema confundido com tese     | Argumento como tese         | Posição oposta ao autor     |
+   | D10       | Evento ≠ conflito            | Consequência como causa     | Conflito secundário         |
+   | D11       | Causa/consequência invertida | Evento simultâneo           | Causa de outro fato         |
+   | D14       | Opinião com dados            | Fato com emoção             | Citação como fato           |
+   | D15       | Oposição ↔ adição            | Causa ↔ consequência        | Concessão ↔ oposição        |
+
+════════════════════════════════════════
+EIXO 7: ORIENTAÇÕES SEAMA — CONTEXTUALIZAÇÃO MARANHENSE
+════════════════════════════════════════
+
+   O SEAMA (Sistema Estadual de Avaliação do Maranhão) segue a mesma
+   matriz de referência do SAEB, com ênfase em contextualização regional:
+
+   ✅ PRIORIZE contextos maranhenses nos textos quando possível:
+      • Festas: Bumba-meu-boi, Tambor de Crioula, Reggae, Carnaval de São Luís
+      • Culinária: arroz de cuxá, torta de camarão, guaraná Jesus, juçara
+      • Geografia: Lençóis Maranhenses, Delta das Américas, Chapada das Mangabeiras
+      • Patrimônio: Centro Histórico de São Luís (UNESCO), azulejaria portuguesa
+      • Autores maranhenses: Gonçalves Dias, Aluísio Azevedo, Josué Montello,
+        Ferreira Gullar, Graça Aranha, Maria Firmina dos Reis
+      • Economia: agricultura familiar, pesca artesanal, babaçu, soja
+
+   ✅ Use textos de autores maranhenses quando o gênero permitir
+   ✅ Contextualize situações-problema no cotidiano maranhense
+   ✅ Valorize a diversidade cultural afro-maranhense e indígena
+
+   ❌ NÃO force contextualização quando o gênero não permitir
+   ❌ NÃO use estereótipos regionais
+   ❌ NÃO substitua textos literários canônicos por adaptações forçadas
+
+════════════════════════════════════════
+EIXO 8: CHECKLIST DE QUALIDADE FINAL — LP
+════════════════════════════════════════
+
+   Antes de finalizar CADA questão de Língua Portuguesa, verifique:
+
+   □ 1. O texto-base é suficiente para responder à questão?
+   □ 2. O descritor avaliado está correto (D1≠D4, D6≠D7, D10≠D11)?
+   □ 3. O enunciado é claro e pede a habilidade cognitiva esperada?
+   □ 4. A resposta correta é indiscutível e sustentada pelo texto?
+   □ 5. Os distratores são plausíveis e representam erros conceituais reais?
+   □ 6. As alternativas são homogêneas em tamanho e estrutura?
+   □ 7. O nível de complexidade é adequado ao ano escolar e proficiência?
+   □ 8. Se usou texto real: fonte, autor e obra estão corretamente citados?
+   □ 9. Se usou texto gerado: indicou "Texto elaborado para fins didáticos"?
+   □ 10. A questão NÃO pode ser respondida sem ler o texto?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ INSTRUÇÃO DE USO: Ao receber um descritor de Língua Portuguesa,
+consulte esta referência para garantir que:
+1. Usa a HABILIDADE COGNITIVA correta para o descritor
+2. O TEXTO-BASE é adequado ao ano escolar e nível de proficiência
+3. Os DISTRATORES representam ERROS REAIS de leitura dos alunos
+4. O NÍVEL de complexidade é coerente com o ANO ESCOLAR
+5. A CONTEXTUALIZAÇÃO regional é aplicada quando apropriado
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

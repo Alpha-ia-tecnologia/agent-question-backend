@@ -1,0 +1,612 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► REFERÊNCIA COMPLETA DE HABILIDADES MATEMÁTICAS (BNCC/SAEB/SEAMA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Use esta referência para identificar corretamente o domínio matemático
+da habilidade solicitada e gerar questões com rigor conceitual absoluto.
+
+════════════════════════════════════════
+EIXO 1: NÚMEROS E OPERAÇÕES
+════════════════════════════════════════
+
+🔢 1.1 NÚMEROS NATURAIS
+   • Contagem, leitura e escrita de números
+   • Ordens e classes (unidade, dezena, centena, milhar, milhão, bilhão)
+   • Comparação e ordenação na reta numérica
+   • Composição e decomposição (forma aditiva e multiplicativa)
+   • Arredondamento e estimativa numérica
+   • Números pares, ímpares, primos, compostos
+   • Critérios de divisibilidade (2, 3, 4, 5, 6, 8, 9, 10)
+   • Fatoração em primos
+   • MMC (mínimo múltiplo comum) e MDC (máximo divisor comum)
+
+🔢 1.2 OPERAÇÕES FUNDAMENTAIS
+   • Adição e subtração (com e sem reagrupamento)
+   • Multiplicação (por 1 algarismo, por 2, por múltiplos de 10)
+   • Divisão exata e com resto
+   • Algoritmo da divisão (dividendo = divisor × quociente + resto)
+   • Propriedades: comutativa, associativa, distributiva, elemento neutro
+   • Expressões numéricas (ordem: parênteses → colchetes → chaves → potência → × ÷ → + −)
+   • Problemas com múltiplas etapas e operações combinadas
+
+🔢 1.3 NÚMEROS RACIONAIS
+   • Frações: próprias, impróprias, aparentes, mistas
+   • Representação na reta numérica
+   • Frações equivalentes (multiplicar/dividir numerador e denominador)
+   • Simplificação de frações (pelo MDC)
+   • Comparação e ordenação de frações
+   • Adição e subtração de frações (mesmo denominador e denominadores diferentes)
+   • Multiplicação de frações (numerador × numerador, denominador × denominador)
+   • Divisão de frações (inverter e multiplicar)
+   • Números decimais: leitura, escrita, comparação, ordenação
+   • Operações com decimais (+, −, ×, ÷)
+   • Conversão: fração ↔ decimal ↔ percentual
+   • Dízimas periódicas (simples e compostas) → fração geratriz
+
+🔢 1.4 NÚMEROS INTEIROS
+   • Conjunto Z: positivos, negativos e zero
+   • Reta numérica com inteiros negativos
+   • Módulo (valor absoluto) e simétrico (oposto)
+   • Comparação e ordenação de inteiros
+   • Adição e subtração de inteiros (regra de sinais)
+   • Multiplicação e divisão de inteiros (regra de sinais: + × + = +, + × − = −, − × − = +)
+   • Potenciação com base negativa
+
+🔢 1.5 NÚMEROS REAIS E IRRACIONAIS
+   • Raiz quadrada (exata e aproximada)
+   • Raiz cúbica e raízes n-ésimas
+   • Números irracionais (√2, √3, π)
+   • Potenciação: base inteira, fracionária, negativa
+   • Propriedades de potências: aᵐ × aⁿ = aᵐ⁺ⁿ, aᵐ ÷ aⁿ = aᵐ⁻ⁿ, (aᵐ)ⁿ = aᵐˣⁿ
+   • Potência com expoente zero (a⁰ = 1) e negativo (a⁻ⁿ = 1/aⁿ)
+   • Radiciação: propriedades e simplificação
+   • Racionalização de denominadores
+   • Notação científica (a × 10ⁿ, 1 ≤ a < 10)
+
+🔢 1.6 RAZÃO, PROPORÇÃO E PORCENTAGEM
+   • Razão entre grandezas (a/b)
+   • Proporção (a/b = c/d) e propriedade fundamental
+   • Grandezas diretamente proporcionais
+   • Grandezas inversamente proporcionais
+   • Regra de três simples (direta e inversa)
+   • Regra de três composta
+   • Porcentagem: cálculo, aumento percentual, desconto percentual
+   • Porcentagem de porcentagem (aumentos/descontos sucessivos)
+   • Juros simples: J = C × i × t
+   • Juros compostos: M = C × (1 + i)ᵗ
+   • Escalas em mapas e maquetes (escala = desenho / real)
+
+════════════════════════════════════════
+EIXO 2: GEOMETRIA
+════════════════════════════════════════
+
+📐 2.1 GEOMETRIA PLANA - CONCEITOS BÁSICOS
+   • Ponto, reta, semirreta, segmento de reta
+   • Retas paralelas, perpendiculares, concorrentes, coincidentes
+   • Posição relativa de retas no plano
+   • Ângulos: agudo (<90°), reto (=90°), obtuso (>90°), raso (=180°), completo (=360°)
+   • Ângulos complementares (soma = 90°) e suplementares (soma = 180°)
+   • Ângulos opostos pelo vértice (OPV - são iguais)
+   • Bissetriz (divide ângulo ao meio)
+   • Mediatriz (perpendicular no ponto médio)
+   • Ângulos formados por retas paralelas cortadas por transversal:
+     - Alternos internos (iguais), alternos externos (iguais)
+     - Correspondentes (iguais), colaterais internos (suplementares)
+
+📐 2.2 POLÍGONOS
+   • Classificação: triângulos, quadriláteros, pentágonos, hexágonos...
+   • Polígonos regulares (lados e ângulos iguais)
+   • Número de diagonais: n(n−3)/2
+   • Soma dos ângulos internos: (n−2) × 180°
+   • Soma dos ângulos externos: sempre 360°
+   • Ângulo interno de polígono regular: (n−2) × 180° / n
+
+📐 2.3 TRIÂNGULOS
+   • Classificação por lados: equilátero, isósceles, escaleno
+   • Classificação por ângulos: acutângulo, retângulo, obtusângulo
+   • Soma dos ângulos internos = 180°
+   • Ângulo externo = soma dos dois internos não adjacentes
+   • Desigualdade triangular: |a−b| < c < a+b
+   • Pontos notáveis: baricentro, incentro, circuncentro, ortocentro
+   • Congruência (LLL, LAL, ALA, LAAo)
+   • Semelhança (AA, LAL, LLL)
+   • Teorema de Pitágoras: a² = b² + c² (triângulo retângulo)
+   • Relações métricas no triângulo retângulo:
+     - Projeções dos catetos sobre a hipotenusa
+     - Altura relativa à hipotenusa: h² = m × n
+     - Cateto² = projeção × hipotenusa
+   • Trigonometria no triângulo retângulo:
+     - sen θ = cateto oposto / hipotenusa
+     - cos θ = cateto adjacente / hipotenusa
+     - tg θ = cateto oposto / cateto adjacente
+     - Ângulos notáveis: 30°, 45°, 60° (valores tabelados)
+   • Lei dos senos: a/sen A = b/sen B = c/sen C = 2R
+   • Lei dos cossenos: a² = b² + c² − 2bc × cos A
+
+📐 2.4 QUADRILÁTEROS
+   • Trapézio: um par de lados paralelos (bases)
+   • Paralelogramo: dois pares de lados paralelos
+     - Propriedades: lados opostos iguais, ângulos opostos iguais, diagonais se bissecionam
+   • Retângulo: paralelogramo com 4 ângulos retos
+   • Losango: paralelogramo com 4 lados iguais, diagonais perpendiculares
+   • Quadrado: retângulo + losango (caso especial)
+
+📐 2.5 CIRCUNFERÊNCIA E CÍRCULO
+   • Raio, diâmetro (d = 2r), corda, arco, setor circular, segmento circular
+   • Comprimento da circunferência: C = 2πr
+   • Área do círculo: A = πr²
+   • Ângulo central e ângulo inscrito
+   • Relação: ângulo inscrito = metade do ângulo central
+   • Posição relativa: ponto-circunferência, reta-circunferência, duas circunferências
+   • Potência de um ponto
+   • Área do setor circular: A = (θ/360°) × πr²
+   • Comprimento de arco: L = (θ/360°) × 2πr
+
+📐 2.6 ÁREAS E PERÍMETROS
+   • Perímetro: soma de todos os lados
+   • Área do quadrado: l²
+   • Área do retângulo: b × h
+   • Área do triângulo: (b × h) / 2
+   • Área do triângulo (Herão): √[s(s−a)(s−b)(s−c)], s = (a+b+c)/2
+   • Área do paralelogramo: b × h
+   • Área do trapézio: [(B + b) × h] / 2
+   • Área do losango: (D × d) / 2
+   • Área de figuras compostas (decomposição em figuras simples)
+   • Área do setor circular
+
+📐 2.7 GEOMETRIA ESPACIAL (3D)
+   • Sólidos geométricos: prismas, pirâmides, cilindro, cone, esfera, troncos
+   • Planificação de sólidos (saber montar e desmontar)
+   • Relação de Euler: V − A + F = 2
+
+   🔺 PIRÂMIDE (TERMINOLOGIA CRÍTICA):
+      - ARESTA LATERAL = segmento do vértice V a um VÉRTICE da base
+        → Cálculo: √(h² + (d/2)²), onde d = diagonal da base
+        → Para base quadrada: d = lado × √2, então d/2 = (lado × √2)/2
+      - APÓTEMA DA PIRÂMIDE = segmento do vértice V ao PONTO MÉDIO de uma aresta da base
+        → Cálculo: √(h² + apótema_base²)
+        → Para base quadrada: apótema_base = lado/2
+      - APÓTEMA DA BASE = distância do centro ao ponto médio do lado
+      - ALTURA = segmento perpendicular do vértice ao plano da base
+      - Área lateral = (perímetro_base × apótema_pirâmide) / 2
+      - Área total = Área lateral + Área da base
+      - Volume = (Área_base × h) / 3
+
+   🔵 CONE:
+      - GERATRIZ (g) = segmento do vértice à circunferência da base
+        → Cálculo: g = √(h² + r²)
+      - Área lateral = π × r × g
+      - Área total = π × r × g + π × r²
+      - Volume = (π × r² × h) / 3
+
+   🟢 PRISMA:
+      - ARESTA LATERAL = altura do prisma (perpendicular às bases em prismas retos)
+      - DIAGONAL DA FACE = √(aresta_lateral² + aresta_base²)
+      - DIAGONAL DO PRISMA = √(aresta_lateral² + diagonal_base²)
+      - Volume = Área_base × h
+      - Área lateral = perímetro_base × h
+      - Área total = Área lateral + 2 × Área_base
+
+   ⚫ CILINDRO:
+      - Área lateral = 2π × r × h
+      - Área total = 2π × r × h + 2π × r²
+      - Volume = π × r² × h
+
+   🟠 ESFERA:
+      - Área da superfície = 4π × r²
+      - Volume = (4/3) × π × r³
+
+   🔶 TRONCOS:
+      - Tronco de pirâmide: V = (h/3)(A₁ + A₂ + √(A₁×A₂))
+      - Tronco de cone: V = (πh/3)(R² + r² + Rr)
+
+📐 2.8 GEOMETRIA ANALÍTICA
+   • Plano cartesiano: eixos x e y, quadrantes, coordenadas (x, y)
+   • Distância entre dois pontos: d = √[(x₂−x₁)² + (y₂−y₁)²]
+   • Ponto médio: M = ((x₁+x₂)/2, (y₁+y₂)/2)
+   • Coeficiente angular (inclinação): m = (y₂−y₁)/(x₂−x₁) = tg θ
+   • Equação da reta:
+     - Forma reduzida: y = mx + n
+     - Forma geral: ax + by + c = 0
+   • Condição de paralelismo: m₁ = m₂
+   • Condição de perpendicularismo: m₁ × m₂ = −1
+   • Distância ponto-reta: d = |ax₀ + by₀ + c| / √(a² + b²)
+   • Equação da circunferência: (x−a)² + (y−b)² = r²
+   • Área de polígono por vértices (fórmula de Gauss/Shoelace)
+
+📐 2.9 TRANSFORMAÇÕES GEOMÉTRICAS
+   • Translação (deslocamento por vetor)
+   • Rotação (giro em torno de um centro, por um ângulo)
+   • Reflexão (simetria axial - espelhamento)
+   • Ampliação e redução (homotetia - fator de escala k)
+   • Simetria rotacional (ângulo mínimo de repetição)
+
+════════════════════════════════════════
+EIXO 3: GRANDEZAS E MEDIDAS
+════════════════════════════════════════
+
+📏 3.1 COMPRIMENTO
+   • Unidades: mm, cm, dm, m, dam, hm, km
+   • Conversões: cada degrau × 10 ou ÷ 10
+   • Instrumento: régua, trena, hodômetro
+
+📏 3.2 MASSA
+   • Unidades: mg, g, kg, t (tonelada)
+   • Conversões: 1 kg = 1000 g, 1 t = 1000 kg
+
+📏 3.3 CAPACIDADE E VOLUME
+   • Capacidade: mL, cL, dL, L, daL, hL, kL
+   • Volume: mm³, cm³, dm³, m³
+   • Relação fundamental: 1 dm³ = 1 L = 1000 cm³ = 1000 mL
+   • 1 m³ = 1000 L
+
+📏 3.4 TEMPO
+   • Unidades: segundo, minuto, hora, dia, semana, mês, ano
+   • Conversões: 1h = 60min = 3600s, 1 dia = 24h
+   • Cálculo de duração (hora final − hora inicial)
+   • Sistema horário de 12 horas e 24 horas
+
+📏 3.5 TEMPERATURA
+   • Escalas: Celsius (°C), Fahrenheit (°F), Kelvin (K)
+   • Conversão: °F = 1,8 × °C + 32, K = °C + 273,15
+
+📏 3.6 ÁREA
+   • Unidades: mm², cm², dm², m², dam², hm², km²
+   • Conversões: cada degrau × 100 ou ÷ 100
+   • Unidades agrárias: 1 hectare (ha) = 10.000 m², 1 are = 100 m²
+
+📏 3.7 ÂNGULOS
+   • Graus (°), minutos ('), segundos ('')
+   • Conversões: 1° = 60', 1' = 60''
+   • Radianos: π rad = 180°
+
+📏 3.8 VELOCIDADE
+   • m/s e km/h
+   • Conversão: km/h ÷ 3,6 = m/s, m/s × 3,6 = km/h
+   • Velocidade média: v = d/t
+
+════════════════════════════════════════
+EIXO 4: ESTATÍSTICA E PROBABILIDADE
+════════════════════════════════════════
+
+📊 4.1 ESTATÍSTICA DESCRITIVA
+   • Coleta, organização e classificação de dados
+   • Variáveis qualitativas (nominais, ordinais) e quantitativas (discretas, contínuas)
+   • Tabelas simples e de dupla entrada
+   • Frequência absoluta, relativa e acumulada
+   • Gráficos:
+     - Barras (horizontais) e colunas (verticais)
+     - Setores (pizza) → representam proporções, não valores absolutos
+     - Linhas → tendências ao longo do tempo
+     - Histograma → dados contínuos em intervalos/classes
+     - Infográficos → combinação de textos, números e imagens
+   • Leitura e interpretação crítica de gráficos
+   • Identificação de distorções e manipulações gráficas
+
+📊 4.2 MEDIDAS DE TENDÊNCIA CENTRAL
+   • Média aritmética simples: soma dos valores / quantidade
+   • Média aritmética ponderada: Σ(valor × peso) / Σ(pesos)
+   • Mediana: valor central (dados ordenados)
+     - N ímpar: valor do meio
+     - N par: média dos dois centrais
+   • Moda: valor mais frequente (unimodal, bimodal, amodal)
+
+📊 4.3 MEDIDAS DE DISPERSÃO
+   • Amplitude: maior valor − menor valor
+   • Desvio médio
+   • Variância: Σ(xᵢ − x̄)² / n
+   • Desvio padrão: √variância
+   • Interpretação: quanto MAIOR o desvio padrão, MAIS dispersos os dados
+
+📊 4.4 PROBABILIDADE
+   • Espaço amostral (S): conjunto de todos os resultados possíveis
+   • Evento: subconjunto do espaço amostral
+   • Evento certo (P=1), impossível (P=0), provável (0<P<1)
+   • Probabilidade: P(A) = casos favoráveis / casos totais
+   • Probabilidade complementar: P(Ā) = 1 − P(A)
+   • Eventos independentes: P(A∩B) = P(A) × P(B)
+   • Eventos dependentes: P(A∩B) = P(A) × P(B|A)
+   • Eventos mutuamente exclusivos: P(A∪B) = P(A) + P(B)
+   • Eventos não exclusivos: P(A∪B) = P(A) + P(B) − P(A∩B)
+
+📊 4.5 ANÁLISE COMBINATÓRIA
+   • Princípio fundamental da contagem (multiplicativo)
+   • Princípio aditivo
+   • Permutação simples: Pₙ = n!
+   • Permutação com repetição: Pₙ = n! / (n₁! × n₂! × ...)
+   • Arranjo simples: Aₙ,ₚ = n! / (n−p)!
+   • Combinação simples: Cₙ,ₚ = n! / [p! × (n−p)!]
+   • Diferença: Arranjo (IMPORTA a ordem) vs Combinação (NÃO importa)
+
+════════════════════════════════════════
+EIXO 5: ÁLGEBRA
+════════════════════════════════════════
+
+🔣 5.1 EXPRESSÕES ALGÉBRICAS
+   • Variáveis e incógnitas
+   • Monômios: coeficiente × parte literal (ex: 3x², −5ab)
+   • Polinômios: soma de monômios
+   • Grau de um monômio e de um polinômio
+   • Valor numérico de expressões algébricas
+   • Operações com monômios: adição (termos semelhantes), multiplicação, divisão
+   • Operações com polinômios: adição, subtração, multiplicação
+   • Produtos notáveis:
+     - (a+b)² = a² + 2ab + b²
+     - (a−b)² = a² − 2ab + b²
+     - (a+b)(a−b) = a² − b²
+     - (a+b)³ = a³ + 3a²b + 3ab² + b³
+   • Fatoração:
+     - Fator comum em evidência
+     - Agrupamento
+     - Trinômio quadrado perfeito
+     - Diferença de dois quadrados
+     - Soma/diferença de dois cubos
+
+🔣 5.2 EQUAÇÕES E INEQUAÇÕES
+   • Equação do 1º grau: ax + b = 0 → x = −b/a
+   • Equação do 2º grau: ax² + bx + c = 0
+     - Fórmula de Bhaskara: x = (−b ± √Δ) / 2a, Δ = b² − 4ac
+     - Soma das raízes: x₁ + x₂ = −b/a
+     - Produto das raízes: x₁ × x₂ = c/a
+     - Δ > 0: duas raízes reais distintas
+     - Δ = 0: duas raízes reais iguais
+     - Δ < 0: sem raízes reais
+   • Sistemas de equações do 1º grau (2 incógnitas):
+     - Métodos: substituição, adição, comparação, gráfico
+   • Inequações do 1º grau: ax + b > 0 (inverter sinal ao multiplicar por negativo)
+   • Inequações do 2º grau (estudo do sinal da parábola)
+   • Equações irracionais (elevar ao quadrado, VERIFICAR soluções)
+   • Equações modulares: |ax + b| = c
+
+🔣 5.3 FUNÇÕES
+   • Conceito: relação onde cada x tem EXATAMENTE um y
+   • Domínio, contradomínio e imagem
+   • Gráfico de funções no plano cartesiano
+   • Função afim (1º grau): f(x) = ax + b
+     - a > 0: crescente, a < 0: decrescente
+     - Raiz (zero): x = −b/a
+     - Gráfico: reta
+   • Função quadrática (2º grau): f(x) = ax² + bx + c
+     - a > 0: concavidade para cima (∪), a < 0: para baixo (∩)
+     - Vértice: xᵥ = −b/2a, yᵥ = −Δ/4a
+     - Gráfico: parábola
+   • Função exponencial: f(x) = aˣ (a > 0, a ≠ 1)
+     - a > 1: crescente, 0 < a < 1: decrescente
+   • Função logarítmica: f(x) = log_a(x) (inversa da exponencial)
+     - Propriedades: log(m×n), log(m/n), log(mⁿ)
+     - Mudança de base
+   • Função modular: f(x) = |x| (gráfico em V)
+   • Composição: (f ∘ g)(x) = f(g(x))
+   • Função inversa: f⁻¹ (trocar x ↔ y e isolar y)
+   • Função par: f(−x) = f(x), simétrica em relação ao eixo y
+   • Função ímpar: f(−x) = −f(x), simétrica em relação à origem
+
+🔣 5.4 SEQUÊNCIAS E PROGRESSÕES
+   • Identificação de padrões numéricos e figurais
+   • Sequências recursivas (cada termo depende do anterior)
+   • Progressão Aritmética (PA):
+     - Razão: r = aₙ − aₙ₋₁ (constante)
+     - Termo geral: aₙ = a₁ + (n−1)r
+     - Soma dos n termos: Sₙ = n(a₁ + aₙ)/2
+   • Progressão Geométrica (PG):
+     - Razão: q = aₙ / aₙ₋₁ (constante)
+     - Termo geral: aₙ = a₁ × qⁿ⁻¹
+     - Soma dos n termos: Sₙ = a₁(qⁿ − 1)/(q − 1)
+     - Soma infinita (|q| < 1): S∞ = a₁/(1 − q)
+
+🔣 5.5 MATRIZES E DETERMINANTES
+   • Tipos: quadrada, identidade, nula, transposta, diagonal
+   • Operações: adição, subtração, multiplicação por escalar
+   • Multiplicação de matrizes (linhas × colunas, A[m×n] × B[n×p])
+   • Determinante 2×2: ad − bc
+   • Determinante 3×3: Regra de Sarrus
+   • Regra de Cramer (sistemas lineares via determinantes)
+   • Matriz inversa
+
+════════════════════════════════════════
+EIXO 6: HABILIDADES TRANSVERSAIS
+════════════════════════════════════════
+
+🧩 6.1 RESOLUÇÃO DE PROBLEMAS
+   • Interpretar situações-problema do cotidiano
+   • Modelagem matemática: traduzir texto → expressão/equação
+   • Problemas com múltiplas etapas e operações combinadas
+   • Problemas envolvendo dinheiro, troco, compras, orçamento
+   • Problemas envolvendo distância, tempo e velocidade
+   • Problemas de lógica e raciocínio dedutivo
+   • Problemas interdisciplinares (ciências, geografia, economia)
+   • Estimativa e cálculo mental
+   • Verificação e validação de resultados
+
+🧩 6.2 LEITURA E INTERPRETAÇÃO DE DADOS
+   • Extrair informações de tabelas com múltiplas variáveis
+   • Interpretar gráficos em contexto real
+   • Comparar dados de fontes diferentes
+   • Identificar tendências e padrões
+   • Calcular com dados extraídos (porcentagem, média, etc.)
+   • Avaliar a adequação de representações gráficas
+
+🧩 6.3 ARGUMENTAÇÃO E JUSTIFICATIVA
+   • Justificar procedimentos de resolução
+   • Identificar erros em raciocínios apresentados
+   • Comparar estratégias de resolução
+   • Generalizar padrões observados
+   • Formular conjecturas e testá-las
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ INSTRUÇÃO DE USO: Ao receber uma habilidade/descritor para gerar questões,
+consulte esta referência para garantir que:
+1. Usa a TERMINOLOGIA CORRETA do domínio matemático
+2. Aplica as FÓRMULAS CORRETAS para cálculos
+3. Os VALORES numéricos são COERENTES com a resposta
+4. Os DISTRATORES representam ERROS COMUNS naquela habilidade
+5. O NÍVEL de complexidade é adequado ao ANO ESCOLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════
+EIXO 7: MAPEAMENTO DESCRITOR SAEB → EIXO TEMÁTICO
+════════════════════════════════════════
+
+   | Descritor | Eixo Temático             | Habilidade Central                        |
+   |-----------|---------------------------|-------------------------------------------|
+   | D1        | Geometria                 | Localização e movimentação                |
+   | D2        | Geometria                 | Propriedades de figuras 3D                |
+   | D3        | Geometria / Álgebra       | Regularidades em sequências               |
+   | D4        | Geometria                 | Conservação/modificação de medidas        |
+   | D5        | Números e Operações       | Situação-problema com naturais            |
+   | D6        | Números e Operações       | Situação-problema com racionais           |
+   | D7        | Números e Operações       | Significados das frações                  |
+   | D8        | Números e Operações       | Porcentagem                               |
+   | D9        | Grandezas e Medidas       | Medidas de tempo                          |
+   | D10       | Grandezas e Medidas       | Medidas de grandeza                       |
+
+════════════════════════════════════════
+EIXO 8: REGRAS DE CONSTRUÇÃO POR DESCRITOR — MATEMÁTICA
+════════════════════════════════════════
+
+📐 D1 — LOCALIZAÇÃO E MOVIMENTAÇÃO DE OBJETO
+   REGRAS:
+   ✅ Use malhas quadriculadas, mapas, croquis com referências claras
+   ✅ Instrua deslocamentos usando: acima/abaixo, direita/esquerda, N/S/L/O
+   ✅ Para 2º-5º ano: malha simples com até 6×6 posições
+   ✅ Para 9º ano: plano cartesiano com coordenadas negativas
+   DISTRATORES TÍPICOS:
+   • Confusão direita ↔ esquerda
+   • Inversão de coordenadas (x,y) → (y,x)
+   • Erro de contagem de casas na malha
+   • Confusão entre sentido do deslocamento e posição final
+
+📐 D2 — PROPRIEDADES DE FIGURAS TRIDIMENSIONAIS
+   REGRAS:
+   ✅ Use figuras 3D reais: caixas, embalagens, construções
+   ✅ Peça identificação de faces, arestas, vértices
+   ✅ Associe sólido → planificação (e vice-versa)
+   DISTRATORES TÍPICOS:
+   • Confundir faces com arestas
+   • Confundir prisma com pirâmide (ex: 6 faces vs 5 faces)
+   • Planificação errada (inverter base com face lateral)
+   • Erro na contagem de vértices
+
+📐 D3 — REGULARIDADES EM SEQUÊNCIAS NUMÉRICAS
+   REGRAS:
+   ✅ Use sequências com padrão claro (PA, PG, ou padrão visual)
+   ✅ Peça o próximo termo OU a regra de formação
+   ✅ Para anos iniciais: sequências de +2, +3, ×2, etc.
+   ✅ Para 9º ano: expressão algébrica do termo geral
+   DISTRATORES TÍPICOS:
+   • Razão errada (somar quando deveria multiplicar)
+   • Confusão entre termo e posição (aₙ vs n)
+   • Erro ao aplicar a regra no último passo
+
+📐 D5 — SITUAÇÃO-PROBLEMA COM NÚMEROS NATURAIS
+   REGRAS:
+   ✅ Contextualize: compras, distâncias, quantidades do dia a dia
+   ✅ Use linguagem clara sem ambiguidade sobre a operação
+   ✅ Os valores devem ser realistas para o contexto
+   ❌ NÃO use problemas com "pegadinhas" linguísticas
+   DISTRATORES TÍPICOS:
+   • Resultado de operação errada (soma em vez de subtração)
+   • Erro na ordem das operações (precedência)
+   • Esquecimento de uma etapa em problemas de múltiplos passos
+   • Uso do resto da divisão como resposta (quando deveria ser quociente+1)
+
+📐 D6 — SITUAÇÃO-PROBLEMA COM NÚMEROS RACIONAIS
+   REGRAS:
+   ✅ Use contextos com dinheiro, medidas, receitas culinárias
+   ✅ Especifique se trabalha com frações ou decimais no contexto
+   ✅ Para 5º ano: decimais até centésimos, frações simples (1/2, 1/4, 3/4)
+   ✅ Para 9º ano: operações combinadas, dízimas, conversões
+   DISTRATORES TÍPICOS:
+   • Erro ao converter fração ↔ decimal
+   • Operar denominadores diferentes sem MMC
+   • Confusão na vírgula decimal (trocar décimos por centésimos)
+   • Multiplicar denominadores na soma (erro clássico)
+
+📐 D7 — SIGNIFICADOS DAS FRAÇÕES
+   REGRAS:
+   ✅ Explore os TRÊS significados: parte-todo, quociente, razão
+   ✅ Use representações visuais: pizza, barra, reta numérica
+   ✅ Para 5º ano: parte-todo com figuras divididas
+   ✅ Para 9º ano: fração como porcentagem, como probabilidade
+   DISTRATORES TÍPICOS:
+   • Confundir numerador com denominador
+   • Fração imprópria interpretada como própria
+   • Erro ao representar na reta numérica (posição errada)
+   • Confusão entre fração equivalente e fração maior
+
+📐 D8 — PORCENTAGEM
+   REGRAS:
+   ✅ Contextualize: descontos, juros, estatísticas, pesquisas
+   ✅ Para 5º ano: cálculos diretos (10%, 25%, 50%, 75% de um valor)
+   ✅ Para 9º ano: aumentos/descontos sucessivos, juros compostos
+   ✅ Os percentuais devem somar valores coerentes
+   DISTRATORES TÍPICOS:
+   • Aplicar porcentagem sobre valor já alterado (erro em descontos sucessivos)
+   • Confundir aumento de 20% com valor de 20% (20% de 100 = 20, não 120)
+   • Erro ao calcular porcentagem de porcentagem
+   • Confusão entre porcentagem e fração (25% ≠ 1/5)
+
+📐 D9 — MEDIDAS DE TEMPO
+   REGRAS:
+   ✅ Use horários, duração de eventos, calendários, fusos horários
+   ✅ Atenção: tempo NÃO é decimal (1h30min ≠ 1,30h → 1,5h)
+   ✅ Para 2º-5º ano: horas inteiras, meia hora, calendário
+   ✅ Para 9º ano: fusos horários, velocidade média com tempo
+   DISTRATORES TÍPICOS:
+   • Tratar 1h30 como 1,30 horas (sistema decimal vs sexagesimal)
+   • Erro na conversão minutos → horas (dividir por 100 em vez de 60)
+   • Confusão AM/PM em sistema de 12 horas
+   • Erro na contagem de dias entre datas (incluir ou não data inicial)
+
+📐 D10 — MEDIDAS DE GRANDEZA (COMPRIMENTO, MASSA, CAPACIDADE)
+   REGRAS:
+   ✅ Use conversões: km↔m, kg↔g, L↔mL, m²↔cm²
+   ✅ Contextualize: receitas, embalagens, distâncias
+   ✅ Para 5º ano: conversões simples (×10, ÷10, ×1000)
+   ✅ Para 9º ano: conversões compostas, unidades de área e volume
+   DISTRATORES TÍPICOS:
+   • Multiplicar quando deveria dividir (mm → cm: ÷10, não ×10)
+   • Confusão entre unidades de área (m² ↔ cm²: fator 10.000, não 100)
+   • Usar fator errado para volume (m³ ↔ dm³: ×1000)
+   • Confusão entre capacidade e volume (1L = 1dm³, não 1m³)
+
+════════════════════════════════════════
+EIXO 9: ORIENTAÇÕES SEAMA — CONTEXTUALIZAÇÃO MARANHENSE
+════════════════════════════════════════
+
+   O SEAMA segue a mesma matriz do SAEB com ênfase em contextos regionais:
+
+   ✅ CONTEXTUALIZE com dados e situações do Maranhão:
+      • Distâncias: São Luís–Imperatriz (630 km), São Luís–Barreirinhas (250 km)
+      • Custos: preço do camarão seco, arroz de cuxá, passagem de barco
+      • Festas: custo de ingresso do Bumba-meu-boi, público nas festas juninas
+      • Turismo: área dos Lençóis Maranhenses (155.000 ha), visitantes por ano
+      • Agricultura: produção de soja, babaçu, mandioca por hectare
+      • Dados IBGE: população das cidades maranhenses, IDH, PIB per capita
+      • Escola: número de alunos por turma, notas do IDEB estadual
+
+   ✅ Use unidades e moeda brasileira (R$, km, kg, litros)
+   ✅ Os dados podem ser fictícios mas devem ser PLAUSÍVEIS
+   ✅ Indique: "Dados fictícios para fins didáticos" quando inventar valores
+
+   ❌ NÃO force contextualização em problemas abstratos (equações, geometria pura)
+   ❌ NÃO use dados defasados de censos anteriores como se fossem atuais
+
+════════════════════════════════════════
+EIXO 10: CHECKLIST DE QUALIDADE FINAL — MATEMÁTICA
+════════════════════════════════════════
+
+   Antes de finalizar CADA questão de Matemática, verifique:
+
+   □ 1. O cálculo está CORRETO? (refaça a conta mentalmente)
+   □ 2. A fórmula aplicada é a CORRETA para a grandeza pedida?
+   □ 3. As unidades estão CONSISTENTES (não misturando cm com m)?
+   □ 4. Os valores numéricos são REALISTAS para o contexto?
+   □ 5. Os distratores representam ERROS REAIS de cálculo/raciocínio?
+   □ 6. As alternativas são homogêneas em formato (todas em cm, todas em R$)?
+   □ 7. A resposta correta NÃO é a mais "bonita" (número redondo) — ou pelo
+        menos os distratores também são "bonitos"
+   □ 8. O nível de complexidade é adequado ao ANO ESCOLAR?
+   □ 9. Se usou gráfico/figura: os dados da imagem batem com a resposta?
+   □ 10. O enunciado é claro sobre O QUE se pede (área? perímetro? volume?)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
