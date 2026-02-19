@@ -333,19 +333,20 @@ async def regenerate_image(request: ImageRegenerationRequest):
             existing_image_base64=request.existing_image_base64
         )
         
-        # 2. Se sync_distractors está ativo, analisa e atualiza distratores
+        # 2. Se sync_distractors está ativo, valida imagem vs alternativas
         if request.sync_distractors and request.question.alternatives:
             try:
                 from app.services.agents.distractor_sync_agent import get_distractor_sync_agent
-                
-                logger.info("🔄 Sincronizando distratores com a nova imagem...")
-                sync_agent = get_distractor_sync_agent()
-                sync_result = sync_agent.sync_distractors(
-                    request.question,
-                    request.custom_instructions
-                )
-                
                 from app.schemas.image_response import UpdatedAlternative
+                
+                logger.info("🔍 Validando imagem gerada vs alternativas (multimodal)...")
+                sync_agent = get_distractor_sync_agent()
+                
+                # Usa validação multimodal: envia a imagem real para análise
+                sync_result = sync_agent.validate_with_image(
+                    request.question,
+                    image_result.image_base64
+                )
                 
                 return ImageResponse(
                     image_base64=image_result.image_base64,
@@ -353,11 +354,11 @@ async def regenerate_image(request: ImageRegenerationRequest):
                     alternatives=[
                         UpdatedAlternative(**alt) for alt in sync_result["alternatives"]
                     ],
-                    distractors_updated=sync_result["distractors_updated"]
+                    distractors_updated=sync_result["distractors_updated"],
+                    correct_answer=sync_result.get("correct_answer", request.question.correct_answer)
                 )
             except Exception as sync_error:
-                logger.warning(f"⚠️ Erro na sincronização de distratores (imagem foi gerada com sucesso): {sync_error}")
-                # Retorna a imagem mesmo se a sincronização falhar
+                logger.warning(f"⚠️ Erro na validação multimodal (imagem foi gerada com sucesso): {sync_error}")
                 return image_result
         
         return image_result
