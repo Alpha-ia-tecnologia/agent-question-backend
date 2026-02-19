@@ -137,13 +137,59 @@ MULTIMODAL_VALIDATION_PROMPT = """Você é um especialista em avaliação educac
 
 3. Os DISTRATORES (explicações) fazem sentido com o conteúdo real da imagem?
 
-REGRAS DE CORREÇÃO:
-- Se uma alternativa INCORRETA menciona algo que EXISTE na imagem → REESCREVA-A para mencionar algo que NÃO existe na imagem, mantendo o mesmo tipo de erro pedagógico
-- Se a alternativa CORRETA menciona algo que NÃO existe na imagem → há um problema grave. Mude a resposta correta se necessário.
-- Atualize os distratores para refletir o conteúdo real da imagem
-- Mantenha o nível pedagógico e o estilo original
-- APENAS a alternativa CORRETA deve referenciar elementos visuais REAIS da imagem
-- Alternativas INCORRETAS devem referenciar elementos que NÃO existem na imagem
+═══════════════════════════════════════════════════════════════════════════════
+🔄 NÍVEL DE CORREÇÃO — DECISÃO AUTOMÁTICA
+═══════════════════════════════════════════════════════════════════════════════
+
+Avalie o grau de incompatibilidade entre as alternativas e a imagem:
+
+📗 NÍVEL 1 — AJUSTE LEVE (1-2 alternativas incorretas referenciam algo que existe):
+   → REESCREVA apenas as alternativas problemáticas
+   → Mantenha o estilo e a correta original
+   → "alternatives_recreated": false
+
+📙 NÍVEL 2 — REESCRITA MODERADA (a correta não bate com a imagem, ou 3+ alternativas incoerentes):
+   → REESCREVA as alternativas que não batem
+   → Pode mudar a resposta correta se necessário
+   → "alternatives_recreated": false
+
+📕 NÍVEL 3 — RECRIAÇÃO TOTAL (NENHUMA alternativa se relaciona com a imagem):
+   → CRIE 4 ALTERNATIVAS COMPLETAMENTE NOVAS baseadas no conteúdo REAL da imagem
+   → Use a metodologia de distratores abaixo
+   → "alternatives_recreated": true
+
+═══════════════════════════════════════════════════════════════════════════════
+📚 METODOLOGIA DE DISTRATORES (OBRIGATÓRIO ao criar/reescrever alternativas)
+═══════════════════════════════════════════════════════════════════════════════
+
+📌 CONCEITO: Distrator NÃO é resposta "errada qualquer". É uma alternativa
+   PLAUSÍVEL que representa um ERRO CONCEITUAL REAL que alunos cometem.
+
+🎯 TAXONOMIA DE ERROS (cada distrator deve se basear em um destes):
+   * Leitura superficial — confunde palavras-chave ou termos parecidos
+   * Extrapolação indevida — informação que parece lógica mas NÃO está no texto/imagem
+   * Redução — informação verdadeira mas PARCIAL/INCOMPLETA
+   * Contradição sutil — inverte ou distorce o sentido
+   * Foco no detalhe irrelevante — destaca informação real mas não responde à pergunta
+   * Erro de cálculo/procedimento — aplica fórmula/operação errada (para matemática)
+   * Confusão de conceitos — troca conceitos parecidos
+
+✅ REGRAS OBRIGATÓRIAS:
+   1. PLAUSIBILIDADE: Cada distrator deve parecer correto para quem NÃO domina a habilidade
+   2. HOMOGENEIDADE: Mesma estrutura gramatical e tamanho similar (±20%) ao gabarito
+   3. COERÊNCIA: Todos devem ser coerentes com o contexto da questão e do enunciado
+   4. O gabarito NÃO deve ser a alternativa mais longa ou mais detalhada
+   5. APENAS a correta referencia elementos REAIS da imagem
+   6. Incorretas referenciam elementos que NÃO existem na imagem
+
+❌ PROIBIDO:
+   - Alternativas absurdas, humorísticas ou obviamente erradas
+   - "Nenhuma das alternativas anteriores"
+   - Alternativas que destoem gramaticalmente das demais
+
+CAMPO "distractor" (OBRIGATÓRIO em cada alternativa):
+   * Para INCORRETAS: explique qual ERRO CONCEITUAL o aluno comete ao escolhê-la
+   * Para a CORRETA: explique por que é a resposta certa com referência à imagem
 
 ═══════════════════════════════════════════════════════════════════════════════
 📝 FORMATO DE RESPOSTA (JSON)
@@ -153,11 +199,12 @@ Responda EXATAMENTE neste formato JSON:
 
 {{
     "correct_answer": "C",
+    "alternatives_recreated": false,
     "alternatives": [
         {{
             "letter": "A",
-            "text": "texto da alternativa (corrigido se necessário)",
-            "distractor": "distrator atualizado",
+            "text": "texto da alternativa (corrigido ou novo se recriadas)",
+            "distractor": "distrator atualizado — explica o erro conceitual",
             "modified": true ou false,
             "text_modified": true ou false
         }},
@@ -167,6 +214,7 @@ Responda EXATAMENTE neste formato JSON:
 }}
 
 CAMPO "correct_answer": letra da alternativa correta (pode ser diferente da original se a imagem mudou)
+CAMPO "alternatives_recreated": true SOMENTE se TODAS as alternativas foram criadas do zero (NÍVEL 3)
 CAMPO "text_modified": true SOMENTE se o TEXTO da alternativa foi alterado (não o distrator)
 CAMPO "modified": true se QUALQUER coisa foi alterada (texto ou distrator)
 Retorne TODAS as alternativas, mesmo as não modificadas.
@@ -398,14 +446,17 @@ class DistractorSyncAgent:
             
             alternatives = result.get("alternatives", [])
             new_correct = result.get("correct_answer", question.correct_answer)
+            alternatives_recreated = result.get("alternatives_recreated", False)
             any_modified = any(alt.get("modified", False) for alt in alternatives)
             any_text_modified = any(alt.get("text_modified", False) for alt in alternatives)
             correct_changed = new_correct != question.correct_answer
             
             changes_desc = []
-            if any_text_modified:
+            if alternatives_recreated:
+                changes_desc.append("🆕 TODAS as alternativas recriadas do zero")
+            elif any_text_modified:
                 changes_desc.append("textos de alternativas")
-            if any_modified and not any_text_modified:
+            if any_modified and not any_text_modified and not alternatives_recreated:
                 changes_desc.append("distratores")
             if correct_changed:
                 changes_desc.append(f"resposta correta ({question.correct_answer}→{new_correct})")
@@ -417,7 +468,8 @@ class DistractorSyncAgent:
             
             return {
                 "alternatives": alternatives,
-                "distractors_updated": any_modified or correct_changed,
+                "distractors_updated": any_modified or correct_changed or alternatives_recreated,
+                "alternatives_recreated": alternatives_recreated,
                 "correct_answer": new_correct,
                 "correct_answer_changed": correct_changed,
                 "summary": result.get("summary", "")
