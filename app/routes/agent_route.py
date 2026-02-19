@@ -7,6 +7,7 @@ Endpoints para geração de questões educacionais e imagens ilustrativas.
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
+from typing import Optional
 from http import HTTPStatus
 import logging
 from sqlalchemy.orm import Session
@@ -300,10 +301,11 @@ async def generate_image(question: QuestionSchema, session: Session = Depends(ge
 
 
 class ImageRegenerationRequest(BaseModel):
-    """Schema para requisição de regeneração de imagem com instruções personalizadas."""
+    """Schema para requisição de regeneração/edição de imagem com instruções personalizadas."""
     question: QuestionSchema
     custom_instructions: str = Field(description="Instruções personalizadas para correção/melhoria da imagem")
     sync_distractors: bool = Field(default=True, description="Se True, analisa e atualiza distratores após regenerar a imagem")
+    existing_image_base64: Optional[str] = Field(default=None, description="Imagem atual em base64 para edição (se não fornecida, gera do zero)")
 
 
 @agent_router.post(
@@ -324,10 +326,11 @@ async def regenerate_image(request: ImageRegenerationRequest):
         logger.info(f"Regenerando imagem para questão #{request.question.question_number}")
         logger.info(f"Instruções: {request.custom_instructions[:100]}...")
         
-        # 1. Gera a nova imagem
+        # 1. Edita ou gera a imagem
         image_result = generate_image_agent_service.generate_image_with_instructions(
             request.question, 
-            request.custom_instructions
+            request.custom_instructions,
+            existing_image_base64=request.existing_image_base64
         )
         
         # 2. Se sync_distractors está ativo, analisa e atualiza distratores

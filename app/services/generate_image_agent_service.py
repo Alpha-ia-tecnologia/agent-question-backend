@@ -297,35 +297,66 @@ Crie agora uma ilustração educacional de alta qualidade e COERENTE com a respo
     def generate_image_with_instructions(
         self, 
         question: QuestionSchema, 
-        custom_instructions: str
+        custom_instructions: str,
+        existing_image_base64: str = None
     ) -> ImageResponse:
         """
-        Gera/Regenera uma imagem com instruções personalizadas de correção.
+        Edita ou regenera uma imagem com instruções personalizadas de correção.
+        
+        Se existing_image_base64 for fornecido, edita a imagem existente.
+        Caso contrário, gera uma nova imagem do zero.
         
         Args:
             question: Questão educacional para ilustrar
             custom_instructions: Instruções do usuário para correção/melhoria
+            existing_image_base64: Imagem atual em base64 (para edição)
             
         Returns:
             ImageResponse contendo a imagem em Base64
         """
-        # Constrói prompt base + instruções personalizadas
-        base_prompt = self._build_image_prompt(question)
-        
-        enhanced_prompt = f"""{base_prompt}
+        try:
+            if existing_image_base64:
+                # ===== MODO EDIÇÃO: envia imagem existente + instruções =====
+                logger.info(f"✏️ Editando imagem existente com instruções usando {self.model}...")
+                
+                # Decodifica a imagem base64 para bytes
+                image_bytes_input = base64.b64decode(existing_image_base64)
+                
+                # Cria o Part com os bytes da imagem
+                image_part = types.Part.from_bytes(
+                    data=image_bytes_input,
+                    mime_type="image/png"
+                )
+                
+                edit_prompt = f"""Edite esta imagem aplicando as seguintes correções:
+
+{custom_instructions}
+
+REGRAS IMPORTANTES:
+- Mantenha o estilo visual e a estética da imagem original
+- Aplique APENAS as correções solicitadas
+- NÃO altere elementos que não foram mencionados nas instruções
+- NÃO revele a resposta da questão na imagem
+- Mantenha textos em português
+- Mantenha o estilo educativo da imagem"""
+                
+                # Envia imagem + prompt de edição ao Gemini
+                contents = [image_part, edit_prompt]
+            else:
+                # ===== MODO GERAÇÃO: cria imagem nova do zero =====
+                logger.info(f"🔄 Gerando nova imagem com instruções usando {self.model}...")
+                
+                base_prompt = self._build_image_prompt(question)
+                contents = f"""{base_prompt}
 
 INSTRUÇÕES ADICIONAIS DO USUÁRIO (PRIORIDADE MÁXIMA):
 {custom_instructions}
 
-LEMBRE-SE: Aplique as correções solicitadas pelo usuário mantendo as regras básicas (sem resposta na imagem, português, estilo educativo).
-"""
-        
-        try:
-            logger.info(f"🔄 Regenerando imagem com instruções personalizadas usando {self.model}...")
-            
+LEMBRE-SE: Aplique as correções solicitadas pelo usuário mantendo as regras básicas (sem resposta na imagem, português, estilo educativo)."""
+
             response = self.client.models.generate_content(
                 model=self.model,
-                contents=enhanced_prompt,
+                contents=contents,
                 config=types.GenerateContentConfig(
                     response_modalities=["IMAGE"],
                     image_config=types.ImageConfig(
@@ -336,20 +367,18 @@ LEMBRE-SE: Aplique as correções solicitadas pelo usuário mantendo as regras b
             
             for part in response.parts:
                 if part.inline_data is not None:
-                    # Obtém os bytes da imagem diretamente
                     image_bytes = part.inline_data.data
-                    
-                    # Converte para base64
                     image_base64 = base64.b64encode(image_bytes).decode('utf-8')
                     
-                    logger.info(f"✅ Imagem regenerada com sucesso!")
+                    mode = "editada" if existing_image_base64 else "regenerada"
+                    logger.info(f"✅ Imagem {mode} com sucesso!")
                     return ImageResponse(image_base64=image_base64)
             
             raise ImageGenerationError("Resposta não contém dados de imagem.")
                 
         except Exception as e:
-            logger.error(f"❌ Falha na regeneração: {e}")
-            raise ImageGenerationError(f"Falha ao regenerar imagem: {e}") from e
+            logger.error(f"❌ Falha na regeneração/edição: {e}")
+            raise ImageGenerationError(f"Falha ao processar imagem: {e}") from e
 
     def set_aspect_ratio(self, aspect_ratio: str) -> None:
         """
