@@ -45,11 +45,34 @@ IMAGE_PROMPT_ENGINEER_TEMPLATE = """Você é um Engenheiro de Prompts especializ
 
 ✅ ALTERNATIVA CORRETA: {correct_answer}
 
+📋 TODAS AS ALTERNATIVAS (incluindo incorretas):
+{all_alternatives}
+
 💡 EXPLICAÇÃO DA RESPOSTA:
 {explanation}
 
 📋 DADOS ESTRUTURADOS PARA A IMAGEM:
 {image_data}
+
+═══════════════════════════════════════════════════════════════════════════════
+🔴 REGRA CRÍTICA DE COERÊNCIA IMAGEM ↔ ALTERNATIVAS
+═══════════════════════════════════════════════════════════════════════════════
+
+TODOS os elementos visuais mencionados nas alternativas (corretas E incorretas)
+DEVEM estar presentes na imagem gerada.
+
+Por exemplo:
+- Se uma alternativa diz "há um gráfico mostrando X" → o gráfico DEVE existir na imagem
+- Se uma alternativa diz "uma pessoa segura um copo" → essa pessoa DEVE aparecer
+- Se uma alternativa diz "um logotipo aparece no canto" → o logotipo DEVE estar lá
+- Se uma alternativa menciona "cores vibrantes" → o cartaz DEVE ter cores vibrantes
+
+Isso é ESSENCIAL porque o aluno precisa OBSERVAR a imagem para decidir qual
+alternativa é correta. Se um elemento mencionado não existir na imagem, a
+questão fica incoerente e o aluno não consegue avaliar corretamente.
+
+ANALISE cada alternativa e EXTRAIA todos os elementos visuais mencionados.
+Seu prompt de imagem DEVE incluir TODOS eles.
 
 ═══════════════════════════════════════════════════════════════════════════════
 🎯 SUA TAREFA
@@ -298,11 +321,20 @@ class ImagePromptEngineerAgent:
             except Exception:
                 image_data_str = str(question.image_data)
         
+        # Formata TODAS as alternativas
+        all_alts_text = ""
+        for alt in question.alternatives:
+            is_correct = alt.letter == question.correct_answer
+            marker = "✅" if is_correct else "❌"
+            distractor_info = f" | Distrator: {alt.distractor[:100]}" if alt.distractor else ""
+            all_alts_text += f"{marker} {alt.letter}) {alt.text}{distractor_info}\n"
+        
         inputs = {
             "title": question.title,
             "text": question.text[:500] if question.text else "Observe a imagem a seguir.",
             "question_statement": question.question_statement[:500],
             "correct_answer": self._extract_correct_answer(question),
+            "all_alternatives": all_alts_text.strip(),
             "explanation": question.explanation_question[:400] if question.explanation_question else "N/A",
             "image_data": image_data_str
         }

@@ -186,6 +186,13 @@ NÃO desenhe outra figura diferente!
 """
                     break
             
+            # Formata TODAS as alternativas
+            all_alts_text = ""
+            for alt in question.alternatives:
+                is_correct = alt.letter == question.correct_answer
+                marker = "✅" if is_correct else "❌"
+                all_alts_text += f"{marker} {alt.letter}) {alt.text}\n"
+            
             prompt = f"""Você é um especialista em criar ilustrações educacionais para questões de provas.
 
 TAREFA: Analise TODOS os elementos abaixo e crie uma ILUSTRAÇÃO que seja 100% coerente.
@@ -204,6 +211,20 @@ TAREFA: Analise TODOS os elementos abaixo e crie uma ILUSTRAÇÃO que seja 100% 
 {figure_instruction}
 5️⃣ EXPLICAÇÃO: {explanation_snippet}
 
+6️⃣ TODAS AS ALTERNATIVAS:
+{all_alts_text}
+
+═══════════════════════════════════════════════════════════════
+🔴 REGRA CRÍTICA: COERÊNCIA IMAGEM ↔ ALTERNATIVAS
+═══════════════════════════════════════════════════════════════
+
+TODOS os elementos visuais mencionados nas alternativas (corretas E incorretas)
+DEVEM estar presentes na imagem. O aluno precisa OBSERVAR a imagem para
+decidir qual alternativa é correta.
+
+Analise CADA alternativa acima e identifique TODOS os elementos visuais
+que elas mencionam. Sua imagem DEVE incluir TODOS eles.
+
 ═══════════════════════════════════════════════════════════════
 🎯 O QUE VOCÊ DEVE FAZER
 ═══════════════════════════════════════════════════════════════
@@ -211,13 +232,13 @@ TAREFA: Analise TODOS os elementos abaixo e crie uma ILUSTRAÇÃO que seja 100% 
 ANTES DE DESENHAR, ANALISE:
 • Qual é o TEMA/CENÁRIO principal da questão?
 • Existem PERSONAGENS mencionados? (extraia nomes e gêneros)
+• Quais elementos visuais são referenciados nas alternativas?
 • Se a resposta é uma FIGURA GEOMÉTRICA, essa figura deve aparecer na imagem!
-• A figura desenhada/criada na cena DEVE corresponder à resposta correta
 
 AGORA DESENHE:
 ✅ Ilustração cartoon educativo premium
 ✅ Cores vibrantes e atrativas
-✅ Se há uma figura geométrica sendo desenhada, ela DEVE ser a correta
+✅ TODOS os elementos visuais mencionados nas alternativas
 ✅ Personagens com expressões compatíveis com o contexto
 ✅ Qualquer texto na imagem DEVE ser em PORTUGUÊS
 
@@ -228,10 +249,9 @@ AGORA DESENHE:
 • NÃO escreva o NOME da figura na imagem (isso revelaria a resposta)
 • NÃO adicione banners ou textos decorativos
 • NÃO inclua emojis ou mascotes desnecessários
+• NÃO omita elementos visuais mencionados nas alternativas
 
-A imagem deve mostrar a FIGURA CORRETA sem escrever seu nome.
-
-Crie agora uma ilustração educacional de alta qualidade e COERENTE com a resposta."""
+Crie agora uma ilustração educacional de alta qualidade e COERENTE com TODAS as alternativas."""
         
         return prompt.strip()
     
