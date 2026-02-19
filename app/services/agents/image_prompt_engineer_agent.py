@@ -58,21 +58,24 @@ IMAGE_PROMPT_ENGINEER_TEMPLATE = """Você é um Engenheiro de Prompts especializ
 🔴 REGRA CRÍTICA DE COERÊNCIA IMAGEM ↔ ALTERNATIVAS
 ═══════════════════════════════════════════════════════════════════════════════
 
-TODOS os elementos visuais mencionados nas alternativas (corretas E incorretas)
-DEVEM estar presentes na imagem gerada.
+ATENÇÃO: A imagem deve tornar APENAS a alternativa correta identificável.
 
-Por exemplo:
-- Se uma alternativa diz "há um gráfico mostrando X" → o gráfico DEVE existir na imagem
-- Se uma alternativa diz "uma pessoa segura um copo" → essa pessoa DEVE aparecer
-- Se uma alternativa diz "um logotipo aparece no canto" → o logotipo DEVE estar lá
-- Se uma alternativa menciona "cores vibrantes" → o cartaz DEVE ter cores vibrantes
+REGRA 1 - ALTERNATIVA CORRETA:
+Elementos visuais mencionados na alternativa CORRETA DEVEM existir na imagem.
+Se a correta diz "há um gráfico mostrando X" → o gráfico DEVE existir.
 
-Isso é ESSENCIAL porque o aluno precisa OBSERVAR a imagem para decidir qual
-alternativa é correta. Se um elemento mencionado não existir na imagem, a
-questão fica incoerente e o aluno não consegue avaliar corretamente.
+REGRA 2 - ALTERNATIVAS INCORRETAS:
+Elementos visuais mencionados nas alternativas INCORRETAS NÃO devem existir na imagem.
+Se uma incorreta diz "há um logotipo no canto" → NÃO coloque logotipo.
+Se uma incorreta diz "uma pessoa segura um copo" → NÃO coloque pessoa com copo.
 
-ANALISE cada alternativa e EXTRAIA todos os elementos visuais mencionados.
-Seu prompt de imagem DEVE incluir TODOS eles.
+MOTIVO: Se TODOS os elementos de TODAS as alternativas existirem na imagem,
+o aluno pode argumentar que qualquer alternativa é correta, tornando a
+questão ambígua e pedagogicamente inválida.
+
+ANALISE cada alternativa:
+- ✅ CORRETA → INCLUA os elementos visuais mencionados
+- ❌ INCORRETAS → EXCLUA os elementos visuais mencionados
 
 ═══════════════════════════════════════════════════════════════════════════════
 🎯 SUA TAREFA

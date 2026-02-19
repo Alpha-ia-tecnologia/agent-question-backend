@@ -128,24 +128,22 @@ MULTIMODAL_VALIDATION_PROMPT = """Você é um especialista em avaliação educac
 🎯 SUA TAREFA
 ═══════════════════════════════════════════════════════════════════════════════
 
-OBSERVE A IMAGEM GERADA com atenção e responda:
-
 1. PARA CADA ALTERNATIVA: O elemento visual que ela menciona EXISTE na imagem?
-   - Se a alternativa diz "há um gráfico mostrando X" → o gráfico existe na imagem?
-   - Se a alternativa diz "uma pessoa segura um copo" → essa pessoa aparece?
-   - Se a alternativa menciona "cores vibrantes" → o cartaz tem cores vibrantes?
 
-2. A ALTERNATIVA CORRETA ainda é válida com base no que a imagem realmente mostra?
-   - Se a imagem mudou e agora outra alternativa é a correta → MUDE a resposta correta
+2. REGRA CRÍTICA DE DISAMBIGUAÇÃO:
+   - Alternativa CORRETA: os elementos visuais que ela menciona DEVEM existir na imagem
+   - Alternativas INCORRETAS: os elementos visuais que elas mencionam NÃO devem existir na imagem
+   - Se uma alternativa INCORRETA menciona algo que EXISTE na imagem → a questão fica ambígua (o aluno pode achar que é correta)
 
 3. Os DISTRATORES (explicações) fazem sentido com o conteúdo real da imagem?
 
 REGRAS DE CORREÇÃO:
-- Se uma alternativa menciona algo que NÃO existe na imagem → REESCREVA a alternativa para mencionar algo que EXISTE na imagem, mantendo o mesmo tipo de erro pedagógico
-- Se a resposta correta não corresponde mais à imagem → mude para a alternativa que melhor corresponde
+- Se uma alternativa INCORRETA menciona algo que EXISTE na imagem → REESCREVA-A para mencionar algo que NÃO existe na imagem, mantendo o mesmo tipo de erro pedagógico
+- Se a alternativa CORRETA menciona algo que NÃO existe na imagem → há um problema grave. Mude a resposta correta se necessário.
 - Atualize os distratores para refletir o conteúdo real da imagem
 - Mantenha o nível pedagógico e o estilo original
-- Cada alternativa DEVE referenciar um elemento visual REAL da imagem
+- APENAS a alternativa CORRETA deve referenciar elementos visuais REAIS da imagem
+- Alternativas INCORRETAS devem referenciar elementos que NÃO existem na imagem
 
 ═══════════════════════════════════════════════════════════════════════════════
 📝 FORMATO DE RESPOSTA (JSON)

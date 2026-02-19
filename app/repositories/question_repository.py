@@ -275,6 +275,58 @@ class QuestionRepository:
         
         return question
     
+    def update_question_full(
+        self,
+        question_id: int,
+        updates: dict
+    ) -> Optional[Question]:
+        """
+        Atualiza campos da questão e/ou suas alternativas.
+        
+        Args:
+            question_id: ID da questão
+            updates: Dict com campos a atualizar:
+                - correct_answer: nova resposta correta
+                - explanation_question: nova explicação
+                - alternatives: lista de dicts com {letter, text?, distractor?}
+                
+        Returns:
+            Questão atualizada ou None
+        """
+        question = self.get_question_by_id(question_id)
+        if not question:
+            return None
+        
+        # Atualiza campos da questão
+        if "correct_answer" in updates:
+            question.correct_answer = updates["correct_answer"]
+        if "explanation_question" in updates:
+            question.explanation_question = updates["explanation_question"]
+        if "question_statement" in updates:
+            question.question_statement = updates["question_statement"]
+        
+        # Atualiza alternativas
+        if "alternatives" in updates:
+            existing_alts = self.get_alternatives_by_question(question_id)
+            alt_map = {alt.letter: alt for alt in existing_alts}
+            
+            for alt_data in updates["alternatives"]:
+                letter = alt_data.get("letter")
+                if letter and letter in alt_map:
+                    alt = alt_map[letter]
+                    if "text" in alt_data:
+                        alt.text = alt_data["text"]
+                    if "distractor" in alt_data:
+                        alt.distractor = alt_data["distractor"]
+                    # Recalcula is_correct baseado na resposta correta atual
+                    new_correct = updates.get("correct_answer", question.correct_answer)
+                    alt.is_correct = (letter == new_correct)
+        
+        self.session.commit()
+        self.session.refresh(question)
+        
+        return question
+    
     # ===== MÉTODOS PARA GRUPOS DE QUESTÕES =====
     
     def create_group(

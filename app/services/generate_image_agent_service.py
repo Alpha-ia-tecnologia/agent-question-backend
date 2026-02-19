@@ -218,12 +218,22 @@ TAREFA: Analise TODOS os elementos abaixo e crie uma ILUSTRAÇÃO que seja 100% 
 🔴 REGRA CRÍTICA: COERÊNCIA IMAGEM ↔ ALTERNATIVAS
 ═══════════════════════════════════════════════════════════════
 
-TODOS os elementos visuais mencionados nas alternativas (corretas E incorretas)
-DEVEM estar presentes na imagem. O aluno precisa OBSERVAR a imagem para
-decidir qual alternativa é correta.
+ATENÇÃO: A imagem deve tornar APENAS a alternativa correta identificável.
 
-Analise CADA alternativa acima e identifique TODOS os elementos visuais
-que elas mencionam. Sua imagem DEVE incluir TODOS eles.
+✅ REGRA 1 - ALTERNATIVA CORRETA:
+Elementos visuais da alternativa CORRETA DEVEM existir na imagem.
+
+❌ REGRA 2 - ALTERNATIVAS INCORRETAS:
+Elementos visuais das alternativas INCORRETAS NÃO devem existir na imagem.
+Se uma incorreta menciona "logotipo no canto" → NÃO coloque logotipo.
+Se uma incorreta menciona "pessoa com copo" → NÃO coloque pessoa com copo.
+
+MOTIVO: Se todos os elementos de todas as alternativas existirem na imagem,
+qualquer alternativa pode parecer correta, tornando a questão ambígua.
+
+Analise CADA alternativa e identifique os elementos visuais:
+- Correta → INCLUA na imagem
+- Incorretas → EXCLUA da imagem
 
 ═══════════════════════════════════════════════════════════════
 🎯 O QUE VOCÊ DEVE FAZER

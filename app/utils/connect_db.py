@@ -42,3 +42,15 @@ def init_db():
     
     table_registry.metadata.create_all(bind=engine)
     print("✅ Banco de dados inicializado")
+
+
+from contextlib import contextmanager
+
+@contextmanager
+def get_session_context():
+    """Context manager para sessão de banco fora do FastAPI DI."""
+    session = Session(engine)
+    try:
+        yield session
+    finally:
+        session.close()

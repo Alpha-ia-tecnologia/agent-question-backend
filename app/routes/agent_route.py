@@ -303,6 +303,7 @@ async def generate_image(question: QuestionSchema, session: Session = Depends(ge
 class ImageRegenerationRequest(BaseModel):
     """Schema para requisição de regeneração/edição de imagem com instruções personalizadas."""
     question: QuestionSchema
+    question_id: Optional[int] = Field(default=None, description="ID da questão no banco (para persistir correções)")
     custom_instructions: str = Field(description="Instruções personalizadas para correção/melhoria da imagem")
     sync_distractors: bool = Field(default=True, description="Se True, analisa e atualiza distratores após regenerar a imagem")
     existing_image_base64: Optional[str] = Field(default=None, description="Imagem atual em base64 para edição (se não fornecida, gera do zero)")
@@ -348,7 +349,7 @@ async def regenerate_image(request: ImageRegenerationRequest):
                     image_result.image_base64
                 )
                 
-                return ImageResponse(
+                response = ImageResponse(
                     image_base64=image_result.image_base64,
                     image_url=image_result.image_url,
                     alternatives=[
@@ -357,6 +358,37 @@ async def regenerate_image(request: ImageRegenerationRequest):
                     distractors_updated=sync_result["distractors_updated"],
                     correct_answer=sync_result.get("correct_answer", request.question.correct_answer)
                 )
+                
+                # 3. Persiste correções no banco se temos o ID da questão
+                if request.question_id and sync_result["distractors_updated"]:
+                    try:
+                        from app.utils.connect_db import get_session_context
+                        from app.repositories.question_repository import QuestionRepository
+                        
+                        with get_session_context() as session:
+                            repo = QuestionRepository(session)
+                            # Salva imagem
+                            repo.update_question_image(
+                                request.question_id,
+                                image_base64=image_result.image_base64,
+                                image_url=getattr(image_result, 'image_url', None)
+                            )
+                            # Salva alternativas corrigidas
+                            updates = {
+                                "alternatives": [
+                                    {"letter": a["letter"], "text": a["text"], "distractor": a.get("distractor")}
+                                    for a in sync_result["alternatives"]
+                                    if a.get("modified")
+                                ]
+                            }
+                            if sync_result.get("correct_answer"):
+                                updates["correct_answer"] = sync_result["correct_answer"]
+                            repo.update_question_full(request.question_id, updates)
+                            logger.info(f"✅ Correções persistidas no banco para questão #{request.question_id}")
+                    except Exception as db_error:
+                        logger.warning(f"⚠️ Não foi possível persistir correções no banco: {db_error}")
+                
+                return response
             except Exception as sync_error:
                 logger.warning(f"⚠️ Erro na validação multimodal (imagem foi gerada com sucesso): {sync_error}")
                 return image_result

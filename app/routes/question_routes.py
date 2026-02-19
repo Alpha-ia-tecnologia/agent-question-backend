@@ -230,6 +230,66 @@ def update_question_observation(
     }
 
 
+class AlternativeUpdate(BaseModel):
+    """Schema para atualização de alternativa."""
+    letter: str
+    text: Optional[str] = None
+    distractor: Optional[str] = None
+
+
+class QuestionUpdate(BaseModel):
+    """Schema para atualização completa de questão."""
+    correct_answer: Optional[str] = None
+    explanation_question: Optional[str] = None
+    question_statement: Optional[str] = None
+    alternatives: Optional[List[AlternativeUpdate]] = None
+
+
+@question_router.patch("/{question_id}")
+def update_question(
+    question_id: int,
+    data: QuestionUpdate,
+    session: Session = Depends(get_session)
+):
+    """
+    Atualiza campos de uma questão e/ou suas alternativas.
+    
+    - **correct_answer**: Nova resposta correta
+    - **explanation_question**: Nova explicação  
+    - **question_statement**: Novo enunciado
+    - **alternatives**: Lista de alternativas a atualizar (letra + text e/ou distractor)
+    """
+    repo = QuestionRepository(session)
+    
+    updates = data.model_dump(exclude_none=True)
+    if "alternatives" in updates:
+        updates["alternatives"] = [alt for alt in updates["alternatives"]]
+    
+    question = repo.update_question_full(question_id, updates)
+    
+    if not question:
+        raise HTTPException(status_code=404, detail="Questão não encontrada")
+    
+    # Recarrega alternativas para retornar atualizadas
+    alternatives = repo.get_alternatives_by_question(question_id)
+    
+    return {
+        "message": "Questão atualizada com sucesso",
+        "id": question_id,
+        "correct_answer": question.correct_answer,
+        "alternatives": [
+            {
+                "id": alt.id,
+                "letter": alt.letter,
+                "text": alt.text,
+                "distractor": getattr(alt, 'distractor', None),
+                "is_correct": alt.is_correct
+            }
+            for alt in alternatives
+        ]
+    }
+
+
 @question_router.get("/{question_id}", response_model=QuestionResponse)
 def get_question(
     question_id: int,
