@@ -303,6 +303,7 @@ class ImageRegenerationRequest(BaseModel):
     """Schema para requisição de regeneração de imagem com instruções personalizadas."""
     question: QuestionSchema
     custom_instructions: str = Field(description="Instruções personalizadas para correção/melhoria da imagem")
+    sync_distractors: bool = Field(default=True, description="Se True, analisa e atualiza distratores após regenerar a imagem")
 
 
 @agent_router.post(
@@ -310,21 +311,53 @@ class ImageRegenerationRequest(BaseModel):
     status_code=HTTPStatus.OK,
     response_model=ImageResponse,
     summary="Regenerar imagem com instruções",
-    description="Regenera uma imagem para uma questão com instruções personalizadas de correção."
+    description="Regenera uma imagem para uma questão com instruções personalizadas de correção. Opcionalmente sincroniza distratores.",
 )
 async def regenerate_image(request: ImageRegenerationRequest):
     """
     Endpoint para regenerar imagem com instruções de correção.
     
     Permite ao usuário fornecer instruções específicas para melhorar a imagem.
+    Se sync_distractors=True, analisa e atualiza os distratores automaticamente.
     """
     try:
         logger.info(f"Regenerando imagem para questão #{request.question.question_number}")
         logger.info(f"Instruções: {request.custom_instructions[:100]}...")
-        return generate_image_agent_service.generate_image_with_instructions(
+        
+        # 1. Gera a nova imagem
+        image_result = generate_image_agent_service.generate_image_with_instructions(
             request.question, 
             request.custom_instructions
         )
+        
+        # 2. Se sync_distractors está ativo, analisa e atualiza distratores
+        if request.sync_distractors and request.question.alternatives:
+            try:
+                from app.services.agents.distractor_sync_agent import get_distractor_sync_agent
+                
+                logger.info("🔄 Sincronizando distratores com a nova imagem...")
+                sync_agent = get_distractor_sync_agent()
+                sync_result = sync_agent.sync_distractors(
+                    request.question,
+                    request.custom_instructions
+                )
+                
+                from app.schemas.image_response import UpdatedAlternative
+                
+                return ImageResponse(
+                    image_base64=image_result.image_base64,
+                    image_url=image_result.image_url,
+                    alternatives=[
+                        UpdatedAlternative(**alt) for alt in sync_result["alternatives"]
+                    ],
+                    distractors_updated=sync_result["distractors_updated"]
+                )
+            except Exception as sync_error:
+                logger.warning(f"⚠️ Erro na sincronização de distratores (imagem foi gerada com sucesso): {sync_error}")
+                # Retorna a imagem mesmo se a sincronização falhar
+                return image_result
+        
+        return image_result
     
     except ImageGenerationError as e:
         logger.error(f"Erro na regeneração de imagem: {e}")
