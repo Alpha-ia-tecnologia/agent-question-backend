@@ -29,7 +29,7 @@ class RequestBodyAgentQuestion(BaseModel):
     )
     context_theme: Optional[str] = Field(
         default=None,
-        description="Tema ou assunto complementar que direciona a geração da questão. Ex: 'Poesia Terra das Palmeiras', 'Semana da Água'. Quando presente, o gerador deve contextualizar a questão com base nesse tema."
+        description="Tema ou assunto complementar que direciona a geração da questão. Ex: 'Canção do Exílio', 'Semana da Água'. Quando presente, o gerador deve contextualizar a questão com base nesse tema."
     )
     llm_model: Optional[str] = Field(
         default=None,

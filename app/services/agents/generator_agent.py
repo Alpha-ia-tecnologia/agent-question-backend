@@ -555,7 +555,7 @@ COMO USAR O TEMA — OBRIGATÓRIO:
 
 3. REGRAS GERAIS DE TEMA:
    - O tema é o PANO DE FUNDO; a habilidade avaliada abaixo continua sendo o OBJETIVO.
-   - NÃO troque o tema por outro (ex.: usuário pediu "Terra das Palmeiras" → NÃO substitua por "Bumba-meu-boi").
+   - NÃO troque o tema por outro (ex.: usuário pediu "Canção do Exílio" → NÃO substitua por "Bumba-meu-boi").
    - Se usar uma obra real, cite autor e fonte nos campos "source_author" e "source".
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
