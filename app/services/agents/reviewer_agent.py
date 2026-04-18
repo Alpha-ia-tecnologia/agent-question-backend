@@ -166,10 +166,12 @@ def reviewer_node(state: AgentState) -> AgentState:
     progress = get_current_progress()
     
     try:
+        query = state.get("query")
+        llm_model_override = getattr(query, "llm_model", None) if query else None
         if progress:
-            progress.log("reviewer", "Initializing review LLM", "", "🔌")
+            progress.log("reviewer", f"Initializing review LLM: {llm_model_override or 'default'}", "", "🔌")
             progress.log("reviewer", "Loading 7 quality criteria (BNCC, Distractors, Clarity...)", "", "📋")
-        llm = get_question_llm()
+        llm = get_question_llm(model=llm_model_override)
         
         # Prepara o prompt
         prompt = PromptTemplate(
@@ -195,7 +197,19 @@ def reviewer_node(state: AgentState) -> AgentState:
             progress.log("reviewer", "Checking distractor plausibility (5 sub-criteria)", "", "🎭")
             progress.log("reviewer", "Calling DeepSeek API (review)...", "", "🚀")
         response = chain.invoke(inputs, config=config)
-        response_text = response.content if hasattr(response, 'content') else str(response)
+        raw_content = response.content if hasattr(response, 'content') else str(response)
+        if isinstance(raw_content, list):
+            parts = []
+            for part in raw_content:
+                if isinstance(part, str):
+                    parts.append(part)
+                elif isinstance(part, dict):
+                    parts.append(part.get("text") or part.get("content") or "")
+                else:
+                    parts.append(str(part))
+            response_text = "\n".join(p for p in parts if p)
+        else:
+            response_text = str(raw_content)
         if progress:
             progress.log("reviewer", "Review response received", "", "📥")
             progress.log("reviewer", "Analyzing scores per criterion...", "", "📊")
@@ -208,7 +222,48 @@ def reviewer_node(state: AgentState) -> AgentState:
         overall_score = review_data.get("overall_score", 0.0)
         approved = review_data.get("approved", False)
         feedback = review_data.get("summary_feedback", None) if not approved else None
-        
+
+        # Verificação determinística do TEMA: se o usuário pediu um tema
+        # (context_theme), exigimos que ele apareça no texto-base ou título
+        # de CADA questão. Caso contrário, força reprovação com feedback claro.
+        context_theme = getattr(query, "context_theme", None) if query else None
+        if context_theme and context_theme.strip():
+            theme = context_theme.strip().lower()
+            # Gera tokens-chave: o tema completo + palavras significativas (>3 chars, não stopwords)
+            STOP = {"de", "da", "do", "das", "dos", "a", "o", "e", "em", "para", "com", "na", "no"}
+            tokens = [t for t in theme.replace("—", " ").split() if len(t) > 3 and t not in STOP]
+            missing = []
+            for q in questions:
+                blob = " ".join([
+                    str(q.get("title") or ""),
+                    str(q.get("text") or ""),
+                    str(q.get("question_statement") or ""),
+                ]).lower()
+                # Considera tema presente se: string completa aparecer OU >= metade dos tokens
+                full_match = theme in blob
+                token_hits = sum(1 for t in tokens if t in blob)
+                token_match = tokens and token_hits >= max(1, len(tokens) // 2 + 1)
+                if not (full_match or token_match):
+                    missing.append(q.get("question_number") or "?")
+            if missing:
+                logger.warning(f"⚠️ Tema '{context_theme}' ausente nas questões: {missing}")
+                if progress:
+                    progress.log(
+                        "reviewer",
+                        f"Tema '{context_theme[:40]}' ausente em {len(missing)} questão(ões) → reprovado",
+                        "",
+                        "🎯",
+                    )
+                approved = False
+                overall_score = min(overall_score, 0.4)
+                theme_feedback = (
+                    f"OBRIGATÓRIO: o tema '{context_theme}' deve aparecer explicitamente "
+                    f"no texto-base e/ou título de TODAS as questões. As questões "
+                    f"{missing} não mencionam o tema. Reescreva o texto-base contextualizando "
+                    f"o tema e mantenha a habilidade avaliada."
+                )
+                feedback = f"{feedback + chr(10) if feedback else ''}{theme_feedback}"
+
         logger.info(
             f"{'✅' if approved else '⚠️'} Revisor - Score: {overall_score:.2f} | "
             f"Aprovado: {approved}"

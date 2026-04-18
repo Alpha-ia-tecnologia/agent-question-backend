@@ -129,8 +129,12 @@ class ProgressManager:
     
     # ─── Eventos finais ────────────────────────────────────────────
     
-    def finish(self, result: dict):
-        """Marca o processo como concluído com sucesso."""
+    def finish(self, result: dict, watchdog_seconds: float = 25.0):
+        """Emite o evento 'finished' e agenda um watchdog para fechar o stream.
+
+        O watchdog garante que o SSE feche em no máximo `watchdog_seconds`
+        após `finish`, mesmo se a persistência no banco travar ou demorar.
+        """
         self._emit({
             "type": "finished",
             "total_time": round(time.time() - self._start_time, 1),
@@ -140,9 +144,22 @@ class ProgressManager:
             "result": result
         })
         self._finished = True
-        # Send sentinel AFTER the finished event is queued
+        # Agenda fechamento forçado do stream — se o DB save demorar, o cliente
+        # não fica preso na tela de geração.
+        import threading as _t
+        _t.Timer(watchdog_seconds, self.end_stream).start()
+
+    def group_created(self, group_id: int):
+        """Emite o evento 'group_created' com o id do grupo persistido."""
+        self._emit({
+            "type": "group_created",
+            "group_id": group_id,
+        })
+
+    def end_stream(self):
+        """Encerra o stream SSE (sentinel). Seguro de chamar múltiplas vezes."""
         self._put_in_queue(_STREAM_END)
-    
+
     def error(self, message: str):
         """Emite evento de erro fatal."""
         self._emit({

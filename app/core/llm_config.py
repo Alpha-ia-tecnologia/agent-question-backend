@@ -74,10 +74,10 @@ class LLMSettings(BaseModel):
 
 class QuestionLLMSettings(LLMSettings):
     """Configurações específicas para geração de questões."""
-    
-    # DeepSeek para geração de questões
-    model: str = Field(default="deepseek-chat")
-    temperature: float = Field(default=0.7)
+
+    # LLM override: set QUESTION_LLM_MODEL=gemini-2.5-flash in .env for ~3x speed
+    model: str = Field(default_factory=lambda: os.getenv("QUESTION_LLM_MODEL", "deepseek-chat"))
+    temperature: float = Field(default_factory=lambda: float(os.getenv("QUESTION_LLM_TEMPERATURE", "0.7")))
     timeout: float = Field(default=120.0)
 
 
@@ -199,20 +199,33 @@ def _create_llm(
     return ChatGoogleGenerativeAI(**kwargs)
 
 
-@lru_cache(maxsize=1)
+@lru_cache(maxsize=8)
 def get_question_llm(
     model: Optional[str] = None,
     temperature: Optional[float] = None
 ) -> BaseChatModel:
     """
     Obtém instância do LLM para geração de questões.
+
+    Cache por (model, temperature) para permitir troca em runtime.
     """
     settings = QuestionLLMSettings(
         model=model or QuestionLLMSettings().model,
         temperature=temperature if temperature is not None else QuestionLLMSettings().temperature
     )
-    
+
     return _create_llm(settings)
+
+
+# Catálogo de modelos disponíveis para seleção na UI.
+AVAILABLE_QUESTION_MODELS = [
+    {"id": "gemini-pro-latest",   "label": "Gemini Pro (latest)",  "provider": "google",   "hint": "Padrão do sistema — alta qualidade e raciocínio forte."},
+    {"id": "gemini-2.5-pro",      "label": "Gemini 2.5 Pro",       "provider": "google",   "hint": "Versão estável do Gemini Pro."},
+    {"id": "gemini-2.5-flash",    "label": "Gemini 2.5 Flash",     "provider": "google",   "hint": "Rápido e econômico."},
+    {"id": "deepseek-chat",       "label": "DeepSeek Chat",        "provider": "deepseek", "hint": "Boa qualidade SAEB, porém mais lento."},
+    {"id": "gpt-4o-mini",         "label": "GPT-4o Mini",          "provider": "openai",   "hint": "OpenAI — rápido e bom em português. Requer OPENAI_API_KEY."},
+    {"id": "gpt-4o",              "label": "GPT-4o",               "provider": "openai",   "hint": "OpenAI — topo de linha. Requer OPENAI_API_KEY."},
+]
 
 
 def get_image_llm(

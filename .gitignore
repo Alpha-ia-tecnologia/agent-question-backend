@@ -40,3 +40,4 @@ logs/
 
 # Lock files
 uv.lock
+static/images/*.png

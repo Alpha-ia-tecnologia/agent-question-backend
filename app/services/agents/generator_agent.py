@@ -101,7 +101,6 @@ def _select_template(query: Any, has_feedback: bool) -> str:
 
 
 # ── Mapeamento componente → arquivo de referência ──
-# Apenas Matemática e Língua Portuguesa (CN e CH removidos para velocidade)
 _COMPONENT_MAP = {
     "math": {
         "file": "app/prompts/math_skills_reference.txt",
@@ -121,50 +120,73 @@ _COMPONENT_MAP = {
             "gênero textual", "ortografia", "produção textual",
         ],
     },
+    "science": {
+        "file": "app/prompts/science_skills_reference.txt",
+        "key": "science",
+        "keywords": [
+            "ciências", "ciencias", "ciências da natureza", "biologia",
+            "física", "fisica", "química", "quimica", "natureza",
+        ],
+    },
+    "humanities": {
+        "file": "app/prompts/humanities_skills_reference.txt",
+        "key": "humanities",
+        "keywords": [
+            "ciências humanas", "história", "historia", "geografia",
+            "sociologia", "filosofia", "humanities", "humanas",
+        ],
+    },
 }
 
 
 def _load_skills_reference_for(query) -> dict[str, str]:
     """
-    Carrega APENAS a referência de habilidades do componente curricular correto.
-    
-    Reduz o prompt de ~97KB (4 arquivos) para ~17-31KB (1 arquivo),
-    acelerando significativamente a resposta do LLM.
+    Carrega APENAS a referência de habilidades do componente curricular correto,
+    ou múltiplos se a consulta for interdisciplinar.
     """
-    component = getattr(query, "curriculum_component", "").lower().strip()
-    skill = getattr(query, "skill", "").lower().strip()
-    search_text = f"{component} {skill}"
-    
-    # Detecta componente por keywords
-    detected = None
-    best_score = 0
-    
-    for comp_id, info in _COMPONENT_MAP.items():
-        score = sum(1 for kw in info["keywords"] if kw in search_text)
-        if score > best_score:
-            best_score = score
-            detected = comp_id
-    
-    # Se não detectou, tenta pelo curriculum_component direto
-    if not detected and component:
-        for comp_id, info in _COMPONENT_MAP.items():
-            if comp_id in component or info["key"] in component:
-                detected = comp_id
-                break
-    
     result = {}
     
-    if detected:
-        info = _COMPONENT_MAP[detected]
-        ref_path = os.path.abspath(info["file"])
-        try:
-            with open(ref_path, "r", encoding="utf-8") as f:
-                result[info["key"]] = f.read()
-            logger.info(f"⚡ Carregada referência: {detected} ({os.path.getsize(ref_path) // 1024}KB)")
-        except FileNotFoundError:
-            logger.warning(f"⚠️ {info['file']} não encontrado")
+    def process_component(component: str, skill: str):
+        search_text = f"{component} {skill}".lower().strip()
+        detected = None
+        best_score = 0
+        
+        for comp_id, info in _COMPONENT_MAP.items():
+            score = sum(1 for kw in info["keywords"] if kw in search_text)
+            if score > best_score:
+                best_score = score
+                detected = comp_id
+        
+        if not detected and component:
+            component_lower = component.lower().strip()
+            for comp_id, info in _COMPONENT_MAP.items():
+                if comp_id in component_lower or info["key"] in component_lower:
+                    detected = comp_id
+                    break
+        
+        if detected:
+            info = _COMPONENT_MAP[detected]
+            if info["key"] not in result:
+                ref_path = os.path.abspath(info["file"])
+                try:
+                    with open(ref_path, "r", encoding="utf-8") as f:
+                        result[info["key"]] = f.read()
+                    logger.info(f"⚡ Carregada referência: {detected} ({os.path.getsize(ref_path) // 1024}KB)")
+                except FileNotFoundError:
+                    logger.warning(f"⚠️ {info['file']} não encontrado")
+                    
+    # Processa as habilidades combinadas se for interdisciplinar
+    if getattr(query, "is_interdisciplinary", False) and hasattr(query, "combined_skills"):
+        for item in query.combined_skills:
+            process_component(item.curriculum_component, item.skill)
     else:
-        # Fallback: componente não detectado → carrega todos (comportamento antigo)
+        # Modo padrão
+        component = getattr(query, "curriculum_component", "")
+        skill = getattr(query, "skill", "")
+        process_component(component, skill)
+        
+    if not result:
+        # Fallback: componente não detectado → carrega todos
         logger.warning("⚠️ Componente não detectado — carregando todas as referências (fallback)")
         for comp_id, info in _COMPONENT_MAP.items():
             ref_path = os.path.abspath(info["file"])
@@ -173,7 +195,7 @@ def _load_skills_reference_for(query) -> dict[str, str]:
                     result[info["key"]] = f.read()
             except FileNotFoundError:
                 pass
-    
+                
     return result
 
 
@@ -202,10 +224,16 @@ def generator_node(state: AgentState) -> AgentState:
     progress = get_current_progress()
     
     try:
-        # Obtém LLM e template
+        # Obtém LLM e template (permite override por requisição via query.llm_model)
+        llm_model_override = getattr(query, "llm_model", None)
         if progress:
-            progress.log("generator", "Initializing DeepSeek LLM", "", "🔌")
-        llm = get_question_llm()
+            progress.log(
+                "generator",
+                f"Initializing LLM: {llm_model_override or 'default'}",
+                "",
+                "🔌",
+            )
+        llm = get_question_llm(model=llm_model_override)
         template_str = _select_template(query, feedback is not None)
         image_dep = query.image_dependency
         if progress:
@@ -424,14 +452,28 @@ def generator_node(state: AgentState) -> AgentState:
    O aluno DEVE OLHAR a imagem + RACIOCINAR para responder."""
         }
         
-        # ⚡ Carrega APENAS a referência do componente correto (~30KB vs ~97KB)
+        # ⚡ Carrega APENAS a referência do componente correto (ou componentes combinados)
         skills_ref = _load_skills_reference_for(query)
         
+        # Formata a string de habilidade
+        skill_str = query.skill
+        if getattr(query, "is_interdisciplinary", False) and hasattr(query, "combined_skills"):
+            skill_str = "⚠️ OBJETIVO INTERDISCIPLINAR: A questão deve avaliar simultaneamente TODAS as habilidades abaixo em um único contexto coeso:\n"
+            skill_str += "\n".join([
+                f"- Componente: {item.curriculum_component} | Habilidade: {item.skill}"
+                for item in query.combined_skills
+            ])
+            if progress:
+                progress.log("generator", f"Modo Interdisciplinar ativado com {len(query.combined_skills)} habilidades", "", "🔗")
+
+        # Tema/assunto complementar (orientação temática livre)
+        context_theme = getattr(query, "context_theme", None)
+
         # Prepara inputs para o template
         inputs = {
             "count_questions": query.count_questions,
             "count_alternatives": query.count_alternatives,
-            "skill": query.skill,
+            "skill": skill_str,
             "proficiency_level": query.proficiency_level,
             "grade": query.grade,
             "model_evaluation_type": query.model_evaluation_type.value,
@@ -440,8 +482,8 @@ def generator_node(state: AgentState) -> AgentState:
             ),
             "math_skills_reference": skills_ref.get("math", ""),
             "portuguese_skills_reference": skills_ref.get("portuguese", ""),
-            "science_skills_reference": "",
-            "humanities_skills_reference": ""
+            "science_skills_reference": skills_ref.get("science", ""),
+            "humanities_skills_reference": skills_ref.get("humanities", "")
         }
         
         # Se houver textos reais encontrados, injeta no prompt
@@ -478,6 +520,99 @@ TEXTOS ENCONTRADOS NA BUSCA:
                     author = t.get('author', 'Desconhecido')
                     progress.log("generator", f"Texto {i+1}: \"{title}\"", f"Autor: {author}", "📖")
         
+        # Tema complementar — injetado no TOPO do template com alta prioridade,
+        # para que o LLM contextualize o texto-base da questão nesse assunto
+        # sem perder o foco na habilidade avaliada.
+        if context_theme and context_theme.strip():
+            theme = context_theme.strip()
+            template_str = f"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 TEMA OBRIGATÓRIO DA QUESTÃO (orientação temática do usuário):
+"{theme}"
+
+COMO USAR O TEMA — OBRIGATÓRIO:
+
+1. TEXTO-BASE (campo "text" do JSON):
+   - Se o tema é uma OBRA ESPECÍFICA (poema, canção, conto, crônica, lei, reportagem):
+     → Use O PRÓPRIO TEXTO dessa obra como texto-base.
+     → Ex.: tema "Canção do Exílio" (Gonçalves Dias) → o texto-base DEVE ser o poema
+       "Minha terra tem palmeiras / Onde canta o Sabiá / As aves que aqui gorjeiam / Não
+       gorjeiam como lá…" com atribuição de autor no campo "source_author" e fonte real.
+     → Se não souber o texto exato, escolha uma obra ESTRUTURALMENTE equivalente sobre o tema.
+   - Se o tema é um EVENTO/ASSUNTO GERAL (ex.: "Semana da Água"):
+     → Construa um texto-base informativo (artigo, crônica curta, notícia) sobre o tema.
+
+2. ENUNCIADO (campo "question_statement" do JSON) — PADRÃO SAEB/SEAMA:
+   ❌ NÃO descreva cenário, personagem ou contexto no enunciado.
+   ❌ NÃO narre a história do texto-base no enunciado.
+   ❌ NÃO introduza elementos novos no enunciado — tudo que o aluno precisa está no texto-base.
+   ✅ O enunciado é UMA PERGUNTA DIRETA e CURTA sobre o texto-base já lido.
+   ✅ Exemplos no padrão SAEB:
+      • "Nesse texto, o trecho 'Minha terra tem palmeiras' expressa"
+      • "A ideia principal desse poema é"
+      • "No verso 'Onde canta o Sabiá', a palavra 'Sabiá' refere-se a"
+      • "A intenção do eu-lírico ao comparar sua terra natal com outro lugar é"
+
+3. REGRAS GERAIS DE TEMA:
+   - O tema é o PANO DE FUNDO; a habilidade avaliada abaixo continua sendo o OBJETIVO.
+   - NÃO troque o tema por outro (ex.: usuário pediu "Terra das Palmeiras" → NÃO substitua por "Bumba-meu-boi").
+   - Se usar uma obra real, cite autor e fonte nos campos "source_author" e "source".
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{template_str}
+"""
+            if progress:
+                progress.log("generator", f"Tema complementar injetado: {theme[:80]}", "", "🎯")
+
+        # Regras universais de DISTRATORES e ENUNCIADO — aplicadas
+        # a toda questão para evitar respostas triviais por cópia literal.
+        template_str = f"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛑 REGRAS CRÍTICAS DE CONSTRUÇÃO DO ITEM (padrão SAEB/SEAMA):
+
+A) ALTERNATIVAS — DE ONDE VÊM OS DISTRATORES:
+   1. TODOS os distratores DEVEM citar informações que APARECEM NO TEXTO-BASE,
+      mas que NÃO respondem à pergunta. O aluno deve DISCRIMINAR entre informações
+      concorrentes do próprio texto, não eliminar por conhecimento externo.
+   2. PROIBIDO: distratores formados por fatos gerais fora do texto
+      (ex.: "21 de abril = Tiradentes", se o texto não menciona Tiradentes).
+   3. O texto-base DEVE conter ≥ 3 informações "concorrentes" ao dado-alvo
+      (ex.: várias datas, várias ações, vários lugares, vários personagens)
+      para que os distratores tenham de onde sair.
+
+B) ALTERNATIVA CORRETA — NÃO PODE SER CÓPIA LITERAL:
+   1. PROIBIDO copiar IPSIS LITTERIS o trecho do texto-base que responde à pergunta.
+   2. A correta DEVE ser uma PARÁFRASE MÍNIMA do trecho-alvo:
+      - Trocar preposição/artigo ("no dia 19" → "em 19 de abril")
+      - Reformular sintaticamente ("os alunos pintam o rosto" → "a pintura do rosto é feita pelos alunos")
+      - Nominalizar verbos ("ouvir histórias" → "escuta de histórias")
+   3. A paráfrase NÃO pode exigir inferência (é D1/localizar): mantém SEMÂNTICA IDÊNTICA.
+
+C) PARALELISMO DAS ALTERNATIVAS:
+   1. TODAS as 4 (ou 5) alternativas devem ter a MESMA estrutura sintática:
+      - Se uma começa com "No dia…", todas começam com "No/Em dia/mês…"
+      - Se uma é sintagma nominal, todas são sintagma nominal.
+   2. PROIBIDO: uma alternativa ser sensivelmente mais longa/curta que as outras.
+   3. PROIBIDO: misturar formas (ex.: 3 datas exatas + 1 referência vaga como "no fim do mês").
+
+D) ENUNCIADO — NÃO PODE ENTREGAR A RESPOSTA:
+   1. O enunciado NÃO pode conter o dado que a pergunta procura.
+   2. O enunciado NÃO pode ser redundante com a informação-alvo do texto.
+   3. Frases canônicas: "De acordo com o texto…", "No texto, o trecho '…' mostra…",
+      "A informação que indica X está em…".
+
+E) ESTRATÉGIA ANTES DE GERAR:
+   1. Escolha o "dado-alvo" da pergunta (ex.: a data 19/04).
+   2. LISTE explicitamente 3 outras informações concorrentes do mesmo tipo no texto
+      (ex.: "há duas semanas", "dia da apresentação", "última semana do mês").
+      Se o texto não tem 3 concorrentes, REESCREVA o texto incluindo-os.
+   3. Só então construa as alternativas: 1 correta (paráfrase do dado-alvo) + 3 distratores
+      (cada um citando uma das informações concorrentes).
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{template_str}
+"""
+
         # Se houver feedback, adiciona ao prompt
         if feedback and progress:
             progress.log("generator", "Incorporating feedback from previous review", feedback[:100] if feedback else "", "📝")
@@ -490,7 +625,33 @@ ATENÇÃO - FEEDBACK DA REVISÃO ANTERIOR (CORRIJA ESTES PROBLEMAS):
 
 Gere novas questões corrigindo os problemas apontados acima.
 """
-        
+
+        # Lembrete final do tema (última instrução = maior peso no LLM).
+        # Reforça para que o texto-base incorpore o tema, mesmo quando a
+        # habilidade avaliada for de componente diferente.
+        if context_theme and context_theme.strip():
+            theme_reminder = context_theme.strip()
+            template_str = f"""
+{template_str}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔔 LEMBRETE CRÍTICO — NÃO IGNORE:
+O texto-base (campo "text"), o título (campo "title") e pelo menos
+um elemento mencionado nas alternativas DEVEM citar EXPLICITAMENTE
+"{theme_reminder}" ou aspectos diretamente ligados a esse tema
+(personagens, datas, locais, causas, consequências da Conjuração/
+do evento/da obra). Se você produzir um texto genérico sem mencionar
+"{theme_reminder}", a questão será REPROVADA.
+
+Exemplo ruim: "Os estados do Nordeste são…" (genérico, sem o tema)
+Exemplo bom:  "A Conjuração Baiana, ocorrida em Salvador em 1798…"
+
+Mesmo que a habilidade avaliada seja de componente diferente
+(ex.: Geografia com tema de História), o texto-base DEVE ser sobre o
+tema — o aluno responde à habilidade USANDO o texto temático.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
+
         # Cria e executa a chain
         prompt = PromptTemplate(
             input_variables=list(inputs.keys()),
@@ -511,8 +672,21 @@ Gere novas questões corrigindo os problemas apontados acima.
         if progress:
             progress.log("generator", "API response received — Validating JSON structure", "", "📥")
         
-        # Extrai conteúdo
-        response_text = response.content if hasattr(response, 'content') else str(response)
+        # Extrai conteúdo — normaliza para string, já que Gemini pode retornar
+        # content como lista de parts (ex: [{"type":"text","text":"..."}]).
+        raw_content = response.content if hasattr(response, 'content') else str(response)
+        if isinstance(raw_content, list):
+            parts = []
+            for part in raw_content:
+                if isinstance(part, str):
+                    parts.append(part)
+                elif isinstance(part, dict):
+                    parts.append(part.get("text") or part.get("content") or "")
+                else:
+                    parts.append(str(part))
+            response_text = "\n".join(p for p in parts if p)
+        else:
+            response_text = str(raw_content)
         
         # Parse do JSON
         if progress:

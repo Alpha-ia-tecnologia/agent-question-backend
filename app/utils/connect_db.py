@@ -16,7 +16,7 @@ load_dotenv()
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 if DATABASE_URL is None:
-    raise RuntimeError("❌ DATABASE_URL não configurada. Defina a variável no .env")
+    raise RuntimeError("DATABASE_URL not configured. Set it in .env")
 
 engine = create_engine(
     DATABASE_URL,
@@ -41,7 +41,7 @@ def init_db():
     from app.models.question_model import Question, Alternative, GenerationHistory, QuestionGroup  # noqa: F401
     
     table_registry.metadata.create_all(bind=engine)
-    print("✅ Banco de dados inicializado")
+    print("[OK] Banco de dados inicializado")
 
 
 from contextlib import contextmanager

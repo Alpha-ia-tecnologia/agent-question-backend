@@ -148,7 +148,7 @@ class ImageValidatorAgent:
     
     def __init__(self):
         self.client = genai.Client(api_key=GOOGLE_GENAI_API_KEY)
-        self.model = "gemini-2.0-flash"
+        self.model = "gemini-2.5-flash"
         logger.info("👁️ ImageValidatorAgent inicializado (Gemini Vision)")
     
     def validate(self, question: dict, image_base64: str) -> Dict[str, Any]:

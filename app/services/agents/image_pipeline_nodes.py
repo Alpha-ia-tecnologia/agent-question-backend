@@ -27,19 +27,21 @@ MAX_IMAGE_RETRIES = 2
 
 def image_router_decision(state: AgentState) -> Literal["image_generator", "__end__"]:
     """
-    Decide se deve gerar imagens ou finalizar.
-    
-    Rota para image_generator APENAS se image_dependency == "required".
+    Decide se deve gerar imagens durante o pipeline ou finalizar.
+
+    Comportamento atual: SEMPRE finaliza sem gerar imagens no pipeline.
+    A geração de imagem agora é acionada manualmente por questão via
+    o endpoint /agent/ask-image após a criação do grupo (UX mais previsível
+    e tempo de geração inicial mais curto).
+
+    O campo `image_dependency` ainda afeta o texto gerado (ex.: "required"
+    instrui o gerador a produzir um enunciado que DEPENDE de imagem),
+    mas a imagem em si é gerada depois, pelo usuário.
     """
     query = state["query"]
     image_dep = getattr(query, "image_dependency", "none")
-    
-    if image_dep == "required":
-        logger.info("🖼️ image_dependency=required → Roteando para geração de imagens")
-        return "image_generator"
-    else:
-        logger.info(f"🖼️ image_dependency={image_dep} → Finalizando sem imagem")
-        return "__end__"
+    logger.info(f"🖼️ image_dependency={image_dep} → Finalizando (imagem será gerada depois, sob demanda)")
+    return "__end__"
 
 
 def image_generator_node(state: AgentState) -> dict:
@@ -186,9 +188,12 @@ def image_validator_node(state: AgentState) -> dict:
         try:
             validation = validator.validate(q_data, image_base64)
             
-            is_valid = validation.get("valid", False)
             score = validation.get("score", 0)
-            
+            # Threshold leniente: aceitamos ≥ 0.8 (4/5 checks) para evitar
+            # retry custoso quando apenas um detalhe menor falha.
+            strict_valid = validation.get("valid", False)
+            is_valid = strict_valid or score >= 0.8
+
             result["validation_status"] = "valid" if is_valid else "invalid"
             result["validation_score"] = score
             result["validation_issues"] = validation.get("issues", [])

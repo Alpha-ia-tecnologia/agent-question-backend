@@ -22,7 +22,7 @@ from app.services.generate_docx_service import GenerateDocxService
 from app.schemas.question_schema import QuestionSchema
 from app.services.generate_image_agent_service import GenerateImageAgentService
 from app.schemas.image_response import ImageResponse
-from app.core.llm_config import QuestionGenerationError, ImageGenerationError
+from app.core.llm_config import QuestionGenerationError, ImageGenerationError, AVAILABLE_QUESTION_MODELS
 from app.utils.connect_db import get_session
 from app.repositories.question_repository import QuestionRepository
 
@@ -34,6 +34,12 @@ agent_router = APIRouter(prefix="/agent")
 generate_question_agent_service = GenerateQuestionAgentService()
 generate_image_agent_service = GenerateImageAgentService()
 generate_docx_service = GenerateDocxService()
+
+
+@agent_router.get("/models", summary="Lista modelos de IA disponíveis para geração de questões")
+def list_question_models():
+    """Retorna o catálogo de modelos de LLM selecionáveis pelo usuário."""
+    return {"models": AVAILABLE_QUESTION_MODELS}
 
 
 @agent_router.post(
@@ -139,7 +145,14 @@ async def ask_agent_stream(query: RequestBodyAgentQuestion, session: Session = D
     """
     from app.services.progress_manager import ProgressManager
     from app.services.langgraph_orchestrator import get_orchestrator
-    
+
+    logger.info(
+        f"📥 stream request | skill={query.skill[:40]!r} | grade={query.grade!r} | "
+        f"model={query.model_evaluation_type} | image_dep={query.image_dependency} | "
+        f"context_theme={getattr(query, 'context_theme', None)!r} | "
+        f"combined_skills={len(query.combined_skills) if query.combined_skills else 0}"
+    )
+
     progress = ProgressManager()
     
     # Capture event loop BEFORE starting thread (fixes race condition)
@@ -201,16 +214,20 @@ async def ask_agent_stream(query: RequestBodyAgentQuestion, session: Session = D
                         user_id=None
                     )
                     logger.info(f"✅ Grupo #{group.id} criado com {len(saved_questions)} questões (stream)")
+                    progress.group_created(group.id)
                 finally:
                     thread_session.close()
             except Exception as db_error:
                 logger.warning(f"⚠️ Erro ao salvar no banco (stream): {db_error}")
-                
+
         except Exception as e:
             logger.error(f"❌ Erro na geração stream: {e}")
             import traceback
             traceback.print_exc()
             progress.error(str(e))
+        finally:
+            # Garante encerramento do stream em qualquer cenário (sucesso ou erro de DB)
+            progress.end_stream()
     
     # Inicia geração em thread separada
     thread = threading.Thread(target=run_generation, daemon=True)
