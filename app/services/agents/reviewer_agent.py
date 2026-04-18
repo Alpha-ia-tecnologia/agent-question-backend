@@ -173,10 +173,47 @@ def reviewer_node(state: AgentState) -> AgentState:
             progress.log("reviewer", "Carregando 7 critérios de qualidade (BNCC, distratores, clareza...)", "", "📋")
         llm = get_question_llm(model=llm_model_override)
         
+        # Carrega observações corretivas de revisões passadas (HITL) para
+        # enriquecer a rubrica com padrões de erro recorrentes deste contexto.
+        extra_rubric = ""
+        try:
+            from app.utils.connect_db import get_session_context
+            from app.repositories.question_repository import QuestionRepository
+            with get_session_context() as _s:
+                _repo = QuestionRepository(_s)
+                _obs = _repo.get_corrective_observations(
+                    skill=getattr(query, "skill", None),
+                    grade=getattr(query, "grade", None),
+                    curriculum_component=getattr(query, "curriculum_component", None),
+                    limit=5,
+                )
+            if _obs:
+                bullets = "\n".join(f'- {o["observation"][:300]}' for o in _obs)
+                extra_rubric = f"""
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. **APRENDIZADOS DE REVISÕES ANTERIORES** (nota 0-10):
+   Revisores humanos deixaram estas observações em questões passadas
+   desta habilidade/série/componente. REPROVE (nota baixa) se as questões
+   atuais REPETIREM qualquer um desses problemas:
+{bullets}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+"""
+                if progress:
+                    progress.log(
+                        "reviewer",
+                        f"Rubrica enriquecida com {len(_obs)} observação(ões) humana(s)",
+                        "",
+                        "📚",
+                    )
+        except Exception as obs_err:
+            logger.warning(f"⚠️ Falha ao carregar observações no reviewer: {obs_err}")
+
         # Prepara o prompt
+        reviewer_prompt_with_hints = REVIEWER_PROMPT + extra_rubric
         prompt = PromptTemplate(
             input_variables=["questions_json", "skill", "proficiency_level", "grade"],
-            template=REVIEWER_PROMPT
+            template=reviewer_prompt_with_hints
         )
         
         chain = prompt | llm

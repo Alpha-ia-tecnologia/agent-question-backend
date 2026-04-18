@@ -469,6 +469,30 @@ def generator_node(state: AgentState) -> AgentState:
         # Tema/assunto complementar (orientação temática livre)
         context_theme = getattr(query, "context_theme", None)
 
+        # Feedback de observações anteriores (HITL loop) — carrega observações
+        # recentes em questões do mesmo contexto e injeta no prompt.
+        corrective_observations = []
+        try:
+            from app.utils.connect_db import get_session_context
+            from app.repositories.question_repository import QuestionRepository
+            with get_session_context() as _s:
+                _repo = QuestionRepository(_s)
+                corrective_observations = _repo.get_corrective_observations(
+                    skill=getattr(query, "skill", None),
+                    grade=getattr(query, "grade", None),
+                    curriculum_component=getattr(query, "curriculum_component", None),
+                    limit=5,
+                )
+            if corrective_observations and progress:
+                progress.log(
+                    "generator",
+                    f"Carregadas {len(corrective_observations)} observações corretivas anteriores",
+                    "",
+                    "📝",
+                )
+        except Exception as obs_err:
+            logger.warning(f"⚠️ Falha ao carregar observações corretivas: {obs_err}")
+
         # Prepara inputs para o template
         inputs = {
             "count_questions": query.count_questions,
@@ -624,6 +648,28 @@ ATENÇÃO - FEEDBACK DA REVISÃO ANTERIOR (CORRIJA ESTES PROBLEMAS):
 {feedback}
 
 Gere novas questões corrigindo os problemas apontados acima.
+"""
+
+        # Observações corretivas de gerações anteriores (HITL). Injeta as
+        # observações mais recentes de questões desta skill/série/componente
+        # como regras a seguir nesta nova geração.
+        if corrective_observations:
+            bullets = "\n".join(
+                f'- (Q#{o["question_id"]}) {o["observation"][:300]}'
+                for o in corrective_observations
+            )
+            template_str = f"""
+{template_str}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 FEEDBACK DE REVISÕES ANTERIORES (evite repetir estes problemas):
+{bullets}
+
+REGRA: cada uma dessas observações foi feita por um revisor humano ao
+avaliar questões produzidas para esta mesma habilidade/série/componente.
+Use-as como LIÇÕES APRENDIDAS na nova geração: corrija o padrão que
+gerou a observação, não o texto específico.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
         # Lembrete final do tema (última instrução = maior peso no LLM).

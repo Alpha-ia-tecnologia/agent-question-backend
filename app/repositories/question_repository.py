@@ -175,6 +175,86 @@ class QuestionRepository:
             query = query.filter(Question.validated == validated)
         return query.scalar() or 0
     
+    def get_corrective_observations(
+        self,
+        skill: Optional[str] = None,
+        grade: Optional[str] = None,
+        curriculum_component: Optional[str] = None,
+        limit: int = 5,
+    ) -> List[dict]:
+        """
+        Busca observações feitas pelos usuários em questões já revisadas,
+        para alimentar o loop de aprendizado do gerador/revisor.
+
+        Estratégia:
+        1. Match EXATO por (skill, grade) — mais específico;
+        2. Se < limit, complementa com (curriculum_component, grade) — mesmo contexto;
+        3. Só retorna observações não vazias, ordenadas da mais recente pra mais antiga.
+
+        Retorna lista de dicts: {question_id, skill, grade, observation, validated}
+        """
+        if not (skill or curriculum_component):
+            return []
+
+        def _fetch(flt):
+            q = (
+                self.session.query(Question)
+                .filter(Question.observation.isnot(None))
+                .filter(sa_func.length(sa_func.trim(Question.observation)) > 0)
+                .filter(flt)
+                .order_by(desc(Question.id))
+                .limit(limit)
+                .all()
+            )
+            return q
+
+        collected = []
+        seen_ids = set()
+
+        # (1) match exato por skill + grade (ou só skill)
+        if skill:
+            flt = Question.skill == skill
+            if grade:
+                flt = and_(flt, Question.grade == grade)
+            for q in _fetch(flt):
+                if q.id not in seen_ids:
+                    seen_ids.add(q.id)
+                    collected.append(q)
+
+        # (2) complemento por componente + série
+        if len(collected) < limit and curriculum_component:
+            remaining = limit - len(collected)
+            flt = Question.curriculum_component == curriculum_component
+            if grade:
+                flt = and_(flt, Question.grade == grade)
+            extra_q = (
+                self.session.query(Question)
+                .filter(Question.observation.isnot(None))
+                .filter(sa_func.length(sa_func.trim(Question.observation)) > 0)
+                .filter(flt)
+                .order_by(desc(Question.id))
+                .limit(remaining * 2)
+                .all()
+            )
+            for q in extra_q:
+                if q.id in seen_ids:
+                    continue
+                seen_ids.add(q.id)
+                collected.append(q)
+                if len(collected) >= limit:
+                    break
+
+        return [
+            {
+                "question_id": q.id,
+                "skill": q.skill,
+                "grade": q.grade,
+                "observation": (q.observation or "").strip(),
+                "validated": bool(getattr(q, "validated", False)),
+            }
+            for q in collected[:limit]
+        ]
+
     def get_alternatives_by_question(self, question_id: int) -> List[Alternative]:
         """Busca alternativas de uma questão."""
         return self.session.query(Alternative).filter(
