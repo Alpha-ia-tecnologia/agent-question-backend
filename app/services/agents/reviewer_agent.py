@@ -169,8 +169,8 @@ def reviewer_node(state: AgentState) -> AgentState:
         query = state.get("query")
         llm_model_override = getattr(query, "llm_model", None) if query else None
         if progress:
-            progress.log("reviewer", f"Initializing review LLM: {llm_model_override or 'default'}", "", "🔌")
-            progress.log("reviewer", "Loading 7 quality criteria (BNCC, Distractors, Clarity...)", "", "📋")
+            progress.log("reviewer", f"Iniciando LLM do revisor: {llm_model_override or 'padrão'}", "", "🔌")
+            progress.log("reviewer", "Carregando 7 critérios de qualidade (BNCC, distratores, clareza...)", "", "📋")
         llm = get_question_llm(model=llm_model_override)
         
         # Prepara o prompt
@@ -193,9 +193,9 @@ def reviewer_node(state: AgentState) -> AgentState:
         }
         
         if progress:
-            progress.log("reviewer", "Building evaluation prompt", f"{len(questions)} questions to review", "📋")
-            progress.log("reviewer", "Checking distractor plausibility (5 sub-criteria)", "", "🎭")
-            progress.log("reviewer", "Calling DeepSeek API (review)...", "", "🚀")
+            progress.log("reviewer", "Montando prompt de avaliação", f"{len(questions)} questão(ões) para revisar", "📋")
+            progress.log("reviewer", "Verificando plausibilidade dos distratores (5 subcritérios)", "", "🎭")
+            progress.log("reviewer", "Chamando API do modelo (revisão)...", "", "🚀")
         response = chain.invoke(inputs, config=config)
         raw_content = response.content if hasattr(response, 'content') else str(response)
         if isinstance(raw_content, list):
@@ -211,12 +211,12 @@ def reviewer_node(state: AgentState) -> AgentState:
         else:
             response_text = str(raw_content)
         if progress:
-            progress.log("reviewer", "Review response received", "", "📥")
-            progress.log("reviewer", "Analyzing scores per criterion...", "", "📊")
+            progress.log("reviewer", "Resposta de revisão recebida", "", "📥")
+            progress.log("reviewer", "Analisando notas por critério...", "", "📊")
         
         # Parse da revisão
         if progress:
-            progress.log("reviewer", "Parsing evaluation response", "", "🔧")
+            progress.log("reviewer", "Interpretando resposta da avaliação", "", "🔧")
         review_data = _parse_review_response(response_text)
         
         overall_score = review_data.get("overall_score", 0.0)
@@ -279,11 +279,11 @@ def reviewer_node(state: AgentState) -> AgentState:
                     progress.log("reviewer", f"Q{qnum} — {criteria_label}: {score_val}/10", "", "📏")
                 issues = rev.get("issues", [])
                 for issue in issues:
-                    progress.log("reviewer", f"Q{qnum} issue: {issue[:80]}", "", "⚠️")
+                    progress.log("reviewer", f"Q{qnum} problema: {issue[:80]}", "", "⚠️")
             
             score_pct = f"{overall_score * 100:.0f}%"
-            progress.metric("reviewer", "Overall quality score", score_pct, "🎯")
-            progress.metric("reviewer", "Approved", "✅ Yes" if approved else "❌ No", "📋")
+            progress.metric("reviewer", "Nota geral de qualidade", score_pct, "🎯")
+            progress.metric("reviewer", "Aprovado", "✅ Sim" if approved else "❌ Não", "📋")
         
         if not approved and feedback:
             logger.info(f"📝 Feedback: {feedback[:100]}...")
@@ -299,7 +299,7 @@ def reviewer_node(state: AgentState) -> AgentState:
     except Exception as e:
         logger.error(f"❌ Erro no Agente Revisor: {e}")
         if progress:
-            progress.log("reviewer", f"Error: {str(e)[:120]}", "", "❌")
+            progress.log("reviewer", f"Erro: {str(e)[:120]}", "", "❌")
         # Em caso de erro, aprova para não travar o fluxo
         return {
             **state,

@@ -229,7 +229,7 @@ def generator_node(state: AgentState) -> AgentState:
         if progress:
             progress.log(
                 "generator",
-                f"Initializing LLM: {llm_model_override or 'default'}",
+                f"Iniciando LLM: {llm_model_override or 'padrão'}",
                 "",
                 "🔌",
             )
@@ -237,13 +237,13 @@ def generator_node(state: AgentState) -> AgentState:
         template_str = _select_template(query, feedback is not None)
         image_dep = query.image_dependency
         if progress:
-            progress.log("generator", f"📐 Skill: {query.skill[:60]}", "", "🎯")
-            progress.log("generator", f"Grade: {query.grade} · Proficiency: {query.proficiency_level}", "", "🏫")
-            dep_label = {"none": "No image", "optional": "Optional image", "required": "Image required"}
-            progress.log("generator", f"Image rules: {dep_label.get(image_dep, image_dep)}", "", "🖼️")
-            progress.log("generator", "Loading distractor methodology (7 error types)", "", "🧠")
-            tpl = "with feedback" if feedback else "standard"
-            progress.log("generator", f"Template selected: {tpl}", "", "📄")
+            progress.log("generator", f"📐 Habilidade: {query.skill[:60]}", "", "🎯")
+            progress.log("generator", f"Série: {query.grade} · Proficiência: {query.proficiency_level}", "", "🏫")
+            dep_label = {"none": "Sem imagem", "optional": "Imagem opcional", "required": "Imagem obrigatória"}
+            progress.log("generator", f"Regras de imagem: {dep_label.get(image_dep, image_dep)}", "", "🖼️")
+            progress.log("generator", "Carregando metodologia de distratores (7 tipos de erro)", "", "🧠")
+            tpl = "com feedback" if feedback else "padrão"
+            progress.log("generator", f"Template selecionado: {tpl}", "", "📄")
         
         # Mapeia instruções de imagem (REGRAS CRÍTICAS de coerência)
         image_instructions = {
@@ -615,7 +615,7 @@ E) ESTRATÉGIA ANTES DE GERAR:
 
         # Se houver feedback, adiciona ao prompt
         if feedback and progress:
-            progress.log("generator", "Incorporating feedback from previous review", feedback[:100] if feedback else "", "📝")
+            progress.log("generator", "Incorporando feedback da revisão anterior", feedback[:100] if feedback else "", "📝")
         if feedback:
             template_str = f"""
 {template_str}
@@ -665,12 +665,12 @@ tema — o aluno responde à habilidade USANDO o texto temático.
         )
         
         if progress:
-            progress.log("generator", f"Calling DeepSeek API...", f"Generating {query.count_questions} question(s)", "🚀")
-            progress.log("generator", "Applying BNCC/SAEB alignment rules", "", "📏")
-            progress.log("generator", "Crafting plausible distractors based on error taxonomy", "", "🎭")
+            progress.log("generator", f"Chamando API do modelo...", f"Gerando {query.count_questions} questão(ões)", "🚀")
+            progress.log("generator", "Aplicando regras de alinhamento BNCC/SAEB", "", "📏")
+            progress.log("generator", "Construindo distratores plausíveis com base na taxonomia de erros", "", "🎭")
         response = chain.invoke(inputs, config=config)
         if progress:
-            progress.log("generator", "API response received — Validating JSON structure", "", "📥")
+            progress.log("generator", "Resposta recebida — validando estrutura JSON", "", "📥")
         
         # Extrai conteúdo — normaliza para string, já que Gemini pode retornar
         # content como lista de parts (ex: [{"type":"text","text":"..."}]).
@@ -690,13 +690,13 @@ tema — o aluno responde à habilidade USANDO o texto temático.
         
         # Parse do JSON
         if progress:
-            progress.log("generator", "Parsing JSON response", "", "🔧")
+            progress.log("generator", "Interpretando resposta JSON", "", "🔧")
         parsed_data = _parse_json_response(response_text)
         questions = parsed_data.get("questions", [])
         
         logger.info(f"✅ Gerador produziu {len(questions)} questões")
         if progress:
-            progress.metric("generator", "Questions generated", len(questions), "📝")
+            progress.metric("generator", "Questões geradas", len(questions), "📝")
             for i, q in enumerate(questions):
                 stmt = q.get("question_statement", "")[:80]
                 progress.log("generator", f"Q{i+1}: {stmt}...", "", "✏️")
@@ -711,7 +711,7 @@ tema — o aluno responde à habilidade USANDO o texto temático.
     except Exception as e:
         logger.error(f"❌ Erro no Agente Gerador: {e}")
         if progress:
-            progress.log("generator", f"Error: {str(e)[:120]}", "", "❌")
+            progress.log("generator", f"Erro: {str(e)[:120]}", "", "❌")
         return {
             **state,
             "questions": [],

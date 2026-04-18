@@ -59,8 +59,8 @@ def image_generator_node(state: AgentState) -> dict:
     retry_count = state.get("image_retry_count", 0)
     
     if progress:
-        progress.phase_start("image_generator", "Image Generation Agent", "🎨")
-        progress.log("image_generator", f"Generating images for {len(questions)} questions", "", "🖼️")
+        progress.phase_start("image_generator", "Agente Gerador de Imagens", "🎨")
+        progress.log("image_generator", f"Gerando imagens para {len(questions)} questão(ões)", "", "🖼️")
     
     image_service = get_image_service()
     image_results = []
@@ -130,7 +130,7 @@ def image_generator_node(state: AgentState) -> dict:
     
     if progress:
         generated_count = sum(1 for r in image_results if r.get("image_base64"))
-        progress.phase_end("image_generator", f"{generated_count}/{len(questions)} images generated")
+        progress.phase_end("image_generator", f"{generated_count}/{len(questions)} imagem(ns) gerada(s)")
     
     return {
         "image_results": image_results,
@@ -151,7 +151,7 @@ def image_validator_node(state: AgentState) -> dict:
     image_results = state.get("image_results", [])
     
     if progress:
-        progress.phase_start("image_validator", "Image Validation Agent", "👁️")
+        progress.phase_start("image_validator", "Agente Validador de Imagens", "👁️")
     
     validator = get_image_validator_agent()
     validated_results = []
@@ -182,7 +182,7 @@ def image_validator_node(state: AgentState) -> dict:
         
         if progress:
             title = q_data.get("title", "N/A")[:40]
-            progress.log("image_validator", f"Validating image {idx + 1}: {title}...", "", "🔍")
+            progress.log("image_validator", f"Validando imagem {idx + 1}: {title}...", "", "🔍")
         
         # Validar com Gemini Vision
         try:
@@ -203,7 +203,7 @@ def image_validator_node(state: AgentState) -> dict:
                 status_icon = "✅" if is_valid else "❌"
                 progress.log(
                     "image_validator",
-                    f"{status_icon} Image {idx + 1}: {'Approved' if is_valid else 'Rejected'} (score: {score})",
+                    f"{status_icon} Imagem {idx + 1}: {'Aprovada' if is_valid else 'Reprovada'} (nota: {score})",
                     ", ".join(validation.get("issues", [])) if not is_valid else "",
                     status_icon
                 )

@@ -253,12 +253,12 @@ class LangGraphQuestionOrchestrator:
         set_current_progress(progress)
         
         # Routing phase
-        progress.phase_start("routing", "Request Analysis", "🔀")
+        progress.phase_start("routing", "Análise da Requisição", "🔀")
         if query.use_real_text:
-            progress.log("routing", "Strategy: Real text search enabled", "", "📚")
+            progress.log("routing", "Estratégia: busca de textos reais ativada", "", "📚")
         else:
-            progress.log("routing", "Strategy: Direct generation (no text search)", "", "⚡")
-        progress.phase_end("routing", "Route determined")
+            progress.log("routing", "Estratégia: geração direta (sem busca de textos)", "", "⚡")
+        progress.phase_end("routing", "Rota definida")
         
         # Initial state
         initial_state: AgentState = {
@@ -278,11 +278,11 @@ class LangGraphQuestionOrchestrator:
             
             # Node-by-node phase labels (English)
             phase_labels = {
-                "searcher": ("Text Search Agent", "📚"),
-                "generator": ("Question Generator Agent", "✨"),
-                "reviewer": ("Quality Review Agent", "📋"),
-                "image_generator": ("Image Generation Agent", "🎨"),
-                "image_validator": ("Image Validation Agent", "👁️"),
+                "searcher": ("Agente de Busca de Textos", "📚"),
+                "generator": ("Agente Gerador de Questões", "✨"),
+                "reviewer": ("Agente Revisor de Qualidade", "📋"),
+                "image_generator": ("Agente Gerador de Imagens", "🎨"),
+                "image_validator": ("Agente Validador de Imagens", "👁️"),
                 "image_retry_inc": ("Image Retry", "🔄"),
                 "__image_decision__": ("Image Decision", "🖼️"),
             }
@@ -300,25 +300,25 @@ class LangGraphQuestionOrchestrator:
                     if node_name == "searcher":
                         texts = node_output.get("real_texts")
                         count = len(texts) if texts else 0
-                        progress.phase_end(node_name, f"{count} texts found")
+                        progress.phase_end(node_name, f"{count} texto(s) encontrado(s)")
                         
                     elif node_name == "generator":
                         questions = node_output.get("questions", [])
                         retry = node_output.get("retry_count", 0)
                         if retry > 1:
                             progress.retry(retry - 1, "Quality below threshold, regenerating...")
-                        progress.phase_end(node_name, f"{len(questions)} questions generated")
+                        progress.phase_end(node_name, f"{len(questions)} questão(ões) gerada(s)")
                         
                     elif node_name == "reviewer":
                         score = node_output.get("quality_score", 0)
                         score_pct = f"{score * 100:.0f}%" if score else "N/A"
-                        progress.phase_end(node_name, f"Quality score: {score_pct}")
+                        progress.phase_end(node_name, f"Nota de qualidade: {score_pct}")
                     
                     if node_output:
                         last_state = {**last_state, **node_output}
             
             # Final validation phase
-            progress.phase_start("quality_gate", "Quality Gate", "✅")
+            progress.phase_start("quality_gate", "Portal de Qualidade", "✅")
             
             questions_data = last_state.get("questions", [])
             quality_score = last_state.get("quality_score", 0)
@@ -331,10 +331,10 @@ class LangGraphQuestionOrchestrator:
                 quality_score = 0.0
             
             score_pct = f"{quality_score * 100:.0f}%" if quality_score else "0%"
-            progress.log("quality_gate", f"Final score: {score_pct}", "", "🎯")
-            progress.log("quality_gate", f"Total attempts: {retry_count}", "", "🔄")
-            progress.log("quality_gate", f"Questions delivered: {len(questions_data)}", "", "📝")
-            progress.phase_end("quality_gate", f"Approved with {score_pct}")
+            progress.log("quality_gate", f"Nota final: {score_pct}", "", "🎯")
+            progress.log("quality_gate", f"Total de tentativas: {retry_count}", "", "🔄")
+            progress.log("quality_gate", f"Questões entregues: {len(questions_data)}", "", "📝")
+            progress.phase_end("quality_gate", f"Aprovado com {score_pct}")
             
             logger.info(
                 f"🏁 Generation with progress completed | "
