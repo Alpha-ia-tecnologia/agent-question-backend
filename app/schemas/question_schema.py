@@ -9,6 +9,7 @@ class AlternativeSchema(BaseModel):
     
 
 class QuestionSchema(BaseModel):
+    id: Optional[int] = Field(default=None, description="ID da questão no banco (quando já persistida)")
     question_number: int = Field(description="Número da questão")
     id_skill: str = Field(description="ID da habilidade")
     skill: str = Field(description="Habilidade da questão")

@@ -270,29 +270,46 @@ async def generate_image(question: QuestionSchema, session: Session = Depends(ge
                 import uuid
                 import base64
                 import os
-                
+
                 # Cria diretório se não existir
                 static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "..", "static", "images")
                 os.makedirs(static_dir, exist_ok=True)
-                
+
                 # Gera nome único para o arquivo
                 image_id = str(uuid.uuid4())[:8]
                 filename = f"question_{question.question_number}_{image_id}.png"
                 filepath = os.path.join(static_dir, filename)
-                
+
                 # Salva a imagem
                 image_data = base64.b64decode(image_response.image_base64)
                 with open(filepath, "wb") as f:
                     f.write(image_data)
-                
-                # Retorna URL completa
+
                 image_url = f"/static/images/{filename}"
                 logger.info(f"✅ Imagem salva em {filepath}")
-                
-                # Retorna resposta com URL
+
+                # Persiste o image_url no registro do banco para que seja
+                # devolvido ao recarregar a página.
+                question_id = getattr(question, "id", None)
+                if question_id:
+                    try:
+                        repo = QuestionRepository(session)
+                        repo.update_question_image(
+                            question_id=question_id,
+                            image_url=image_url,
+                            image_base64=None,  # não duplicar: URL já persistida
+                        )
+                        logger.info(f"💾 image_url persistido na questão #{question_id}")
+                    except Exception as db_err:
+                        logger.warning(f"⚠️ Falha ao persistir image_url no DB: {db_err}")
+                else:
+                    logger.info("ℹ️ Questão sem id — imagem salva em disco mas não vinculada a registro.")
+
+                # Retorna URL RELATIVA. O frontend resolve contra a base do API,
+                # e o backend serve /static via StaticFiles.
                 return ImageResponse(
                     image_base64=image_response.image_base64,
-                    image_url=f"http://localhost:8000{image_url}"
+                    image_url=image_url,
                 )
             except Exception as save_error:
                 logger.warning(f"⚠️ Erro ao salvar imagem em disco: {save_error}")
