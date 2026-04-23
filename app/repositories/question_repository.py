@@ -530,10 +530,13 @@ class QuestionRepository:
                     image_path = self.save_image_to_disk(q_data["image_base64"], question.id)
                     question.image_path = image_path
                     question.image_url = image_path  # URL = path para servir estático
-                    
-                    # Limpa o Base64 para não ocupar espaço no banco
-                    question.image_base64 = None
-                    
+
+                    # Mantém o base64 no banco como fallback: se o arquivo em
+                    # disco for perdido (storage efêmero de container), o
+                    # frontend ainda consegue renderizar a imagem a partir
+                    # do campo image_base64 (prioridade no hook useQuestionImage).
+                    # question.image_base64 permanece preenchido.
+
                     images_count += 1
                     created_questions.append(question)
                 except Exception as e:

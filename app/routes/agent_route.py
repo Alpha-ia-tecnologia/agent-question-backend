@@ -288,8 +288,11 @@ async def generate_image(question: QuestionSchema, session: Session = Depends(ge
                 image_url = f"/static/images/{filename}"
                 logger.info(f"✅ Imagem salva em {filepath}")
 
-                # Persiste o image_url no registro do banco para que seja
-                # devolvido ao recarregar a página.
+                # Persiste image_url E image_base64 no registro do banco para
+                # que a imagem sobreviva tanto a refresh quanto a redeploys em
+                # ambientes com storage efêmero de container (ex: Easypanel).
+                # O hook useQuestionImage prioriza image_base64 sobre image_url,
+                # então se o arquivo em disco sumir, o base64 ainda renderiza.
                 question_id = getattr(question, "id", None)
                 if question_id:
                     try:
@@ -297,11 +300,11 @@ async def generate_image(question: QuestionSchema, session: Session = Depends(ge
                         repo.update_question_image(
                             question_id=question_id,
                             image_url=image_url,
-                            image_base64=None,  # não duplicar: URL já persistida
+                            image_base64=image_response.image_base64,
                         )
-                        logger.info(f"💾 image_url persistido na questão #{question_id}")
+                        logger.info(f"💾 image_url + image_base64 persistidos na questão #{question_id}")
                     except Exception as db_err:
-                        logger.warning(f"⚠️ Falha ao persistir image_url no DB: {db_err}")
+                        logger.warning(f"⚠️ Falha ao persistir imagem no DB: {db_err}")
                 else:
                     logger.info("ℹ️ Questão sem id — imagem salva em disco mas não vinculada a registro.")
 
