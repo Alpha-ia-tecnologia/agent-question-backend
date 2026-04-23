@@ -38,6 +38,16 @@ app.add_middleware(
 )
 
 
+@app.get("/", include_in_schema=False)
+def root():
+    return {"status": "ok", "service": "Agent Question API", "docs": "/docs"}
+
+
+@app.get("/health", include_in_schema=False)
+def health():
+    return {"status": "ok"}
+
+
 app.include_router(auth_router, tags=["Autenticação"])
 app.include_router(user_router, tags=["Usuário"])
 app.include_router(agent_router, tags=["Agente de questões"])
