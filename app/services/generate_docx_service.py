@@ -6,14 +6,26 @@ import os
 
 class GenerateDocxService:
     @staticmethod
-    def generate_docx(questions: list[QuestionSchema | QuestionWithImageSchema], file_name: str):
+    def generate_docx(
+        questions: list[QuestionSchema | QuestionWithImageSchema],
+        file_name: str,
+        version: str = "teacher",
+    ):
+        # Versão do documento: "student" (apenas enunciado + alternativas)
+        # ou "teacher" (inclui gabarito, explicação e distratores das alternativas).
+        version = (version or "teacher").lower()
+        if version not in ("student", "teacher"):
+            version = "teacher"
+        is_teacher = version == "teacher"
+
         # Garante que a pasta export existe
         os.makedirs("export", exist_ok=True)
-        
+
         doc = Document()
         doc._body.clear_content()
-        
-        doc.add_heading("Questões educacionais", 0)
+
+        heading_label = "Questões educacionais" + (" — Versão do Professor" if is_teacher else " — Versão do Aluno")
+        doc.add_heading(heading_label, 0)
         try:
             for question in questions:
                 # Suporta tanto objetos Pydantic quanto dicts
@@ -85,15 +97,20 @@ class GenerateDocxService:
                     if isinstance(alternative, dict):
                         letter = alternative['letter']
                         text = alternative['text']
+                        distractor = alternative.get('distractor')
                     else:
                         letter = alternative.letter
                         text = alternative.text
+                        distractor = getattr(alternative, 'distractor', None)
                     doc.add_paragraph(f"({letter}) {text}")
+                    if is_teacher and distractor:
+                        doc.add_paragraph(f"    ↳ Distrator: {distractor}")
 
                 doc.add_paragraph("")
-                doc.add_paragraph(f"Resposta correta: {q['correct_answer']}")
-                doc.add_paragraph(f"Explicação: {q['explanation_question']}")
-                doc.add_paragraph("")
+                if is_teacher:
+                    doc.add_paragraph(f"Resposta correta: {q['correct_answer']}")
+                    doc.add_paragraph(f"Explicação: {q['explanation_question']}")
+                    doc.add_paragraph("")
                 doc.add_paragraph("---")
                 
             path = f"export/{file_name}.docx"

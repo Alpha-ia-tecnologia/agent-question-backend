@@ -27,21 +27,30 @@ async def download_file(file_name: str):
 
 
 @doc_router.post("/generate-docx", status_code=HTTPStatus.OK, response_model=GenerateDocxResponseSchema)
-def export_docx(questions: list[QuestionSchema | QuestionWithImageSchema], file_name: str):
+def export_docx(
+    questions: list[QuestionSchema | QuestionWithImageSchema],
+    file_name: str,
+    version: str = "teacher",
+):
     """
         Endpoint responsável por gera um docx de questões.\n
         Recebe uma lista de questões.\n
         Retorna um link para download do arquivo docx.
 
         Aceita umas lista de questões com imagens, sem imagens e ambas
-        
+
+        `version`:
+        - `teacher`: inclui gabarito, explicação e distratores (padrão).
+        - `student`: apenas enunciado e alternativas, sem gabarito.
     """
     if not questions:
         raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="Questions list cannot be empty.")
     if not file_name:
         raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="File name cannot be empty.")
+    if version not in ("student", "teacher"):
+        raise HTTPException(status_code=HTTPStatus.BAD_REQUEST, detail="Invalid version. Use 'student' or 'teacher'.")
     try:
-        GenerateDocxService.generate_docx(questions=questions, file_name=file_name)
+        GenerateDocxService.generate_docx(questions=questions, file_name=file_name, version=version)
         return {
         "message": "Document generated successfully",
         "link": f"doc/download/{file_name}"
