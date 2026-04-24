@@ -27,20 +27,21 @@ MAX_IMAGE_RETRIES = 2
 
 def image_router_decision(state: AgentState) -> Literal["image_generator", "__end__"]:
     """
-    Decide se deve gerar imagens durante o pipeline ou finalizar.
+    Decide se deve gerar imagens no pipeline ou finalizar.
 
-    Comportamento atual: SEMPRE finaliza sem gerar imagens no pipeline.
-    A geração de imagem agora é acionada manualmente por questão via
-    o endpoint /agent/ask-image após a criação do grupo (UX mais previsível
-    e tempo de geração inicial mais curto).
-
-    O campo `image_dependency` ainda afeta o texto gerado (ex.: "required"
-    instrui o gerador a produzir um enunciado que DEPENDE de imagem),
-    mas a imagem em si é gerada depois, pelo usuário.
+    - `required`: a questão DEPENDE da imagem para ser respondida, então a
+      imagem é gerada automaticamente como parte do pipeline, usando a
+      mesma regra da geração manual (GenerateImageAgentService.generate_image
+      + validação multimodal via Gemini Vision).
+    - `optional` / `none`: finaliza sem gerar imagem. O usuário pode pedir
+      geração posterior via /agent/ask-image se quiser.
     """
     query = state["query"]
     image_dep = getattr(query, "image_dependency", "none")
-    logger.info(f"🖼️ image_dependency={image_dep} → Finalizando (imagem será gerada depois, sob demanda)")
+    if image_dep == "required":
+        logger.info(f"🖼️ image_dependency={image_dep} → Gerando imagem no pipeline")
+        return "image_generator"
+    logger.info(f"🖼️ image_dependency={image_dep} → Finalizando (imagem sob demanda)")
     return "__end__"
 
 
