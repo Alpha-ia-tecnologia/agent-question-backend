@@ -444,3 +444,83 @@ async def regenerate_image(request: ImageRegenerationRequest):
             status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
             detail=f"Erro interno ao processar a requisição: {str(e)}"
         )
+
+
+class QuestionRegenerationRequest(BaseModel):
+    """Requisição para regenerar uma questão existente com orientações do revisor."""
+    question: dict = Field(description="Snapshot da questão atual (todos os campos relevantes)")
+    question_id: Optional[int] = Field(default=None, description="ID da questão no banco (obrigatório para persistir)")
+    custom_instructions: str = Field(description="Orientações sobre o que deve ser corrigido/ajustado")
+    count_alternatives: Optional[int] = Field(default=None, description="Quantidade de alternativas (padrão: mesma da questão atual)")
+
+
+@agent_router.post(
+    "/regenerate-question",
+    status_code=HTTPStatus.OK,
+    summary="Regenerar questão com orientações do revisor",
+    description=(
+        "Regenera uma questão existente aplicando orientações específicas do revisor humano. "
+        "Preserva habilidade, nível de proficiência e ano escolar. Persiste a nova versão no banco."
+    ),
+)
+async def regenerate_question(
+    request: QuestionRegenerationRequest,
+    session: Session = Depends(get_session),
+):
+    if not request.custom_instructions or not request.custom_instructions.strip():
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail="custom_instructions é obrigatório."
+        )
+    if not request.question:
+        raise HTTPException(
+            status_code=HTTPStatus.BAD_REQUEST,
+            detail="question snapshot é obrigatório."
+        )
+
+    current = dict(request.question)
+    alts_count = (
+        request.count_alternatives
+        or (len(current.get("alternatives") or []) if current.get("alternatives") else 4)
+    )
+
+    try:
+        regenerated = generate_question_agent_service.regenerate_single_question(
+            current_question=current,
+            custom_instructions=request.custom_instructions,
+            count_alternatives=alts_count,
+        )
+    except QuestionGenerationError as e:
+        logger.error(f"Erro ao regenerar questão: {e}")
+        raise HTTPException(
+            status_code=HTTPStatus.SERVICE_UNAVAILABLE,
+            detail=f"Falha ao regenerar questão: {e}"
+        )
+    except Exception as e:
+        logger.error(f"Erro inesperado ao regenerar questão: {e}")
+        raise HTTPException(
+            status_code=HTTPStatus.INTERNAL_SERVER_ERROR,
+            detail=f"Erro interno: {e}"
+        )
+
+    updates = {
+        k: regenerated.get(k)
+        for k in (
+            "title", "text", "source", "source_url", "source_author",
+            "question_statement", "correct_answer", "explanation_question",
+            "alternatives",
+        )
+        if k in regenerated
+    }
+
+    if request.question_id:
+        try:
+            repo = QuestionRepository(session)
+            repo.update_question_full(question_id=request.question_id, updates=updates)
+            logger.info(f"💾 Questão #{request.question_id} regenerada e persistida")
+        except Exception as db_err:
+            logger.warning(f"⚠️ Falha ao persistir questão regenerada: {db_err}")
+
+    return {
+        "question": updates,
+    }

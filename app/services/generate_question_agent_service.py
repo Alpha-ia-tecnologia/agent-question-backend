@@ -384,6 +384,136 @@ class GenerateQuestionAgentService:
         
         return self.send_to_llm(template, query, extra_inputs)
     
+    def regenerate_single_question(
+        self,
+        current_question: dict,
+        custom_instructions: str,
+        count_alternatives: int = 4,
+    ) -> dict:
+        """
+        Regenera uma única questão aplicando orientações específicas do revisor.
+
+        Preserva habilidade, nível de proficiência, ano escolar e modelo de avaliação
+        da questão original. As orientações do usuário têm prioridade máxima.
+
+        Args:
+            current_question: Dict com os campos atuais da questão (snapshot antes da correção).
+            custom_instructions: Orientações do revisor sobre o que corrigir.
+            count_alternatives: Quantidade de alternativas esperada.
+
+        Returns:
+            Dict com os campos atualizados da questão.
+
+        Raises:
+            QuestionGenerationError: Se a resposta do LLM não puder ser parseada.
+        """
+        if not custom_instructions or not custom_instructions.strip():
+            raise QuestionGenerationError("custom_instructions é obrigatório para regenerar a questão.")
+
+        snapshot = {
+            "title": current_question.get("title"),
+            "text": current_question.get("text"),
+            "source": current_question.get("source"),
+            "source_author": current_question.get("source_author"),
+            "question_statement": current_question.get("question_statement"),
+            "alternatives": [
+                {
+                    "letter": (a.get("letter") if isinstance(a, dict) else getattr(a, "letter", None)),
+                    "text": (a.get("text") if isinstance(a, dict) else getattr(a, "text", None)),
+                    "distractor": (a.get("distractor") if isinstance(a, dict) else getattr(a, "distractor", None)),
+                }
+                for a in (current_question.get("alternatives") or [])
+            ],
+            "correct_answer": current_question.get("correct_answer"),
+            "explanation_question": current_question.get("explanation_question"),
+        }
+
+        skill = current_question.get("skill") or ""
+        id_skill = current_question.get("id_skill") or ""
+        proficiency_level = current_question.get("proficiency_level") or ""
+        proficiency_description = current_question.get("proficiency_description") or ""
+        grade = current_question.get("grade") or ""
+        model_evaluation_type = current_question.get("model_evaluation_type") or "SAEB"
+        curriculum_component = current_question.get("curriculum_component") or ""
+
+        prompt = f"""Você é um especialista em avaliação educacional (SAEB/BNCC/SEAMA).
+Sua tarefa é REGENERAR uma questão existente aplicando correções específicas
+apontadas pelo revisor humano.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► ORIENTAÇÕES DO REVISOR (PRIORIDADE MÁXIMA — APLIQUE À RISCA)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{custom_instructions.strip()}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► PARÂMETROS ORIGINAIS (PRESERVAR)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Habilidade: {id_skill} — {skill}
+- Nível de proficiência: {proficiency_level} — {proficiency_description}
+- Ano escolar: {grade}
+- Componente curricular: {curriculum_component}
+- Modelo de avaliação: {model_evaluation_type}
+- Quantidade de alternativas: {count_alternatives}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► QUESTÃO ATUAL (a ser corrigida)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{json.dumps(snapshot, ensure_ascii=False, indent=2)}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► REGRAS DE QUALIDADE (padrão SAEB/BNCC)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Apenas UMA alternativa correta (gabarito único).
+- Distratores PLAUSÍVEIS representando erros conceituais reais.
+- Homogeneidade: alternativas com tamanho e estrutura gramatical similares.
+- O gabarito NÃO deve ser a alternativa mais longa.
+- PROIBIDO: "Nenhuma das anteriores", "Todas as anteriores", alternativas absurdas.
+- Cada alternativa deve ter um campo "distractor" explicando por que está correta/incorreta.
+- Mantenha a mesma habilidade, nível e ano escolar.
+- Aplique AS ORIENTAÇÕES DO REVISOR acima de qualquer preferência sua.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+► FORMATO DE SAÍDA (JSON — sem texto extra antes ou depois)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{{
+  "title": "...",
+  "text": "...",
+  "source": "...",
+  "source_url": null,
+  "source_author": "...",
+  "question_statement": "...",
+  "alternatives": [
+    {{"letter": "A", "text": "...", "distractor": "..."}},
+    {{"letter": "B", "text": "...", "distractor": "..."}},
+    {{"letter": "C", "text": "...", "distractor": "..."}},
+    {{"letter": "D", "text": "...", "distractor": "..."}}
+  ],
+  "correct_answer": "A",
+  "explanation_question": "..."
+}}
+
+Retorne APENAS o JSON da questão regenerada, sem wrapper "questions" e sem texto explicativo.
+"""
+
+        logger.info(
+            f"🔁 Regenerando questão (habilidade={id_skill}, instrucoes={len(custom_instructions)}c)"
+        )
+
+        try:
+            response = self.llm.invoke(prompt)
+            response_text = response.content if hasattr(response, "content") else str(response)
+            parsed = self._parse_json_response(response_text)
+            if "questions" in parsed and isinstance(parsed["questions"], list) and parsed["questions"]:
+                parsed = parsed["questions"][0]
+            logger.info("✅ Regeneração concluída")
+            return parsed
+        except (json.JSONDecodeError, ValueError) as e:
+            logger.error(f"Resposta do LLM não é JSON válido: {e}")
+            raise QuestionGenerationError(f"Resposta do LLM não é JSON válido: {e}") from e
+        except Exception as e:
+            logger.error(f"❌ Erro ao regenerar questão: {e}")
+            raise QuestionGenerationError(f"Falha ao regenerar questão: {e}") from e
+
     def generate_questions(
         self,
         query: RequestBodyAgentQuestion

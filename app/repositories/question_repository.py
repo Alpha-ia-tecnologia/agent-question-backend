@@ -377,34 +377,59 @@ class QuestionRepository:
         if not question:
             return None
         
-        # Atualiza campos da questão
-        if "correct_answer" in updates:
-            question.correct_answer = updates["correct_answer"]
-        if "explanation_question" in updates:
-            question.explanation_question = updates["explanation_question"]
-        if "question_statement" in updates:
-            question.question_statement = updates["question_statement"]
-        
+        # Atualiza campos escalares da questão
+        for field in (
+            "correct_answer",
+            "explanation_question",
+            "question_statement",
+            "title",
+            "text",
+            "source",
+            "source_url",
+            "source_author",
+        ):
+            if field in updates and updates[field] is not None:
+                setattr(question, field, updates[field])
+
         # Atualiza alternativas
-        if "alternatives" in updates:
+        if "alternatives" in updates and updates["alternatives"] is not None:
+            new_alts = updates["alternatives"]
             existing_alts = self.get_alternatives_by_question(question_id)
-            alt_map = {alt.letter: alt for alt in existing_alts}
-            
-            for alt_data in updates["alternatives"]:
-                letter = alt_data.get("letter")
-                if letter and letter in alt_map:
-                    alt = alt_map[letter]
-                    if "text" in alt_data:
-                        alt.text = alt_data["text"]
-                    if "distractor" in alt_data:
-                        alt.distractor = alt_data["distractor"]
-                    # Recalcula is_correct baseado na resposta correta atual
-                    new_correct = updates.get("correct_answer", question.correct_answer)
-                    alt.is_correct = (letter == new_correct)
-        
+            existing_letters = {alt.letter for alt in existing_alts}
+            new_letters = {a.get("letter") for a in new_alts if a.get("letter")}
+            new_correct = updates.get("correct_answer", question.correct_answer)
+
+            if existing_letters != new_letters:
+                # Conjunto de letras mudou: recria alternativas do zero.
+                for alt in existing_alts:
+                    self.session.delete(alt)
+                self.session.flush()
+                for alt_data in new_alts:
+                    letter = alt_data.get("letter")
+                    if not letter:
+                        continue
+                    self.session.add(Alternative(
+                        question_id=question_id,
+                        letter=letter,
+                        text=alt_data.get("text", ""),
+                        distractor=alt_data.get("distractor"),
+                        is_correct=(letter == new_correct),
+                    ))
+            else:
+                alt_map = {alt.letter: alt for alt in existing_alts}
+                for alt_data in new_alts:
+                    letter = alt_data.get("letter")
+                    if letter and letter in alt_map:
+                        alt = alt_map[letter]
+                        if "text" in alt_data and alt_data["text"] is not None:
+                            alt.text = alt_data["text"]
+                        if "distractor" in alt_data:
+                            alt.distractor = alt_data["distractor"]
+                        alt.is_correct = (letter == new_correct)
+
         self.session.commit()
         self.session.refresh(question)
-        
+
         return question
     
     # ===== MÉTODOS PARA GRUPOS DE QUESTÕES =====
