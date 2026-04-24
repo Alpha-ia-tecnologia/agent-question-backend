@@ -19,12 +19,49 @@ from app.schemas.response_agent_schema import ReponseAgentSchema
 from app.schemas.request_body_agent import RequestBodyAgentQuestion
 from app.services.generate_question_agent_service import GenerateQuestionAgentService
 from app.services.generate_docx_service import GenerateDocxService
-from app.schemas.question_schema import QuestionSchema
+from app.schemas.question_schema import QuestionSchema, AlternativeSchema
 from app.services.generate_image_agent_service import GenerateImageAgentService
 from app.schemas.image_response import ImageResponse
 from app.core.llm_config import QuestionGenerationError, ImageGenerationError, AVAILABLE_QUESTION_MODELS
 from app.utils.connect_db import get_session
 from app.repositories.question_repository import QuestionRepository
+
+
+_QUESTION_STR_DEFAULTS = (
+    "id_skill", "skill", "proficiency_level", "proficiency_description",
+    "title", "text", "source", "question_statement", "correct_answer",
+    "explanation_question",
+)
+
+
+def _coerce_question_payload(data: dict) -> QuestionSchema:
+    """
+    Constrói um QuestionSchema a partir de um dict vindo do cliente, tolerando
+    campos nulos (questões persistidas no banco frequentemente têm colunas
+    NULL como `source` ou `proficiency_description`). Substitui None por ""
+    nos campos de texto obrigatórios e sanitiza alternativas.
+    """
+    clean = dict(data or {})
+    for field in _QUESTION_STR_DEFAULTS:
+        if clean.get(field) is None:
+            clean[field] = ""
+    if clean.get("question_number") is None:
+        clean["question_number"] = 0
+
+    raw_alts = clean.get("alternatives") or []
+    clean["alternatives"] = [
+        AlternativeSchema(
+            letter=(a.get("letter") or "") if isinstance(a, dict) else getattr(a, "letter", "") or "",
+            text=(a.get("text") or "") if isinstance(a, dict) else getattr(a, "text", "") or "",
+            distractor=(a.get("distractor") if isinstance(a, dict) else getattr(a, "distractor", None)),
+        )
+        for a in raw_alts
+        if isinstance(a, dict) or hasattr(a, "letter")
+    ]
+
+    allowed = set(QuestionSchema.model_fields.keys())
+    filtered = {k: v for k, v in clean.items() if k in allowed}
+    return QuestionSchema(**filtered)
 
 # Logger para este módulo
 logger = logging.getLogger(__name__)
@@ -251,14 +288,16 @@ async def ask_agent_stream(query: RequestBodyAgentQuestion, session: Session = D
     summary="Gerar imagem para questão",
     description="Gera uma imagem ilustrativa para uma questão educacional usando IA multimodal."
 )
-async def generate_image(question: QuestionSchema, session: Session = Depends(get_session)):
+async def generate_image(payload: dict, session: Session = Depends(get_session)):
     """
     Endpoint responsável por gerar uma imagem a partir de uma questão.
-    
-    Recebe uma questão e retorna uma imagem ilustrativa em Base64.
+
+    Recebe uma questão (dict flexível — campos nulos são tolerados, como em
+    questões já persistidas no banco) e retorna uma imagem ilustrativa em Base64.
     Se a questão já estiver salva no banco (tem ID), a imagem será salva em disco e vinculada.
     """
     try:
+        question = _coerce_question_payload(payload)
         logger.info(f"Recebida requisição de imagem para questão #{question.question_number}")
         
         # Gera a imagem
@@ -339,7 +378,7 @@ async def generate_image(question: QuestionSchema, session: Session = Depends(ge
 
 class ImageRegenerationRequest(BaseModel):
     """Schema para requisição de regeneração/edição de imagem com instruções personalizadas."""
-    question: QuestionSchema
+    question: dict = Field(description="Snapshot da questão (dict flexível; campos nulos são tolerados)")
     question_id: Optional[int] = Field(default=None, description="ID da questão no banco (para persistir correções)")
     custom_instructions: str = Field(description="Instruções personalizadas para correção/melhoria da imagem")
     sync_distractors: bool = Field(default=True, description="Se True, analisa e atualiza distratores após regenerar a imagem")
@@ -356,23 +395,24 @@ class ImageRegenerationRequest(BaseModel):
 async def regenerate_image(request: ImageRegenerationRequest):
     """
     Endpoint para regenerar imagem com instruções de correção.
-    
+
     Permite ao usuário fornecer instruções específicas para melhorar a imagem.
     Se sync_distractors=True, analisa e atualiza os distratores automaticamente.
     """
     try:
-        logger.info(f"Regenerando imagem para questão #{request.question.question_number}")
+        question = _coerce_question_payload(request.question)
+        logger.info(f"Regenerando imagem para questão #{question.question_number}")
         logger.info(f"Instruções: {request.custom_instructions[:100]}...")
-        
+
         # 1. Edita ou gera a imagem
         image_result = generate_image_agent_service.generate_image_with_instructions(
-            request.question, 
+            question,
             request.custom_instructions,
             existing_image_base64=request.existing_image_base64
         )
-        
+
         # 2. Se sync_distractors está ativo, valida imagem vs alternativas
-        if request.sync_distractors and request.question.alternatives:
+        if request.sync_distractors and question.alternatives:
             try:
                 from app.services.agents.distractor_sync_agent import get_distractor_sync_agent
                 from app.schemas.image_response import UpdatedAlternative
@@ -382,7 +422,7 @@ async def regenerate_image(request: ImageRegenerationRequest):
                 
                 # Usa validação multimodal: envia a imagem real para análise
                 sync_result = sync_agent.validate_with_image(
-                    request.question,
+                    question,
                     image_result.image_base64
                 )
                 
@@ -393,7 +433,7 @@ async def regenerate_image(request: ImageRegenerationRequest):
                         UpdatedAlternative(**alt) for alt in sync_result["alternatives"]
                     ],
                     distractors_updated=sync_result["distractors_updated"],
-                    correct_answer=sync_result.get("correct_answer", request.question.correct_answer)
+                    correct_answer=sync_result.get("correct_answer", question.correct_answer)
                 )
                 
                 # 3. Persiste correções no banco se temos o ID da questão
