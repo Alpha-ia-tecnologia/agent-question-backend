@@ -295,13 +295,62 @@ async def generate_image(payload: dict, session: Session = Depends(get_session))
     Recebe uma questão (dict flexível — campos nulos são tolerados, como em
     questões já persistidas no banco) e retorna uma imagem ilustrativa em Base64.
     Se a questão já estiver salva no banco (tem ID), a imagem será salva em disco e vinculada.
+
+    Campos opcionais no payload:
+    - `custom_instructions`: string com orientações do usuário; quando presente,
+      é injetada no prompt da geração e persistida em
+      ImageGenerationGuideline para alimentar gerações futuras com mesmo
+      skill/grade/curriculum_component.
     """
     try:
+        custom_instructions = (payload.get("custom_instructions") or "").strip() if isinstance(payload, dict) else ""
         question = _coerce_question_payload(payload)
-        logger.info(f"Recebida requisição de imagem para questão #{question.question_number}")
-        
-        # Gera a imagem
-        image_response = generate_image_agent_service.generate_image(question)
+        logger.info(
+            f"Recebida requisição de imagem para questão #{question.question_number}"
+            f" (com instruções={'sim' if custom_instructions else 'não'})"
+        )
+
+        # Recupera orientações HITL acumuladas para este contexto (skill/grade/componente).
+        repo_kb = QuestionRepository(session)
+        grade_ctx = (payload.get("grade") if isinstance(payload, dict) else None)
+        curriculum_ctx = (payload.get("curriculum_component") if isinstance(payload, dict) else None)
+        try:
+            kb_rows = repo_kb.get_image_guidelines(
+                skill=question.skill or None,
+                grade=grade_ctx,
+                curriculum_component=curriculum_ctx,
+                limit=5,
+            )
+            guidelines_pool = [r["instruction"] for r in kb_rows if r.get("instruction")]
+        except Exception as kb_err:
+            logger.warning(f"⚠️ Falha ao consultar KB de imagens: {kb_err}")
+            guidelines_pool = []
+
+        # Gera a imagem (com ou sem instruções customizadas)
+        if custom_instructions:
+            image_response = generate_image_agent_service.generate_image_with_instructions(
+                question,
+                custom_instructions,
+                existing_image_base64=None,
+                extra_guidelines=guidelines_pool,
+            )
+            # Persiste a nova orientação como base de conhecimento (HITL).
+            try:
+                question_id_for_guideline = getattr(question, "id", None) or (payload.get("id") if isinstance(payload, dict) else None)
+                repo_kb.add_image_guideline(
+                    instruction=custom_instructions,
+                    question_id=question_id_for_guideline,
+                    skill=question.skill or None,
+                    grade=grade_ctx,
+                    curriculum_component=curriculum_ctx,
+                )
+                logger.info("📚 Orientação de imagem persistida na base de conhecimento")
+            except Exception as kb_err:
+                logger.warning(f"⚠️ Falha ao persistir orientação na KB de imagens: {kb_err}")
+        else:
+            image_response = generate_image_agent_service.generate_image(
+                question, extra_guidelines=guidelines_pool,
+            )
         
         # Sempre salva a imagem em disco (com UUID para persistência)
         if image_response.image_base64:

@@ -173,6 +173,36 @@ class GenerationHistory:
     
     # Tempo de processamento (em segundos)
     processing_time: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
-    
+
+    # Timestamps
+    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
+
+
+@table_registry.mapped
+class ImageGenerationGuideline:
+    """
+    Orientações acumuladas pelo usuário ao gerar/regenerar imagens.
+
+    Funciona como base de conhecimento HITL para o agente de imagens:
+    cada vez que o usuário fornece instruções de correção/melhoria, a
+    instrução é persistida e injetada como contexto nas próximas gerações
+    de imagem para questões com mesmo skill/grade/curriculum_component.
+    """
+    __tablename__ = "image_generation_guidelines"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+
+    # Origem
+    question_id: Mapped[Optional[int]] = mapped_column(ForeignKey("questions.id"), nullable=True)
+    user_id: Mapped[Optional[int]] = mapped_column(ForeignKey("users.id"), nullable=True)
+
+    # Filtros para reuso seletivo (mesmo padrão de get_corrective_observations)
+    skill: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    grade: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
+    curriculum_component: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
+
+    # A instrução em si
+    instruction: Mapped[str] = mapped_column(Text)
+
     # Timestamps
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())

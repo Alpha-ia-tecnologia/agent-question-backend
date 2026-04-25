@@ -265,35 +265,63 @@ Crie agora uma ilustração educacional de alta qualidade e COERENTE com TODAS a
         
         return prompt.strip()
     
-    def generate_image(self, question: QuestionSchema) -> ImageResponse:
+    @staticmethod
+    def _format_guidelines_block(guidelines: list[str] | None) -> str:
+        """Formata orientações HITL acumuladas para virar contexto do prompt."""
+        if not guidelines:
+            return ""
+        cleaned = [g.strip() for g in guidelines if g and g.strip()]
+        if not cleaned:
+            return ""
+        bullets = "\n".join(f"- {g[:400]}" for g in cleaned[:5])
+        return (
+            "\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            "📚 ORIENTAÇÕES ACUMULADAS DE GERAÇÕES ANTERIORES (aplicar à risca):\n"
+            f"{bullets}\n"
+            "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        )
+
+    def generate_image(
+        self,
+        question: QuestionSchema,
+        extra_guidelines: list[str] | None = None,
+    ) -> ImageResponse:
         """
         Gera uma imagem ilustrativa para a questão.
-        
+
         Usa Imagen 3.0 (Nano Banana Pro) como modelo principal,
         com fallback para Gemini Flash se necessário.
-        
+
         Args:
             question: Questão educacional para ilustrar
-            
+            extra_guidelines: Orientações HITL acumuladas para o mesmo
+                contexto (skill/grade/component). Quando presentes, são
+                anexadas ao prompt final como bloco de contexto.
+
         Returns:
             ImageResponse contendo a imagem em Base64
-            
+
         Raises:
             ImageGenerationError: Se ocorrer erro na geração
         """
         # Tenta usar o agente de engenharia de prompt para análise mais inteligente
         try:
             from app.services.agents.image_prompt_engineer_agent import get_image_prompt_engineer_agent
-            
+
             logger.info("🤖 Usando ImagePromptEngineerAgent para análise inteligente...")
             agent = get_image_prompt_engineer_agent()
             prompt = agent.analyze_and_generate_prompt(question)
             logger.info(f"📝 Prompt gerado pelo agente: {prompt[:150]}...")
-            
+
         except Exception as e:
             logger.warning(f"⚠️ Fallback para prompt local: {e}")
             prompt = self._build_image_prompt(question)
             logger.info(f"📝 Prompt gerado localmente: {prompt[:150]}...")
+
+        guidelines_block = self._format_guidelines_block(extra_guidelines)
+        if guidelines_block:
+            prompt = f"{prompt}{guidelines_block}"
+            logger.info(f"📚 {len(extra_guidelines or [])} orientação(ões) HITL anexada(s) ao prompt")
         
         # Gera com Gemini 2.5 Flash Image (Nano Banana)
         try:
@@ -325,22 +353,25 @@ Crie agora uma ilustração educacional de alta qualidade e COERENTE com TODAS a
             raise ImageGenerationError(f"Falha ao gerar imagem: {e}") from e
 
     def generate_image_with_instructions(
-        self, 
-        question: QuestionSchema, 
+        self,
+        question: QuestionSchema,
         custom_instructions: str,
-        existing_image_base64: str = None
+        existing_image_base64: str = None,
+        extra_guidelines: list[str] | None = None,
     ) -> ImageResponse:
         """
         Edita ou regenera uma imagem com instruções personalizadas de correção.
-        
+
         Se existing_image_base64 for fornecido, edita a imagem existente.
         Caso contrário, gera uma nova imagem do zero.
-        
+
         Args:
             question: Questão educacional para ilustrar
             custom_instructions: Instruções do usuário para correção/melhoria
             existing_image_base64: Imagem atual em base64 (para edição)
-            
+            extra_guidelines: Orientações HITL acumuladas (mesmo skill/grade/component)
+                a serem injetadas como contexto no modo geração.
+
         Returns:
             ImageResponse contendo a imagem em Base64
         """
@@ -375,9 +406,10 @@ REGRAS IMPORTANTES:
             else:
                 # ===== MODO GERAÇÃO: cria imagem nova do zero =====
                 logger.info(f"🔄 Gerando nova imagem com instruções usando {self.model}...")
-                
+
                 base_prompt = self._build_image_prompt(question)
-                contents = f"""{base_prompt}
+                guidelines_block = self._format_guidelines_block(extra_guidelines)
+                contents = f"""{base_prompt}{guidelines_block}
 
 INSTRUÇÕES ADICIONAIS DO USUÁRIO (PRIORIDADE MÁXIMA):
 {custom_instructions}

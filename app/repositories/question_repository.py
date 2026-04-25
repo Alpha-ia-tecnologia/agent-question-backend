@@ -12,7 +12,9 @@ import os
 import base64
 import uuid
 
-from app.models.question_model import Question, Alternative, GenerationHistory, QuestionGroup
+from app.models.question_model import (
+    Question, Alternative, GenerationHistory, QuestionGroup, ImageGenerationGuideline,
+)
 from app.schemas.question_schema import QuestionSchema
 
 
@@ -254,6 +256,113 @@ class QuestionRepository:
             }
             for q in collected[:limit]
         ]
+
+    def add_image_guideline(
+        self,
+        instruction: str,
+        question_id: Optional[int] = None,
+        skill: Optional[str] = None,
+        grade: Optional[str] = None,
+        curriculum_component: Optional[str] = None,
+        user_id: Optional[int] = None,
+    ) -> ImageGenerationGuideline:
+        """
+        Persiste uma orientação fornecida pelo usuário para a geração de imagens.
+        Vira contexto reutilizável nas próximas gerações com mesmo contexto.
+        """
+        clean = (instruction or "").strip()
+        if not clean:
+            raise ValueError("instruction não pode ser vazio.")
+        guideline = ImageGenerationGuideline(
+            instruction=clean,
+            question_id=question_id,
+            skill=skill,
+            grade=grade,
+            curriculum_component=curriculum_component,
+            user_id=user_id,
+        )
+        self.session.add(guideline)
+        self.session.commit()
+        self.session.refresh(guideline)
+        return guideline
+
+    def get_image_guidelines(
+        self,
+        skill: Optional[str] = None,
+        grade: Optional[str] = None,
+        curriculum_component: Optional[str] = None,
+        limit: int = 5,
+    ) -> List[dict]:
+        """
+        Recupera orientações de imagem reutilizáveis (HITL).
+
+        Estratégia mesma de get_corrective_observations:
+        1. match exato por skill (+ grade) — mais específico;
+        2. complemento por curriculum_component (+ grade);
+        3. fallback: últimas N globais quando nada bater.
+        """
+        def _serialize(rows):
+            return [
+                {
+                    "id": r.id,
+                    "instruction": (r.instruction or "").strip(),
+                    "skill": r.skill,
+                    "grade": r.grade,
+                    "curriculum_component": r.curriculum_component,
+                    "question_id": r.question_id,
+                }
+                for r in rows
+            ]
+
+        collected: list[ImageGenerationGuideline] = []
+        seen_ids: set[int] = set()
+
+        if skill:
+            flt = ImageGenerationGuideline.skill == skill
+            if grade:
+                flt = and_(flt, ImageGenerationGuideline.grade == grade)
+            rows = (
+                self.session.query(ImageGenerationGuideline)
+                .filter(flt)
+                .order_by(desc(ImageGenerationGuideline.id))
+                .limit(limit)
+                .all()
+            )
+            for r in rows:
+                if r.id not in seen_ids:
+                    seen_ids.add(r.id)
+                    collected.append(r)
+
+        if len(collected) < limit and curriculum_component:
+            remaining = limit - len(collected)
+            flt = ImageGenerationGuideline.curriculum_component == curriculum_component
+            if grade:
+                flt = and_(flt, ImageGenerationGuideline.grade == grade)
+            rows = (
+                self.session.query(ImageGenerationGuideline)
+                .filter(flt)
+                .order_by(desc(ImageGenerationGuideline.id))
+                .limit(remaining * 2)
+                .all()
+            )
+            for r in rows:
+                if r.id in seen_ids:
+                    continue
+                seen_ids.add(r.id)
+                collected.append(r)
+                if len(collected) >= limit:
+                    break
+
+        if not collected:
+            rows = (
+                self.session.query(ImageGenerationGuideline)
+                .order_by(desc(ImageGenerationGuideline.id))
+                .limit(limit)
+                .all()
+            )
+            collected.extend(rows)
+
+        return _serialize(collected[:limit])
 
     def get_alternatives_by_question(self, question_id: int) -> List[Alternative]:
         """Busca alternativas de uma questão."""
